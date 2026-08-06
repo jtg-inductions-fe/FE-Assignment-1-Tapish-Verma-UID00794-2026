@@ -1,0 +1,21 @@
+// Colors
+$color-light: #eeeeee;
+$color-dark: #222831;
+$color-grey: #19182580;
+$color-pink: #f85e9f;
+$color-black: #000;
+$color-orange: #ff5722;
+$color-white: #fff;
+$color-purple: #5d50c6;
+
+// Breakpoints
+
+$breakpoint-sm: 430px;
+$breakpoint-md: 1024px;
+$breakpoint-lg: 1440px;
+
+$breakpoints: (
+    sm: $breakpoint-sm,
+    md: $breakpoint-md,
+    lg: $breakpoint-lg,
+);

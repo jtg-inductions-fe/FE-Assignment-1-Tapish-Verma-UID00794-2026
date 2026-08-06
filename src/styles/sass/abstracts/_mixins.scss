@@ -1,0 +1,20 @@
+@use 'sass:map';
+@use './variables' as v;
+
+@mixin flex($direction: row, $justify: center, $align: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin responsive-screen($breakpoint: sm) {
+    $value: map.get(v.$breakpoints, $breakpoint);
+    @if $value {
+        @media (min-width: $value) {
+            @content;
+        }
+    } @else {
+        @error "Unknown breakpoint: #{$breakpoint}";
+    }
+}

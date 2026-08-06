@@ -1,0 +1,36 @@
+@use '../abstracts/variables' as v;
+@use './typography' as t;
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: t.$font-family-primary, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    min-height: 100vh;
+    line-height: 1.5;
+}
+
+button {
+    cursor: pointer;
+    background-color: transparent;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}

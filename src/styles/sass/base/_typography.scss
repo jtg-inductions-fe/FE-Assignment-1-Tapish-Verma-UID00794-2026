@@ -1,0 +1,47 @@
+@use '../abstracts/functions' as f;
+
+// Font Family
+$font-family-primary: 'CircularStd', sans-serif;
+$font-family-secondary: 'Inter', sans-serif;
+
+// font weights
+$font-weight-bold-max: 900;
+$font-weight-bold: 700;
+$font-weight-medium-bold: 600;
+$font-weight-semi-bold: 450;
+$font-weight-light: 400;
+
+//font-sizes
+
+// Main Heading
+$main-heading-lg: f.rem(69);
+$main-heading-md: f.rem(56);
+$main-heading-sm: f.rem(40);
+
+// Sub Heading
+
+$sub-heading-lg: f.rem(44);
+$sub-heading-md: f.rem(40);
+$sub-heading-sm: f.rem(32);
+
+// Heading
+$page-heading-lg: f.rem(23);
+$page-heading-md: f.rem(23);
+$page-heading-sm: f.rem(16);
+
+//Page Sub Heading
+$page-sub-heading-lg: f.rem(44);
+$page-sub-heading-md: f.rem(40);
+$page-sub-heading-sm: f.rem(32);
+
+// para
+
+$para-lg: f.rem(23);
+$para-md: f.rem(18);
+$para-sm: f.rem(18);
+
+// text sizes
+$text-sm: f.rem(14);
+$text-md: f.rem(16);
+$text-lg: f.rem(18);
+$text-xl: f.rem(35);
