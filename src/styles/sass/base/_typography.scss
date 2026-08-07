@@ -1,0 +1,76 @@
+@use '../abstracts/variables' as variables;
+@use '../abstracts/mixins' as mixins;
+@use '../abstracts/functions' as functions;
+
+h1 {
+    font-size: functions.rem(40px);
+    font-weight: variables.$font-weight-bold;
+    line-height: variables.$primary-spacing;
+    color: variables.$color-black;
+
+    @include mixins.responsive-screen(md) {
+        font-size: functions.rem(56px);
+    }
+
+    @include mixins.responsive-screen(lg) {
+        font-size: functions.rem(69px);
+    }
+}
+
+h2 {
+    font-size: functions.rem(32px);
+    font-weight: variables.$font-weight-bold;
+    line-height: variables.$primary-spacing;
+    color: variables.$color-grey-dark;
+
+    @include mixins.responsive-screen(md) {
+        font-size: functions.rem(40px);
+    }
+
+    @include mixins.responsive-screen(lg) {
+        font-size: functions.rem(44px);
+    }
+}
+
+h3 {
+    font-size: functions.rem(16px);
+    font-weight: variables.$font-weight-bold;
+    line-height: variables.$primary-spacing;
+    color: variables.$color-pink;
+
+    @include mixins.responsive-screen(md) {
+        font-size: functions.rem(23px);
+    }
+}
+
+h4 {
+    font-size: functions.rem(35px);
+    font-weight: variables.$font-weight-bold;
+    line-height: variables.$primary-spacing;
+    color: variables.$color-orange;
+}
+
+h5 {
+    font-size: functions.rem(28px);
+    font-weight: variables.$font-weight-bold;
+    line-height: variables.$primary-spacing;
+    color: variables.$color-grey-medium;
+}
+
+h6 {
+    font-size: functions.rem(23px);
+    font-weight: variables.$font-weight-bold;
+    line-height: variables.$primary-spacing;
+    color: variables.$color-grey-dark;
+}
+
+p {
+    font-size: functions.rem(16px);
+    font-weight: variables.$font-weight-light;
+    line-height: variables.$secondary-spacing;
+    color: variables.$color-grey-light;
+
+    @include mixins.responsive-screen(md) {
+        font-size: functions.rem(18px);
+    }
+}

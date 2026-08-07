@@ -1,0 +1,70 @@
+@use '../abstracts/variables' as variables;
+
+// ==========================================================================
+// Circular Std — primary font
+// ==========================================================================
+
+@font-face {
+    font-family: 'Circular Std';
+    src: url('/assets/fonts/circular-std/CircularStd-Light.otf')
+        format('opentype');
+    font-weight: variables.$font-weight-light;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Circular Std';
+    src: url('/assets/fonts/circular-std/CircularStd-Book.otf')
+        format('opentype');
+    font-weight: variables.$font-weight-semi-bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Circular Std';
+    src: url('/assets/fonts/circular-std/CircularStd-Medium.otf')
+        format('opentype');
+    font-weight: variables.$font-weight-medium-bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Circular Std';
+    src: url('/assets/fonts/circular-std/CircularStd-Bold.otf')
+        format('opentype');
+    font-weight: variables.$font-weight-bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Circular Std';
+    src: url('/assets/fonts/circular-std/CircularStd-Black.otf')
+        format('opentype');
+    font-weight: variables.$font-weight-bold-max;
+    font-style: normal;
+    font-display: swap;
+}
+
+// ==========================================================================
+// Inter — secondary font, used only for specific paragraphs
+// ==========================================================================
+
+@font-face {
+    font-family: 'Inter';
+    src: url('/assets/fonts/inter/Inter_18pt-Regular.ttf') format('truetype');
+    font-weight: variables.$font-weight-light;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('/assets/fonts/inter/Inter_18pt-Bold.ttf') format('truetype');
+    font-weight: variables.$font-weight-bold;
+    font-style: normal;
+    font-display: swap;
+}

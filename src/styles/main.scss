@@ -1,1 +1,14 @@
-// TODO: Add styles as per the requirement
+// Abstracts
+@use './sass/abstracts';
+
+// Base
+@use './sass/base';
+
+// layout
+// @use './sass/layouts';
+
+// components
+@use './sass/components';
+
+// Vendors
+@use './sass/vendors';
