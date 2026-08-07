@@ -1,0 +1,16 @@
+@use '../abstracts/mixins' as mixins;
+@use '../abstracts/variables' as variables;
+@use '../abstracts/functions' as functions;
+
+.card {
+    @include mixins.flex;
+
+    &--outline {
+        padding-block: functions.rem(variables.$space-lg);
+        border: 1px solid variables.$color-grey-extra-light;
+        border-radius: variables.$radius-round;
+        gap: functions.rem(variables.$space-xs);
+        flex-direction: column;
+        background-color: transparent;
+    }
+}

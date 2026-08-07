@@ -1,0 +1,52 @@
+@use '../abstracts/functions' as functions;
+@use '../abstracts/variables' as variables;
+@use '../abstracts/mixins' as mixins;
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: none;
+    padding: functions.rem(16px) functions.rem(32px);
+    border-radius: variables.$radius-pill;
+    font-size: variables.$text-sm;
+    background: variables.$color-white;
+    color: variables.$color-dark;
+    cursor: pointer;
+
+    &__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        line-height: 1;
+    }
+
+    &__text {
+        white-space: nowrap;
+        font-weight: variables.$font-weight-bold;
+    }
+
+    &--primary {
+        background: variables.$color-purple;
+        color: variables.$color-white;
+    }
+
+    &--outline {
+        background: transparent;
+        color: variables.$color-dark;
+        border: 1px solid variables.$color-light;
+    }
+
+    &--icon-only {
+        padding: functions.rem(42px);
+        font-size: variables.$text-md;
+        aspect-ratio: 1;
+
+        @include mixins.responsive-screen(sm) {
+            padding: functions.rem(38px);
+            font-size: variables.$text-lg;
+        }
+    }
+}
