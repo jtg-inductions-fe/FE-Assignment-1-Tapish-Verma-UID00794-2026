@@ -1,6 +1,10 @@
 @use 'sass:map';
-@use './variables' as v;
+@use './variables' as variables;
 
+/// Flexbox utility mixin.
+/// @param {String} $direction [row] - Flex direction.
+/// @param {String} $justify [flex-start] - Main-axis alignment.
+/// @param {String} $align [stretch] - Cross-axis alignment.
 @mixin flex($direction: row, $justify: center, $align: center) {
     display: flex;
     flex-direction: $direction;
@@ -8,8 +12,12 @@
     align-items: $align;
 }
 
+/// Applies styles at a predefined breakpoint.
+/// @param {String} $breakpoint - Breakpoint key.
+/// Accepted values: sm, md, lg
+/// @error Throws an error if the breakpoint key does not exist.
 @mixin responsive-screen($breakpoint: sm) {
-    $value: map.get(v.$breakpoints, $breakpoint);
+    $value: map.get(variables.$breakpoints, $breakpoint);
     @if $value {
         @media (min-width: $value) {
             @content;
@@ -17,4 +25,24 @@
     } @else {
         @error "Unknown breakpoint: #{$breakpoint}";
     }
+}
+
+@mixin text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/// Truncates multi-line text with an ellipsis.
+///
+/// Uses the `-webkit-line-clamp` property to limit the number of
+/// visible lines and hide any overflowing content.
+///
+/// @param {Number} $lines [2] - Maximum number of visible text lines.
+@mixin text-clamp($lines: 2) {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
