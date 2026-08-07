@@ -8,9 +8,11 @@
     font-style: normal;
     font-display: block;
 }
-[class^='icon-'],
-[class*=' icon-'] {
-    /* Use !important to prevent extensions from overriding this font. */
+@font-palette-values --palette0 {
+    font-family: 'Untitled';
+    base-palette: 0;
+}
+.icon {
     font-family: 'Untitled' !important;
     font-style: normal;
     font-weight: normal;
@@ -18,32 +20,10 @@
     text-transform: none;
     line-height: 1;
 
-    /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
-.icon-facebook::before {
-    content: '\f006';
-}
-.icon-twitter::before {
-    content: '\f000';
-}
-.icon-star::before {
-    content: '\f001';
-}
-.icon-right-arrow::before {
-    content: '\f002';
-}
-.icon-play::before {
-    content: '\f003';
-}
-.icon-left-arrow::before {
-    content: '\f004';
-}
-.icon-instagram::before {
-    content: '\f005';
-}
-.icon-bag::before {
-    content: '\f007';
+.palette0 {
+    font-palette: --palette0;
+    color: currentColor;
 }
