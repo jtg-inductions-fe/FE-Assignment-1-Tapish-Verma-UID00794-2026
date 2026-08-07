@@ -3,8 +3,8 @@
 
 /// Flexbox utility mixin.
 /// @param {String} $direction [row] - Flex direction.
-/// @param {String} $justify [flex-start] - Main-axis alignment.
-/// @param {String} $align [stretch] - Cross-axis alignment.
+/// @param {String} $justify [center] - Main-axis alignment.
+/// @param {String} $align [center] - Cross-axis alignment.
 @mixin flex($direction: row, $justify: center, $align: center) {
     display: flex;
     flex-direction: $direction;

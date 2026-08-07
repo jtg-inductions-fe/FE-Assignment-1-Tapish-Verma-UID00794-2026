@@ -1,0 +1,17 @@
+@use '../abstracts/variables' as variables;
+
+.text-pink {
+    color: variables.$color-pink;
+}
+
+.text-orange {
+    color: variables.$color-orange;
+}
+
+.text-dark {
+    color: variables.$color-dark;
+}
+
+.text-grey-medium {
+    color: variables.$color-grey-medium;
+}

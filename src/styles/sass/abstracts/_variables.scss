@@ -54,6 +54,7 @@ $space-lg: 32px;
 $space-xl: 64px;
 
 //font-sizes
+/// @type number
 $text-sm: functions.rem(14px);
 $text-md: functions.rem(16px);
 $text-lg: functions.rem(18px);
@@ -61,5 +62,8 @@ $text-xl: functions.rem(23px);
 
 // border-radius
 ///@type number
+$radius-sm: 16px;
+$radius-md: 24px;
+$radius-lg: 32px;
 $radius-pill: 9999px;
 $radius-round: 50%;
