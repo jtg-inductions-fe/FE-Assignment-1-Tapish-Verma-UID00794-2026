@@ -1,5 +1,7 @@
 // base/_base.scss
 @use '../abstracts/variables' as variables;
+@use '../abstracts/mixins' as mixins;
+@use '../abstracts/functions' as functions;
 
 body {
     font-family: variables.$font-family-primary;
@@ -14,4 +16,17 @@ body {
 a {
     color: inherit;
     text-decoration: none;
+}
+
+.container {
+    @include mixins.flex;
+    padding: 0 functions.rem(variables.$space-xs);
+
+    @include mixins.responsive-screen(md) {
+        padding: 0 functions.rem(variables.$space-xl);
+    }
+
+    @include mixins.responsive-screen(lg) {
+        padding: 0 functions.rem(variables.$space-xxl);
+    }
 }

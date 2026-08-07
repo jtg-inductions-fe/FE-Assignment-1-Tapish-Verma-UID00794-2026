@@ -12,7 +12,56 @@
         />
     </head>
     <body>
-        <div>Hello World</div>
+        <header class="header">
+            <div class="container">
+                <div class="header__wrapper">
+                    <a href="/" class="header__logo" aria-label="Travelog Home">
+                        <img
+                            class="header__logo-image"
+                            src="/assets/images/company-logo.png"
+                            alt="Travelog"
+                        />
+                    </a>
+
+                    <nav class="header__nav">
+                        <ul class="header__menu" role="list">
+                            <li class="header__item">
+                                <a href="#hero">Home</a>
+                            </li>
+                            <li class="header__item">
+                                <a href="#discover">Discover</a>
+                            </li>
+                            <li class="header__item">
+                                <a href="#special-deals">Special Deals</a>
+                            </li>
+                            <li class="header__item">
+                                <a href="#contact">Contact</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="header__actions">
+                        <button class="button button__text">Login</button>
+                        <button class="button button__text button--primary">
+                            Sign Up
+                        </button>
+                    </div>
+                    <a
+                        href="/"
+                        class="header__logo header__logo--shadow"
+                        aria-label="Travelog Home"
+                    >
+                        <img
+                            class="header__logo-image"
+                            src="/assets/images/company-logo.png"
+                            alt="Travelog"
+                        />
+                    </a>
+                    <button class="button header__hamburger">
+                        <span class="icon header__hamburger--icon"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
         <script type="module" src="./src/script/index.js"></script>
     </body>
 </html>
