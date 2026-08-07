@@ -1,5 +1,0 @@
-@use '../abstracts/mixins' as m;
-
-header {
-    @include m.flex(row, space-between, center);
-}

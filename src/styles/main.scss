@@ -1,25 +1,14 @@
 // Abstracts
-@use './sass/abstracts/variables';
-@use './sass/abstracts/mixins';
-@use './sass/abstracts/functions';
+@use './sass/abstracts';
 
 // Base
-@use './sass/base/reset';
-@use './sass/base/typography';
+@use './sass/base';
 
 // layout
-@use './sass/layouts/header.scss';
-@use './sass/layouts/footer.scss';
-@use './sass/layouts/features.scss';
-@use './sass/layouts/home.scss';
-@use './sass/layouts/navbar.scss';
-@use './sass/layouts/testimonials.scss';
+// @use './sass/layouts';
 
 // components
-@use './sass/components/button.scss';
-@use './sass/components/carousel.scss';
-@use './sass/components/drawer.scss';
-@use './sass/components/icon.scss';
+@use './sass/components';
 
 // Vendors
-@use './sass/vendors/icomoon';
+@use './sass/vendors';
