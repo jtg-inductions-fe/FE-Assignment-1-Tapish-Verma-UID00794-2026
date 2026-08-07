@@ -1,0 +1,17 @@
+// base/_base.scss
+@use '../abstracts/variables' as variables;
+
+body {
+    font-family: variables.$font-family-primary;
+    font-size: variables.$text-sm;
+    font-weight: variables.$font-weight-light;
+    color: variables.$color-grey-medium;
+    background-color: variables.$color-white;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}

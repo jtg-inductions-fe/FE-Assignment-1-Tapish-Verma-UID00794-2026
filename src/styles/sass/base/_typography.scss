@@ -1,47 +1,92 @@
-@use '../abstracts/functions' as f;
+@use '../abstracts/variables' as variables;
+@use '../abstracts/mixins' as mixins;
+@use '../abstracts/functions' as functions;
 
-// Font Family
-$font-family-primary: 'CircularStd', sans-serif;
-$font-family-secondary: 'Inter', sans-serif;
+h1 {
+    font-size: functions.rem(40px);
+    font-weight: variables.$font-weight-bold;
+    line-height: variables.$primary-spacing;
+    color: variables.$color-black;
 
-// font weights
-$font-weight-bold-max: 900;
-$font-weight-bold: 700;
-$font-weight-medium-bold: 600;
-$font-weight-semi-bold: 450;
-$font-weight-light: 400;
+    @include mixins.responsive-screen(md) {
+        font-size: functions.rem(56px);
+    }
 
-//font-sizes
+    @include mixins.responsive-screen(lg) {
+        font-size: functions.rem(69px);
+    }
+}
 
-// Main Heading
-$main-heading-lg: f.rem(69);
-$main-heading-md: f.rem(56);
-$main-heading-sm: f.rem(40);
+h2 {
+    font-size: functions.rem(32px);
+    font-weight: variables.$font-weight-bold;
+    line-height: variables.$primary-spacing;
+    color: variables.$color-grey-dark;
 
-// Sub Heading
+    @include mixins.responsive-screen(md) {
+        font-size: functions.rem(40px);
+    }
 
-$sub-heading-lg: f.rem(44);
-$sub-heading-md: f.rem(40);
-$sub-heading-sm: f.rem(32);
+    @include mixins.responsive-screen(lg) {
+        font-size: functions.rem(44px);
+    }
+}
 
-// Heading
-$page-heading-lg: f.rem(23);
-$page-heading-md: f.rem(23);
-$page-heading-sm: f.rem(16);
+h3 {
+    font-size: functions.rem(16px);
+    font-weight: variables.$font-weight-bold;
+    line-height: variables.$primary-spacing;
+    color: variables.$color-pink;
 
-//Page Sub Heading
-$page-sub-heading-lg: f.rem(44);
-$page-sub-heading-md: f.rem(40);
-$page-sub-heading-sm: f.rem(32);
+    @include mixins.responsive-screen(md) {
+        font-size: functions.rem(23px);
+    }
+}
 
-// para
+h4 {
+    font-size: functions.rem(35px);
+    font-weight: variables.$font-weight-bold;
+    line-height: variables.$primary-spacing;
+    color: variables.$color-orange;
+}
 
-$para-lg: f.rem(23);
-$para-md: f.rem(18);
-$para-sm: f.rem(18);
+h5 {
+    font-size: functions.rem(28px);
+    font-weight: variables.$font-weight-bold;
+    line-height: variables.$primary-spacing;
+    color: variables.$color-grey-medium;
+}
 
-// text sizes
-$text-sm: f.rem(14);
-$text-md: f.rem(16);
-$text-lg: f.rem(18);
-$text-xl: f.rem(35);
+h6 {
+    font-size: functions.rem(23px);
+    font-weight: variables.$font-weight-bold;
+    line-height: variables.$primary-spacing;
+    color: variables.$color-grey-dark;
+}
+
+p {
+    font-size: functions.rem(16px);
+    font-weight: variables.$font-weight-light;
+    line-height: variables.$secondary-spacing;
+    color: variables.$color-grey-light;
+
+    @include mixins.responsive-screen(md) {
+        font-size: functions.rem(18px);
+    }
+}
+
+.text-pink {
+    color: variables.$color-pink;
+}
+
+.text-color {
+    color: variables.$color-orange;
+}
+
+.text-dark {
+    color: variables.$color-dark;
+}
+
+.text-grey-medium {
+    color: variables.$color-grey-medium;
+}
