@@ -15,6 +15,13 @@
         <header class="header">
             <div class="container">
                 <div class="header__wrapper">
+                    <button
+                        class="button header__hamburger header__hamburger--shadow"
+                        aria-label="Open navigation menu"
+                        aria-expanded="false"
+                    >
+                        <span class="icon header__hamburger--icon"></span>
+                    </button>
                     <a href="/" class="header__logo" aria-label="Travelog Home">
                         <img
                             class="header__logo-image"
@@ -22,8 +29,7 @@
                             alt="Travelog"
                         />
                     </a>
-
-                    <nav class="header__nav">
+                    <nav class="header__nav" aria-label="Primary">
                         <ul class="header__menu" role="list">
                             <li class="header__item">
                                 <a href="#hero">Home</a>
@@ -45,23 +51,51 @@
                             Sign Up
                         </button>
                     </div>
-                    <a
-                        href="/"
-                        class="header__logo header__logo--shadow"
-                        aria-label="Travelog Home"
+                    <button
+                        class="button header__hamburger header__hamburger--menu"
+                        aria-label="Open navigation menu"
+                        aria-expanded="false"
                     >
-                        <img
-                            class="header__logo-image"
-                            src="/assets/images/company-logo.png"
-                            alt="Travelog"
-                        />
-                    </a>
-                    <button class="button header__hamburger">
                         <span class="icon header__hamburger--icon"></span>
                     </button>
                 </div>
             </div>
         </header>
+        <div class="mask" hidden></div>
+        <aside class="drawer" inert>
+            <div class="drawer__header">
+                <button class="button drawer__cross">
+                    <span class="icon drawer__icon"></span>
+                </button>
+            </div>
+            <nav class="drawer__nav" aria-label="Primary">
+                <ul class="drawer__list" role="list">
+                    <li class="drawer__item">
+                        <a class="drawer__link" href="#hero">Home</a>
+                    </li>
+                    <li class="drawer__item">
+                        <a class="drawer__link" href="#discover">Discover</a>
+                    </li>
+                    <li class="drawer__item">
+                        <a class="drawer__link" href="#special-deals"
+                            >Special Deals</a
+                        >
+                    </li>
+                    <li class="drawer__item">
+                        <a class="drawer__link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+
+                <div class="drawer__actions">
+                    <button class="button button__text button--outline">
+                        Login
+                    </button>
+                    <button class="button button__text button--primary">
+                        Sign Up
+                    </button>
+                </div>
+            </nav>
+        </aside>
         <script type="module" src="./src/script/index.js"></script>
     </body>
 </html>

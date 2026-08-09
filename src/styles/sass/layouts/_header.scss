@@ -6,28 +6,24 @@
     width: 100%;
     box-sizing: content-box;
     padding-block: variables.$space-lg;
-
     @include mixins.flex(row, space-between, center);
 
-    @include mixins.responsive-screen(sm) {
-        flex-direction: row-reverse;
-    }
-
     @include mixins.responsive-screen(md) {
-        flex-direction: row;
         margin-top: variables.$space-xs;
     }
+}
 
-    > button {
-        @include mixins.responsive-screen(md) {
-            display: none;
-        }
+.header__logo {
+    @include mixins.responsive-screen(sm) {
+        margin-left: variables.$space-xxl;
+    }
+    @include mixins.responsive-screen(md) {
+        margin-left: 0;
     }
 }
 
 .header__nav {
     display: none;
-
     @include mixins.responsive-screen(md) {
         display: block;
         max-width: 600px;
@@ -41,7 +37,6 @@
 
 .header__actions {
     display: none;
-
     @include mixins.responsive-screen(sm) {
         @include mixins.flex(row, space-between, center, variables.$space-xxs);
     }
@@ -49,38 +44,33 @@
 
 .button.header__hamburger {
     padding: 0;
-}
+    display: none;
 
-.header__hamburger--icon {
-    font-size: functions.rem(40px);
-}
-
-.header__logo {
-    @include mixins.responsive-screen(sm) {
-        display: none;
-    }
-    @include mixins.responsive-screen(md) {
-        display: inline;
+    &--menu {
+        display: inline-flex;
+        @include mixins.responsive-screen(sm) {
+            display: none;
+        }
     }
 
     &--shadow {
-        display: none;
-        margin-left: variables.$space-xxl;
         @include mixins.responsive-screen(sm) {
-            display: inline;
+            display: inline-flex;
         }
-
         @include mixins.responsive-screen(md) {
             display: none;
         }
     }
 }
 
+.header__hamburger--icon {
+    font-size: functions.rem(40px);
+}
+
 .header__item {
     font-weight: variables.$font-weight-bold;
     line-height: variables.$primary-spacing;
     color: variables.$color-grey-light;
-
     &:hover {
         color: variables.$color-dark;
     }

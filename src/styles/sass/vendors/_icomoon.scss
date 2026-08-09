@@ -13,6 +13,7 @@
     base-palette: 0;
 }
 .icon {
+    /* Use !important to prevent extensions from overriding this font. */
     font-family: 'Untitled' !important;
     font-style: normal;
     font-weight: normal;
@@ -20,6 +21,7 @@
     text-transform: none;
     line-height: 1;
 
+    /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
