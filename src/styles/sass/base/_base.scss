@@ -11,6 +11,8 @@ body {
     background-color: variables.$color-white;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    max-width: 2000px;
+    min-width: 375px;
 }
 
 a {

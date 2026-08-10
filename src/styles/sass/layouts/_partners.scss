@@ -1,0 +1,13 @@
+@use '../abstracts/mixins' as mixins;
+@use '../abstracts/variables' as variables;
+
+.partners {
+    width: 100%;
+    box-sizing: content-box;
+    padding-block: variables.$space-xl;
+    @include mixins.flex(row, center, center, 32px);
+    flex-wrap: wrap;
+    @include mixins.responsive-screen(md) {
+        justify-content: space-between;
+    }
+}

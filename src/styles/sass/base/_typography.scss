@@ -2,6 +2,16 @@
 @use '../abstracts/mixins' as mixins;
 @use '../abstracts/functions' as functions;
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h5,
+p {
+    text-align: center;
+}
+
 h1 {
     font-size: functions.rem(40px);
     font-weight: variables.$font-weight-bold;

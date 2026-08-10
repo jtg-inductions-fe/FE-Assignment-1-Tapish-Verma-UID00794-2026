@@ -1,0 +1,193 @@
+@use '../abstracts/variables' as variables;
+@use '../abstracts/mixins' as mixins;
+@use '../abstracts/functions' as functions;
+
+.hero {
+    width: 100%;
+    @include mixins.flex;
+
+    &__bg {
+        position: fixed;
+        height: 348px;
+        width: 272px;
+        top: -32px;
+        left: -33px;
+        background-color: variables.$color-orange;
+        opacity: 0.5;
+        filter: blur(150px);
+        border-radius: variables.$radius-round;
+        z-index: -1;
+        @include mixins.responsive-screen(sm) {
+            height: 500px;
+            width: 500px;
+            top: -174px;
+            left: -163px;
+            filter: blur(200px);
+        }
+
+        @include mixins.responsive-screen(md) {
+            height: 495px;
+            width: 504px;
+            top: 9px;
+            left: -40px;
+        }
+
+        &--arrows {
+            display: none;
+            @include mixins.responsive-screen(sm) {
+                display: inline-flex;
+            }
+        }
+    }
+    .container {
+        flex-direction: column;
+        gap: 0px;
+    }
+
+    &__container {
+        position: relative;
+        padding-block: variables.$space-xl;
+        @include mixins.flex(column-reverse, space-between, center);
+
+        @include mixins.responsive-screen(md) {
+            @include mixins.flex(row, space-between, center, 0px);
+        }
+
+        &--arrows {
+            display: none;
+            position: absolute;
+            @include mixins.responsive-screen(sm) {
+                display: inline-flex;
+                bottom: 0px;
+                left: -20px;
+            }
+            @include mixins.responsive-screen(md) {
+                display: inline-flex;
+                bottom: -60px;
+                left: -5%;
+            }
+        }
+    }
+
+    &__content {
+        flex: 1;
+        @include mixins.flex(
+            column,
+            space-between,
+            center,
+            variables.$space-lg
+        );
+        @include mixins.responsive-screen(sm) {
+            gap: 43px;
+        }
+    }
+
+    &__top-section {
+        @include mixins.flex(
+            column,
+            space-between,
+            center,
+            variables.$space-md
+        );
+        @include mixins.responsive-screen(sm) {
+            gap: 43px;
+        }
+        @include mixins.responsive-screen(md) {
+            align-items: flex-start;
+        }
+    }
+
+    &__heading-section {
+        @include mixins.flex(
+            column,
+            space-between,
+            center,
+            variables.$space-xs
+        );
+        @include mixins.responsive-screen(sm) {
+            gap: 43px;
+        }
+        @include mixins.responsive-screen(md) {
+            align-items: flex-start;
+        }
+    }
+
+    &__image {
+        box-sizing: content-box;
+        flex-shrink: 0;
+        @include mixins.responsive-screen(sm) {
+            padding: 0 variables.$space-md;
+        }
+        @include mixins.responsive-screen(md) {
+            padding: 0;
+            width: 65%;
+            max-width: 800px;
+            min-width: 600px;
+        }
+    }
+    &__actions {
+        width: 100%;
+        button {
+            width: 100%;
+
+            @include mixins.responsive-screen(sm) {
+                width: auto;
+            }
+        }
+        @include mixins.flex(
+            column,
+            space-between,
+            center,
+            variables.$space-md
+        );
+
+        @include mixins.responsive-screen(sm) {
+            @include mixins.flex(row, safe center, center, variables.$space-xs);
+        }
+        @include mixins.responsive-screen(md) {
+            justify-content: flex-start;
+        }
+
+        &--primary {
+            box-shadow:
+                0px 0px 0px 0px #0000001a,
+                0px 5px 11px 0px #0000001a,
+                0px 20px 20px 0px #00000017,
+                0px 45px 27px 0px #0000000d,
+                0px 81px 32px 0px #00000003,
+                0px 126px 35px 0px #00000000;
+        }
+    }
+
+    &__badge {
+        display: flex;
+        gap: variables.$space-xs;
+        padding: variables.$space-xs variables.$space-lg;
+        background-color: variables.$color-white;
+        border-radius: variables.$radius-pill;
+        box-shadow:
+            0 0 0 0 #00000012,
+            0 34px 75px 0 #00000012,
+            0 137px 137px 0 #0000000f,
+            0 308px 185px 0 #0000000a,
+            0 548px 219px 0 #00000003,
+            0 856px 240px 0 #00000000;
+        font-weight: variables.$font-weight-bold;
+        font-size: variables.$text-sm;
+        line-height: variables.$primary-spacing;
+    }
+}
+
+.hero__description,
+.hero__title {
+    @include mixins.responsive-screen(md) {
+        text-align: left;
+    }
+}
+
+.hero__description {
+    font-size: functions.rem(16px);
+    @include mixins.responsive-screen(sm) {
+        font-size: functions.rem(18px);
+    }
+}
