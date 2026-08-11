@@ -3,12 +3,16 @@ import { breakpoints } from './constants';
 const hamburgerButtons = document.getElementsByClassName('header__hamburger');
 const mask = document.querySelector('.mask');
 const drawer = document.querySelector('.drawer');
+const drawerClose = drawer.querySelector('.drawer__cross');
+let lastFocused = null;
 
 function openDrawer() {
     if (window.innerWidth < breakpoints.medium) {
         // check if active class is not there
         if (!drawer.classList.contains('active')) {
             // add it
+            // capture last focused
+            lastFocused = event.currentTarget;
             drawer.classList.add('active');
             // add active class to mask element as well
             mask.classList.add('active');
@@ -16,6 +20,8 @@ function openDrawer() {
             drawer.inert = false;
             // remove hidden attribute from the mask element as well
             mask.hidden = false;
+            //focus drawerClose
+            drawerClose.focus();
         }
     }
 }
@@ -31,6 +37,8 @@ function clearDrawerAndMaskClasses() {
         drawer.inert = true;
         // add  hidden attribute to the mask element
         mask.hidden = true;
+        // focus last focused
+        (lastFocused || hamburgerButtons[0]).focus();
     }
 }
 
