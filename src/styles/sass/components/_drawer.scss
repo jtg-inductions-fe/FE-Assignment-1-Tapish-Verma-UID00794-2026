@@ -3,11 +3,11 @@
 @use '../abstracts/functions' as functions;
 
 ///@type Number
-$drawer-min-wdth-sm: 280px;
+$drawer-min-wdth-sm: functions.rem(280px);
 $drawer-width-sm: 75%;
-$drawer-min-wdth-md: 320px;
+$drawer-min-wdth-md: functions.rem(320px);
 $drawer-width-md: 35%;
-$drawer-header-min-height: 32px;
+$drawer-header-min-height: functions.rem(32px);
 
 .drawer {
     @include mixins.flex(column, space-between, center);

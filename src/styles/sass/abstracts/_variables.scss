@@ -47,13 +47,13 @@ $secondary-spacing: 1.6;
 
 /// Variables for spacing
 /// @type number
-$space-xxs: 8px;
-$space-xs: 16px;
-$space-sm: 18px;
-$space-md: 24px;
-$space-lg: 32px;
-$space-xl: 64px;
-$space-xxl: 124px;
+$space-xxs: functions.rem(8px);
+$space-xs: functions.rem(16px);
+$space-sm: functions.rem(18px);
+$space-md: functions.rem(24px);
+$space-lg: functions.rem(32px);
+$space-xl: functions.rem(64px);
+$space-xxl: functions.rem(124px);
 
 //font-sizes
 /// @type number

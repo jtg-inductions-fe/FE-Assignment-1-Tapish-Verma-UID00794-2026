@@ -20,9 +20,9 @@ a {
 
 .container {
     @include mixins.flex;
-    padding: 0 functions.rem(variables.$space-xs);
+    padding: 0 variables.$space-xs;
     @include mixins.responsive-screen(sm) {
-        padding: 0 functions.rem(variables.$space-xl);
+        padding: 0 variables.$space-xl;
     }
 
     @include mixins.responsive-screen(md) {

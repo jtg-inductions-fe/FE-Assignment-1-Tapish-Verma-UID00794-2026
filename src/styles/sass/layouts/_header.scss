@@ -33,7 +33,7 @@
         width: auto;
         position: relative;
         left: 0;
-        top: 0px;
+        top: 0;
         display: inline-flex;
     }
 }
@@ -42,8 +42,8 @@
     display: none;
     @include mixins.responsive-screen(md) {
         display: block;
-        max-width: 600px;
-        min-width: 428px;
+        max-width: functions.rem(600px);
+        min-width: functions.rem(428px);
         width: 36%;
         > ul {
             @include mixins.flex(row, space-between, center);
