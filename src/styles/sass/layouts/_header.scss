@@ -3,22 +3,38 @@
 @use '../abstracts/functions' as functions;
 
 .header__wrapper {
+    position: relative;
     width: 100%;
     box-sizing: content-box;
-    padding-block: variables.$space-lg;
+    padding-block: functions.rem(35px);
     @include mixins.flex(row, space-between, center);
 
+    @include mixins.responsive-screen(sm) {
+        padding-block: functions.rem(32.5px);
+    }
     @include mixins.responsive-screen(md) {
-        margin-top: variables.$space-xs;
+        padding-block: variables.$space-lg;
+        margin-top: functions.rem(34px);
     }
 }
 
 .header__logo {
+    width: auto;
+    height: auto;
+    position: relative;
     @include mixins.responsive-screen(sm) {
-        margin-left: variables.$space-xxl;
+        position: absolute;
+        left: 0;
+        top: functions.rem(37px);
+        width: 50%;
+        @include mixins.flex(row, flex-end, center, 0px);
     }
     @include mixins.responsive-screen(md) {
-        margin-left: 0;
+        width: auto;
+        position: relative;
+        left: 0;
+        top: 0px;
+        display: inline-flex;
     }
 }
 
@@ -38,12 +54,13 @@
 .header__actions {
     display: none;
     @include mixins.responsive-screen(sm) {
-        @include mixins.flex(row, space-between, center, variables.$space-xxs);
+        @include mixins.flex(row, space-between, center, 0px);
     }
 }
 
 .button.header__hamburger {
-    padding: 0;
+    box-sizing: content-box;
+    padding: functions.rem(4px);
     display: none;
 
     &--menu {

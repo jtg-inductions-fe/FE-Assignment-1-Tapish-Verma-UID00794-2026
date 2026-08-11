@@ -26,11 +26,15 @@
     &__text {
         white-space: nowrap;
         font-weight: variables.$font-weight-bold;
+        height: functions.rem(49px);
+        width: functions.rem(105px);
     }
 
     &--primary {
         background: variables.$color-purple;
         color: variables.$color-white;
+        height: functions.rem(49px);
+        width: functions.rem(115px);
     }
 
     &--outline {

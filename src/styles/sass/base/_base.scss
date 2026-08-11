@@ -21,12 +21,11 @@ a {
 .container {
     @include mixins.flex;
     padding: 0 functions.rem(variables.$space-xs);
-
-    @include mixins.responsive-screen(md) {
+    @include mixins.responsive-screen(sm) {
         padding: 0 functions.rem(variables.$space-xl);
     }
 
-    @include mixins.responsive-screen(lg) {
-        padding: 0 functions.rem(variables.$space-xxl);
+    @include mixins.responsive-screen(md) {
+        padding: 0 functions.rem(123.5px);
     }
 }
