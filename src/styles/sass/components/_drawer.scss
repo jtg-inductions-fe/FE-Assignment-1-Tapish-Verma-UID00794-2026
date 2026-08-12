@@ -18,7 +18,7 @@ $drawer-header-min-height: functions.rem(32px);
     width: $drawer-width-sm;
     padding: variables.$space-xs;
     background: variables.$color-white;
-    z-index: 3;
+    z-index: variables.$z-index-drawer;
     box-shadow: -8px 0 24px rgba(0, 0, 0, 0.12);
     transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
     box-sizing: content-box;
@@ -26,14 +26,6 @@ $drawer-header-min-height: functions.rem(32px);
     right: 0;
     left: auto;
     transform: translateX(100%);
-
-    &.active {
-        transform: translateX(0);
-
-        @include mixins.responsive-screen(md) {
-            transform: translateX(-100%);
-        }
-    }
 
     @include mixins.responsive-screen(sm) {
         left: 0;
@@ -95,6 +87,14 @@ $drawer-header-min-height: functions.rem(32px);
         button {
             width: 100%;
         }
+    }
+}
+
+.drawer.drawer--active {
+    transform: translateX(0);
+
+    @include mixins.responsive-screen(md) {
+        transform: translateX(-100%);
     }
 }
 

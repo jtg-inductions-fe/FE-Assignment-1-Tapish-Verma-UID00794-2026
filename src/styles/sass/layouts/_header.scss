@@ -29,7 +29,7 @@
             left: 0;
             top: functions.rem(37px);
             width: 50%;
-            z-index: 1;
+            z-index: variables.$z-index-base;
             @include mixins.flex(row, flex-end, center, 0);
         }
         @include mixins.responsive-screen(md) {
@@ -60,6 +60,16 @@
         @include mixins.responsive-screen(sm) {
             @include mixins.flex(row, space-between, center, 0);
         }
+
+        &--log-in {
+            height: functions.rem(49px);
+            width: functions.rem(105px);
+        }
+
+        &--sign-up {
+            height: functions.rem(49px);
+            width: functions.rem(115px);
+        }
     }
 
     &__item {
@@ -87,7 +97,7 @@
         &--shadow {
             @include mixins.responsive-screen(sm) {
                 display: inline-flex;
-                z-index: 2;
+                z-index: variables.$z-index-icon;
             }
             @include mixins.responsive-screen(md) {
                 display: none;

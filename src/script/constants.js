@@ -1,5 +1,7 @@
 export const breakpoints = {
-    small: 431,
-    medium: 1025,
-    large: 1441,
+    small: 430,
+    medium: 1024,
+    large: 1440,
 };
+
+export const RESIZE_DEBOUNCE_DELAY = 400;

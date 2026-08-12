@@ -69,3 +69,14 @@ $radius-md: 24px;
 $radius-lg: 32px;
 $radius-pill: 9999px;
 $radius-round: 50%;
+
+// z-index
+///@type number
+/// Variables for z-index
+$z-index-behind: -1;
+$z-index-base: 1;
+$z-index-icon: 2;
+$z-index-mask: 3;
+$z-index-drawer: 4;
+$z-index-modal: 4;
+$z-index-max: 9999;
