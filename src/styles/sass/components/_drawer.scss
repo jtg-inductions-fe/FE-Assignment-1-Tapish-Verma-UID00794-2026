@@ -24,7 +24,7 @@ $drawer-header-min-height: functions.rem(32px);
         flex: 1;
         @include mixins.flex(row, flex-end, center);
         @include mixins.responsive-screen(sm) {
-            @include mixins.flex(row, flex-start, center);
+            justify-content: flex-start;
         }
     }
 
@@ -41,12 +41,15 @@ $drawer-header-min-height: functions.rem(32px);
 
     &__list {
         flex: 1;
+        list-style: none;
+        margin: 0;
+        padding: 0;
         width: 100%;
         @include mixins.flex(column, safe center, center);
         @include mixins.responsive-screen(sm) {
             font-size: variables.$text-lg;
-            padding-top: 20% !important;
-            @include mixins.flex(column, flex-start, center);
+            padding-top: 20%;
+            justify-content: flex-start;
         }
     }
 
