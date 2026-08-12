@@ -4,11 +4,11 @@
 // Base
 @use './sass/base';
 
-// layout
-@use './sass/layouts';
-
 // components
 @use './sass/components';
+
+// layout
+@use './sass/layouts';
 
 // Vendors
 @use './sass/vendors';

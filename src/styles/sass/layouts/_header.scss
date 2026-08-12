@@ -2,99 +2,101 @@
 @use '../abstracts/variables' as variables;
 @use '../abstracts/functions' as functions;
 
-.header__wrapper {
-    position: relative;
-    width: 100%;
-    box-sizing: content-box;
-    padding-block: functions.rem(35px);
-    @include mixins.flex(row, space-between, center);
-
-    @include mixins.responsive-screen(sm) {
-        padding-block: functions.rem(32.5px);
-    }
-    @include mixins.responsive-screen(md) {
-        padding-block: variables.$space-lg;
-        margin-top: functions.rem(34px);
-    }
-}
-
-.header__logo {
-    width: auto;
-    height: auto;
-    position: relative;
-    z-index: auto;
-    @include mixins.responsive-screen(sm) {
-        position: absolute;
-        left: 0;
-        top: functions.rem(37px);
-        width: 50%;
-        z-index: 1;
-        @include mixins.flex(row, flex-end, center, 0px);
-    }
-    @include mixins.responsive-screen(md) {
-        width: auto;
+.header {
+    &__wrapper {
         position: relative;
-        left: 0;
-        top: 0;
-        display: inline-flex;
-        z-index: auto;
-    }
-}
+        width: 100%;
+        box-sizing: content-box;
+        padding-block: functions.rem(35px);
+        @include mixins.flex(row, space-between, center);
 
-.header__nav {
-    display: none;
-    @include mixins.responsive-screen(md) {
-        display: block;
-        max-width: functions.rem(600px);
-        min-width: functions.rem(428px);
-        width: 36%;
-        > ul {
-            @include mixins.flex(row, space-between, center);
-        }
-    }
-}
-
-.header__actions {
-    display: none;
-    @include mixins.responsive-screen(sm) {
-        @include mixins.flex(row, space-between, center, 0px);
-    }
-}
-
-.button.header__hamburger {
-    box-sizing: content-box;
-    padding: functions.rem(4px);
-    display: none;
-    z-index: auto;
-
-    &--menu {
-        display: inline-flex;
         @include mixins.responsive-screen(sm) {
-            display: none;
-        }
-    }
-
-    &--shadow {
-        @include mixins.responsive-screen(sm) {
-            display: inline-flex;
-            z-index: 2;
+            padding-block: functions.rem(32.5px);
         }
         @include mixins.responsive-screen(md) {
-            display: none;
+            padding-block: variables.$space-lg;
+            margin-top: functions.rem(34px);
+        }
+    }
+
+    &__logo {
+        width: auto;
+        height: auto;
+        position: relative;
+        z-index: auto;
+        @include mixins.responsive-screen(sm) {
+            position: absolute;
+            left: 0;
+            top: functions.rem(37px);
+            width: 50%;
+            z-index: 1;
+            @include mixins.flex(row, flex-end, center, 0);
+        }
+        @include mixins.responsive-screen(md) {
+            width: auto;
+            position: relative;
+            left: 0;
+            top: 0;
+            display: inline-flex;
             z-index: auto;
         }
     }
-}
 
-.header__hamburger--icon {
-    font-size: functions.rem(40px);
-}
+    &__nav {
+        display: none;
+        @include mixins.responsive-screen(md) {
+            display: block;
+            max-width: functions.rem(600px);
+            min-width: functions.rem(428px);
+            width: 36%;
+            > ul {
+                @include mixins.flex(row, space-between, center);
+            }
+        }
+    }
 
-.header__item {
-    font-weight: variables.$font-weight-bold;
-    line-height: variables.$primary-spacing;
-    color: variables.$color-grey-light;
-    &:hover {
-        color: variables.$color-dark;
+    &__actions {
+        display: none;
+        @include mixins.responsive-screen(sm) {
+            @include mixins.flex(row, space-between, center, 0);
+        }
+    }
+
+    &__item {
+        font-weight: variables.$font-weight-bold;
+        line-height: variables.$primary-spacing;
+        color: variables.$color-grey-light;
+        &:hover {
+            color: variables.$color-dark;
+        }
+    }
+
+    &__hamburger {
+        box-sizing: content-box;
+        padding: functions.rem(4px);
+        display: none;
+        z-index: auto;
+
+        &--menu {
+            display: inline-flex;
+            @include mixins.responsive-screen(sm) {
+                display: none;
+            }
+        }
+
+        &--shadow {
+            @include mixins.responsive-screen(sm) {
+                display: inline-flex;
+                z-index: 2;
+            }
+            @include mixins.responsive-screen(md) {
+                display: none;
+                z-index: auto;
+            }
+        }
+
+        &--icon {
+            font-size: functions.rem(40px);
+        }
     }
 }
