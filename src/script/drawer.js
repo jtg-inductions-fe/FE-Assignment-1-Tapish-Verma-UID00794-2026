@@ -8,9 +8,9 @@ const drawerClose = drawer.querySelector('.drawer__cross');
 let lastFocused = null;
 
 function openDrawer() {
-    if (!drawer.classList.contains('drawer--active')) {
+    if (!drawer.classList.contains('nav-drawer--active')) {
         lastFocused = event.currentTarget;
-        drawer.classList.add('drawer--active');
+        drawer.classList.add('nav-drawer--active');
         mask.classList.add('mask--active');
         drawer.inert = false;
         mask.hidden = false;
@@ -19,8 +19,8 @@ function openDrawer() {
 }
 
 function closeDrawer() {
-    if (drawer.classList.contains('drawer--active')) {
-        drawer.classList.remove('drawer--active');
+    if (drawer.classList.contains('nav-drawer--active')) {
+        drawer.classList.remove('nav-drawer--active');
         mask.classList.remove('mask--active');
         drawer.inert = true;
         mask.hidden = true;

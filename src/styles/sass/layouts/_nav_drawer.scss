@@ -1,0 +1,38 @@
+@use '../abstracts/mixins' as mixins;
+@use '../abstracts/variables' as variables;
+@use '../abstracts/functions' as functions;
+
+/// @type Number
+$drawer-min-wdth-sm: functions.rem(280px);
+$drawer-min-wdth-md: functions.rem(320px);
+
+.nav-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: auto;
+    height: 100vh;
+    min-width: $drawer-min-wdth-sm;
+    z-index: variables.$z-index-drawer;
+    box-shadow: -8px 0 24px rgba(0, 0, 0, 0.12);
+    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(100%);
+
+    @include mixins.responsive-screen(sm) {
+        left: 0;
+        right: auto;
+        min-width: $drawer-min-wdth-md;
+        transform: translateX(-100%);
+    }
+
+    &.nav-drawer--active {
+        transform: translateX(0);
+        @include mixins.responsive-screen(md) {
+            transform: translateX(-100%);
+        }
+    }
+}
+
+.resize-animation-stopper * {
+    transition: none !important;
+}

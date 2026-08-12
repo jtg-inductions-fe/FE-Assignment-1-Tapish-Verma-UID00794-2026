@@ -2,36 +2,19 @@
 @use '../abstracts/variables' as variables;
 @use '../abstracts/functions' as functions;
 
-///@type Number
-$drawer-min-wdth-sm: functions.rem(280px);
+/// @type Number
 $drawer-width-sm: 75%;
-$drawer-min-wdth-md: functions.rem(320px);
 $drawer-width-md: 35%;
 $drawer-header-min-height: functions.rem(32px);
 
 .drawer {
     @include mixins.flex(column, space-between, center);
-    position: fixed;
-    top: 0;
-    height: 100vh;
-    min-width: $drawer-min-wdth-sm;
     width: $drawer-width-sm;
     padding: variables.$space-xs;
     background: variables.$color-white;
-    z-index: variables.$z-index-drawer;
-    box-shadow: -8px 0 24px rgba(0, 0, 0, 0.12);
-    transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
     box-sizing: content-box;
 
-    right: 0;
-    left: auto;
-    transform: translateX(100%);
-
     @include mixins.responsive-screen(sm) {
-        left: 0;
-        right: auto;
-        transform: translateX(-100%);
-        min-width: $drawer-min-wdth-md;
         width: $drawer-width-md;
     }
 
@@ -40,7 +23,6 @@ $drawer-header-min-height: functions.rem(32px);
         min-height: $drawer-header-min-height;
         flex: 1;
         @include mixins.flex(row, flex-end, center);
-
         @include mixins.responsive-screen(sm) {
             @include mixins.flex(row, flex-start, center);
         }
@@ -83,25 +65,12 @@ $drawer-header-min-height: functions.rem(32px);
         @include mixins.responsive-screen(sm) {
             display: none;
         }
-
         button {
             width: 100%;
         }
     }
-}
 
-.drawer.drawer--active {
-    transform: translateX(0);
-
-    @include mixins.responsive-screen(md) {
-        transform: translateX(-100%);
+    &__cross.button {
+        padding: 0;
     }
-}
-
-.button.drawer__cross {
-    padding: 0;
-}
-
-.resize-animation-stopper * {
-    transition: none !important;
 }
