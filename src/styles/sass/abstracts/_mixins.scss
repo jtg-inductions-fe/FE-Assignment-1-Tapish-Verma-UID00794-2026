@@ -13,43 +13,17 @@
     gap: $gap;
 }
 
-/// Generates a media query relative to a named breakpoint.
-/// `up`   (default) -> width > $value  (this breakpoint and above)
-/// `down`           -> width <= $value (this breakpoint and below)
-///
-/// @param {String} $breakpoint [sm] - key from variables.$breakpoints
-/// @param {String} $direction [up]  - 'up' or 'down'
-///
-/// @example scss - Mobile-first ladder
-///   .card {
-///     padding: 1rem;                                    // 0–430px
-///     @include responsive-screen($breakpoint: sm) { padding: 1.5rem; } // 431px+
-///     @include responsive-screen($breakpoint: md) { padding: 2rem; }  // 1025px+
-///   }
-///
-/// @example scss - Below breakpoint (e.g. mobile-only)
-///   .banner {
-///     @include responsive-screen($breakpoint: sm, $direction: down) {
-///       display: block; // 0–430px only
-///     }
-///   }
-@mixin responsive-screen($breakpoint: sm, $direction: up) {
+/// Applies responsive styles based on a predefined breakpoint.
+/// @param {String} $breakpoint - Breakpoint key.
+/// @content Styles to apply within the media query.
+@mixin responsive-screen($breakpoint: sm) {
     $value: map.get(variables.$breakpoints, $breakpoint);
 
     @if not $value {
         @error "Unknown breakpoint: #{$breakpoint}";
     }
-
-    @if $direction == up {
-        @media (width > $value) {
-            @content;
-        }
-    } @else if $direction == down {
-        @media (width <= $value) {
-            @content;
-        }
-    } @else {
-        @error "Unknown direction: #{$direction}. Use 'up' or 'down'.";
+    @media (width > $value) {
+        @content;
     }
 }
 

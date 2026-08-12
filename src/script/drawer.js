@@ -7,7 +7,7 @@ const drawer = document.querySelector('.drawer');
 const drawerClose = drawer.querySelector('.drawer__cross');
 let lastFocused = null;
 
-function openDrawer() {
+function openDrawer(event) {
     if (!drawer.classList.contains('nav-drawer--active')) {
         lastFocused = event.currentTarget;
         drawer.classList.add('nav-drawer--active');
@@ -28,8 +28,11 @@ function closeDrawer() {
     }
 }
 
+let isResizing = false;
+
 function handleResize() {
     document.body.classList.remove('resize-animation-stopper');
+    isResizing = false;
     // In case of resizing from tablet to desktop
     if (window.innerWidth > breakpoints.medium) {
         closeDrawer();
@@ -39,7 +42,10 @@ function handleResize() {
 const debouncedResize = debounce(handleResize, RESIZE_DEBOUNCE_DELAY);
 
 window.addEventListener('resize', () => {
-    document.body.classList.add('resize-animation-stopper');
+    if (!isResizing) {
+        document.body.classList.add('resize-animation-stopper');
+        isResizing = true;
+    }
     debouncedResize();
 });
 

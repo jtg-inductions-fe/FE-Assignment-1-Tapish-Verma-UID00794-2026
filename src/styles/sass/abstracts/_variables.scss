@@ -80,3 +80,13 @@ $z-index-mask: 3;
 $z-index-drawer: 4;
 $z-index-modal: 4;
 $z-index-max: 9999;
+
+// Mask
+$background-mask: #00000080;
+$opacity-transparent: 0;
+$opacity-opaque: 1;
+
+//transition
+$duration-fast: 220ms;
+$duration-normal: 300ms;
+$transition-easing: cubic-bezier(0.4, 0, 0.2, 1);

@@ -6,7 +6,6 @@
     &__wrapper {
         position: relative;
         width: 100%;
-        box-sizing: content-box;
         padding-block: functions.rem(35px);
         @include mixins.flex(row, space-between, center);
 
@@ -61,28 +60,24 @@
             @include mixins.flex(row, space-between, center, 0);
         }
 
-        &--log-in {
+        &--primary {
             height: functions.rem(49px);
             width: functions.rem(105px);
         }
 
-        &--sign-up {
+        &--secondary {
             height: functions.rem(49px);
             width: functions.rem(115px);
         }
     }
 
     &__item {
-        font-weight: variables.$font-weight-bold;
-        line-height: variables.$primary-spacing;
-        color: variables.$color-grey-light;
         &:hover {
             color: variables.$color-dark;
         }
     }
 
     &__hamburger {
-        box-sizing: content-box;
         padding: functions.rem(4px);
         display: none;
         z-index: auto;

@@ -12,7 +12,6 @@ $drawer-header-min-height: functions.rem(32px);
     width: $drawer-width-sm;
     padding: variables.$space-xs;
     background: variables.$color-white;
-    box-sizing: content-box;
 
     @include mixins.responsive-screen(sm) {
         width: $drawer-width-md;
@@ -47,17 +46,14 @@ $drawer-header-min-height: functions.rem(32px);
         width: 100%;
         @include mixins.flex(column, safe center, center);
         @include mixins.responsive-screen(sm) {
-            font-size: variables.$text-lg;
             padding-top: 20%;
             justify-content: flex-start;
         }
     }
 
     &__item {
-        box-sizing: content-box;
         padding: variables.$space-xs 0;
         width: 100%;
-        font-size: variables.$text-md;
         text-align: center;
     }
 
