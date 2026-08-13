@@ -8,14 +8,10 @@ $drawer-width-md: 35%;
 $drawer-header-min-height: functions.rem(32px);
 
 .drawer {
-    @include mixins.flex(column, space-between, center);
     width: $drawer-width-sm;
     padding: variables.$space-xs;
     background: variables.$color-white;
-
-    @include mixins.responsive-screen(sm) {
-        width: $drawer-width-md;
-    }
+    @include mixins.flex(column, space-between, center);
 
     &__header {
         width: 100%;
@@ -71,5 +67,9 @@ $drawer-header-min-height: functions.rem(32px);
 
     &__cross.button {
         padding: 0;
+    }
+
+    @include mixins.responsive-screen(sm) {
+        width: $drawer-width-md;
     }
 }

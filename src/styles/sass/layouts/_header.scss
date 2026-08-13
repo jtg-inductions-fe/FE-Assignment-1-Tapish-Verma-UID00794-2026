@@ -56,9 +56,6 @@
 
     &__actions {
         display: none;
-        @include mixins.responsive-screen(sm) {
-            @include mixins.flex(row, space-between, center, 0);
-        }
 
         &--primary {
             height: functions.rem(49px);
@@ -68,6 +65,9 @@
         &--secondary {
             height: functions.rem(49px);
             width: functions.rem(115px);
+        }
+        @include mixins.responsive-screen(sm) {
+            @include mixins.flex(row, space-between, center, 0);
         }
     }
 
