@@ -47,11 +47,13 @@ $secondary-spacing: 1.6;
 
 /// Variables for spacing
 /// @type number
-$space-xs: 16px;
-$space-sm: 18px;
-$space-md: 24px;
-$space-lg: 32px;
-$space-xl: 64px;
+$space-xxs: functions.rem(8px);
+$space-xs: functions.rem(16px);
+$space-sm: functions.rem(18px);
+$space-md: functions.rem(24px);
+$space-lg: functions.rem(32px);
+$space-xl: functions.rem(64px);
+$space-xxl: functions.rem(124px);
 
 //font-sizes
 /// @type number
@@ -67,3 +69,24 @@ $radius-md: 24px;
 $radius-lg: 32px;
 $radius-pill: 9999px;
 $radius-round: 50%;
+
+// z-index
+///@type number
+/// Variables for z-index
+$z-index-behind: -1;
+$z-index-base: 1;
+$z-index-icon: 2;
+$z-index-mask: 3;
+$z-index-drawer: 4;
+$z-index-modal: 4;
+$z-index-max: 9999;
+
+// Mask
+$background-mask: #00000080;
+$opacity-transparent: 0;
+$opacity-opaque: 1;
+
+//transition
+$duration-fast: 220ms;
+$duration-normal: 300ms;
+$transition-easing: cubic-bezier(0.4, 0, 0.2, 1);

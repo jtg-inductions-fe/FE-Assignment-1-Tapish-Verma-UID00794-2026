@@ -74,3 +74,10 @@ p {
         font-size: functions.rem(18px);
     }
 }
+
+li {
+    font-size: functions.rem(14px);
+    font-weight: variables.$font-weight-bold;
+    line-height: variables.$primary-spacing;
+    color: variables.$color-grey-light;
+}

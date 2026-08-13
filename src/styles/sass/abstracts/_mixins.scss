@@ -5,25 +5,25 @@
 /// @param {String} $direction [row] - Flex direction.
 /// @param {String} $justify [center] - Main-axis alignment.
 /// @param {String} $align [center] - Cross-axis alignment.
-@mixin flex($direction: row, $justify: center, $align: center) {
+@mixin flex($direction: row, $justify: center, $align: center, $gap: 0rem) {
     display: flex;
     flex-direction: $direction;
     justify-content: $justify;
     align-items: $align;
+    gap: $gap;
 }
 
-/// Applies styles at a predefined breakpoint.
+/// Applies responsive styles based on a predefined breakpoint.
 /// @param {String} $breakpoint - Breakpoint key.
-/// Accepted values: sm, md, lg
-/// @error Throws an error if the breakpoint key does not exist.
+/// @content Styles to apply within the media query.
 @mixin responsive-screen($breakpoint: sm) {
     $value: map.get(variables.$breakpoints, $breakpoint);
-    @if $value {
-        @media (min-width: $value) {
-            @content;
-        }
-    } @else {
+
+    @if not $value {
         @error "Unknown breakpoint: #{$breakpoint}";
+    }
+    @media (width > $value) {
+        @content;
     }
 }
 

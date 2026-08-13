@@ -1,75 +1,75 @@
 # CodeRabbit Configuration File
-language: "en"
+language: 'en'
 
 reviews:
-  profile: "assertive"
-  
-  # Disables the "Prompt for all review comments with AI agents" feature
-  enable_prompt_for_ai_agents: false
-  
-  # Disables the "🪄 Autofix (Beta)" feature and committable suggestions
-  finishing_touches:
-    autofix:
-      enabled: false
-  
-  auto_review:
-    enabled: true
-    drafts: false
+    profile: 'assertive'
 
-  path_instructions:
-    - path: "**/*.html"
-      instructions: |
-        CRITICAL: Absolutely forbid the use of <table>, <tr>, <td>, or any table elements for structural layouts. If found, flag it as a major violation and instruct the user to use CSS Grid or Flexbox instead.
-        Ensure semantic HTML5 elements (nav, section, footer, main) are used correctly.
-        Ensure every <img> tag contains a meaningful, non-empty 'alt' attribute for accessibility.
-        Check that interactive elements use proper tags (like <button> or <a>) to maintain keyboard accessibility.
-        DO NOT provide any code diffs, code snippets, or committable suggestions. Provide plain text feedback only.
+    # Disables the "Prompt for all review comments with AI agents" feature
+    enable_prompt_for_ai_agents: false
 
-    - path: "**/*.scss"
-      instructions: |
-        Ensure a strict Mobile-First styling approach is used (rely on min-width media queries, never max-width).
-        Enforce the BEM (Block-Element-Modifier) naming convention strictly for all classes.
-        Ensure the design layout relies strictly on display: grid or display: flex.
-        Flag and reject any imports or usage of external UI frameworks like Bootstrap or Material UI.
-        Check for proper SCSS mixins usage and standard SASS documentation/comments.
-        DO NOT provide any code diffs, code snippets, or committable suggestions. Provide plain text feedback only.
+    # Disables the "🪄 Autofix (Beta)" feature and committable suggestions
+    finishing_touches:
+        autofix:
+            enabled: false
 
-    - path: "**/*.js"
-      instructions: |
-        Ensure the API data from the Gist endpoint is fetched only once and properly handled using async/await.
-        Verify that the "Spin & Win" wheel selection logic correctly picks 4 unique deals while excluding already won deals.
-        Ensure won deals are correctly accumulated, stored in state, and sorted by their relative validity date.
-        Check that Event Delegation is utilized effectively for interacting with dynamic UI lists (e.g., the Copy Code buttons).
-        Enforce standard JSDoc formatting and comments on all major functions.
-        DO NOT provide any code diffs, code snippets, or committable suggestions. Provide plain text feedback only.
+    auto_review:
+        enabled: true
+        drafts: false
 
-  tools:
-    eslint:
-      enabled: true
-    stylelint:
-      enabled: true
-    htmlhint:
-      enabled: true
-    gitleaks:
-      enabled: true
-    trufflehog:
-      enabled: true
-    osvScanner:
-      enabled: true
-    semgrep:
-      enabled: true
+    path_instructions:
+        - path: '**/*.html'
+          instructions: |
+              CRITICAL: Absolutely forbid the use of <table>, <tr>, <td>, or any table elements for structural layouts. If found, flag it as a major violation and instruct the user to use CSS Grid or Flexbox instead.
+              Ensure semantic HTML5 elements (nav, section, footer, main) are used correctly.
+              Ensure every <img> tag contains a meaningful, non-empty 'alt' attribute for accessibility.
+              Check that interactive elements use proper tags (like <button> or <a>) to maintain keyboard accessibility.
+              DO NOT provide any code diffs, code snippets, or committable suggestions. Provide plain text feedback only.
 
-  path_filters:
-    - "!node_modules/**"
-    - "!dist/**"
-    - "!build/**"
-    - "!.next/**"
-    - "!package-lock.json"
-    - "!yarn.lock"
-    - "!pnpm-lock.yaml"
-    - "!**/vendor/**"
-    - "!**/*.md"
+        - path: '**/*.scss'
+          instructions: |
+              Ensure a strict Mobile-First styling approach is used (rely on min-width media queries, never max-width).
+              Enforce the BEM (Block-Element-Modifier) naming convention strictly for all classes.
+              Ensure the design layout relies strictly on display: grid or display: flex.
+              Flag and reject any imports or usage of external UI frameworks like Bootstrap or Material UI.
+              Check for proper SCSS mixins usage and standard SASS documentation/comments.
+              DO NOT provide any code diffs, code snippets, or committable suggestions. Provide plain text feedback only.
+
+        - path: '**/*.js'
+          instructions: |
+              Ensure the API data from the Gist endpoint is fetched only once and properly handled using async/await.
+              Verify that the "Spin & Win" wheel selection logic correctly picks 4 unique deals while excluding already won deals.
+              Ensure won deals are correctly accumulated, stored in state, and sorted by their relative validity date.
+              Check that Event Delegation is utilized effectively for interacting with dynamic UI lists (e.g., the Copy Code buttons).
+              Enforce standard JSDoc formatting and comments on all major functions.
+              DO NOT provide any code diffs, code snippets, or committable suggestions. Provide plain text feedback only.
+
+    tools:
+        eslint:
+            enabled: true
+        stylelint:
+            enabled: true
+        htmlhint:
+            enabled: true
+        gitleaks:
+            enabled: true
+        trufflehog:
+            enabled: true
+        osvScanner:
+            enabled: true
+        semgrep:
+            enabled: true
+
+    path_filters:
+        - '!node_modules/**'
+        - '!dist/**'
+        - '!build/**'
+        - '!.next/**'
+        - '!package-lock.json'
+        - '!yarn.lock'
+        - '!pnpm-lock.yaml'
+        - '!**/vendor/**'
+        - '!**/*.md'
 
 # Disabling chat limits the AI's conversational auto-replies
 chat:
-  auto_reply: false
+    auto_reply: false

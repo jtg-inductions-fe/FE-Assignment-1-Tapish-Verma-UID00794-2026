@@ -12,7 +12,98 @@
         />
     </head>
     <body>
-        <div>Hello World</div>
+        <header class="header">
+            <div class="container">
+                <div class="header__wrapper">
+                    <button
+                        class="button header__hamburger header__hamburger--shadow"
+                        aria-label="Open navigation menu"
+                        aria-expanded="false"
+                    >
+                        <span class="icon header__hamburger--icon"></span>
+                    </button>
+                    <div class="header__logo">
+                        <a href="/" aria-label="Travelog Home">
+                            <img
+                                class="header__logo-image"
+                                src="/assets/images/company-logo.png"
+                                alt="Travelog"
+                            />
+                        </a>
+                    </div>
+                    <nav class="header__nav" aria-label="Primary">
+                        <ul class="header__menu" role="list">
+                            <li class="header__item">
+                                <a href="#hero">Home</a>
+                            </li>
+                            <li class="header__item">
+                                <a href="#discover">Discover</a>
+                            </li>
+                            <li class="header__item">
+                                <a href="#special-deals">Special Deals</a>
+                            </li>
+                            <li class="header__item">
+                                <a href="#contact">Contact</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="header__actions">
+                        <button
+                            class="button button__text header__actions--primary"
+                        >
+                            Log In
+                        </button>
+                        <button
+                            class="button button__text button--primary header__actions--secondary"
+                        >
+                            Sign Up
+                        </button>
+                    </div>
+                    <button
+                        class="button header__hamburger header__hamburger--menu"
+                        aria-label="Open navigation menu"
+                        aria-expanded="false"
+                    >
+                        <span class="icon header__hamburger--icon"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <div class="mask" hidden></div>
+        <aside class="drawer nav-drawer" inert>
+            <div class="drawer__header">
+                <button class="button drawer__cross">
+                    <span class="icon drawer__icon"></span>
+                </button>
+            </div>
+            <nav class="drawer__nav" aria-label="Primary">
+                <ul class="drawer__list">
+                    <li class="drawer__item">
+                        <a class="drawer__link" href="#hero">Home</a>
+                    </li>
+                    <li class="drawer__item">
+                        <a class="drawer__link" href="#discover">Discover</a>
+                    </li>
+                    <li class="drawer__item">
+                        <a class="drawer__link" href="#special-deals"
+                            >Special Deals</a
+                        >
+                    </li>
+                    <li class="drawer__item">
+                        <a class="drawer__link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+
+                <div class="drawer__actions">
+                    <button class="button button__text button--outline">
+                        Log In
+                    </button>
+                    <button class="button button__text button--primary">
+                        Sign Up
+                    </button>
+                </div>
+            </nav>
+        </aside>
         <script type="module" src="./src/script/index.js"></script>
     </body>
 </html>

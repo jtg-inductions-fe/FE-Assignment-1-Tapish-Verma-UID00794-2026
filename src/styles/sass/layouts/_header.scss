@@ -1,0 +1,107 @@
+@use '../abstracts/mixins' as mixins;
+@use '../abstracts/variables' as variables;
+@use '../abstracts/functions' as functions;
+
+.header {
+    &__wrapper {
+        position: relative;
+        width: 100%;
+        padding-block: functions.rem(35px);
+        @include mixins.flex(row, space-between, center);
+
+        @include mixins.responsive-screen(sm) {
+            padding-block: functions.rem(32.5px);
+        }
+        @include mixins.responsive-screen(md) {
+            padding-block: variables.$space-lg;
+            margin-top: functions.rem(34px);
+        }
+    }
+
+    &__logo {
+        width: auto;
+        height: auto;
+        position: relative;
+        z-index: auto;
+        @include mixins.responsive-screen(sm) {
+            position: absolute;
+            left: 0;
+            top: functions.rem(37px);
+            width: 50%;
+            z-index: variables.$z-index-base;
+            @include mixins.flex(row, flex-end, center, 0);
+        }
+        @include mixins.responsive-screen(md) {
+            width: auto;
+            position: relative;
+            left: 0;
+            top: 0;
+            display: inline-flex;
+            z-index: auto;
+        }
+    }
+
+    &__nav {
+        display: none;
+        @include mixins.responsive-screen(md) {
+            display: block;
+            max-width: functions.rem(600px);
+            min-width: functions.rem(428px);
+            width: 36%;
+            > ul {
+                @include mixins.flex(row, space-between, center);
+            }
+        }
+    }
+
+    &__actions {
+        display: none;
+        @include mixins.responsive-screen(sm) {
+            @include mixins.flex(row, space-between, center, 0);
+        }
+
+        &--primary {
+            height: functions.rem(49px);
+            width: functions.rem(105px);
+        }
+
+        &--secondary {
+            height: functions.rem(49px);
+            width: functions.rem(115px);
+        }
+    }
+
+    &__item {
+        &:hover {
+            color: variables.$color-dark;
+        }
+    }
+
+    &__hamburger {
+        padding: functions.rem(4px);
+        display: none;
+        z-index: auto;
+
+        &--menu {
+            display: inline-flex;
+            @include mixins.responsive-screen(sm) {
+                display: none;
+            }
+        }
+
+        &--shadow {
+            @include mixins.responsive-screen(sm) {
+                display: inline-flex;
+                z-index: variables.$z-index-icon;
+            }
+            @include mixins.responsive-screen(md) {
+                display: none;
+                z-index: auto;
+            }
+        }
+
+        &--icon {
+            font-size: functions.rem(40px);
+        }
+    }
+}

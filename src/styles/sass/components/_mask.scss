@@ -1,0 +1,22 @@
+@use '../abstracts/mixins' as mixins;
+@use '../abstracts/variables' as variables;
+
+.mask {
+    position: fixed;
+    inset: 0;
+    background: variables.$background-mask;
+    opacity: variables.$opacity-transparent;
+    pointer-events: none;
+    transition: opacity variables.$duration-fast variables.$transition-easing;
+    z-index: variables.$z-index-mask;
+
+    &--active {
+        opacity: variables.$opacity-opaque;
+        pointer-events: auto;
+
+        @include mixins.responsive-screen(md) {
+            opacity: variables.$opacity-transparent;
+            pointer-events: none;
+        }
+    }
+}

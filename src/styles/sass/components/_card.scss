@@ -6,10 +6,10 @@
     @include mixins.flex;
 
     &--outline {
-        padding-block: functions.rem(variables.$space-lg);
+        padding-block: variables.$space-lg;
         border: 1px solid variables.$color-grey-extra-light;
         border-radius: variables.$radius-lg;
-        gap: functions.rem(variables.$space-xs);
+        gap: variables.$space-xs;
         flex-direction: column;
         background-color: transparent;
     }
