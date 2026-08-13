@@ -7,29 +7,29 @@
     @include mixins.flex;
 
     &__bg {
-        position: fixed;
-        height: 348px;
-        width: 272px;
-        top: -32px;
-        left: -33px;
+        position: absolute;
+        height: functions.rem(348px);
+        width: functions.rem(272px);
+        top: functions.rem(-150px);
+        left: functions.rem(-33px);
         background-color: variables.$color-orange;
         opacity: 0.5;
         filter: blur(150px);
         border-radius: variables.$radius-round;
         z-index: -1;
         @include mixins.responsive-screen(sm) {
-            height: 500px;
-            width: 500px;
-            top: -174px;
-            left: -163px;
+            height: functions.rem(500px);
+            width: functions.rem(500px);
+            top: functions.rem(-288px);
+            left: functions.rem(-163px);
             filter: blur(200px);
         }
 
         @include mixins.responsive-screen(md) {
-            height: 495px;
-            width: 504px;
-            top: 9px;
-            left: -40px;
+            height: functions.rem(495px);
+            width: functions.rem(504px);
+            top: functions.rem(-138.09px);
+            left: functions.rem(-40px);
         }
 
         &--arrows {
@@ -50,7 +50,7 @@
         @include mixins.flex(column-reverse, space-between, center);
 
         @include mixins.responsive-screen(md) {
-            @include mixins.flex(row, space-between, center, 0px);
+            flex-direction: row;
         }
 
         &--arrows {
@@ -142,7 +142,9 @@
         );
 
         @include mixins.responsive-screen(sm) {
-            @include mixins.flex(row, safe center, center, variables.$space-xs);
+            flex-direction: row;
+            justify-content: safe center;
+            gap: variables.$space-xs;
         }
         @include mixins.responsive-screen(md) {
             justify-content: flex-start;
