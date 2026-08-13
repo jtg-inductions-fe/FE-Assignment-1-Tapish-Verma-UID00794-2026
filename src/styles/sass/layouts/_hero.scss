@@ -47,23 +47,30 @@
     &__container {
         position: relative;
         padding-block: variables.$space-xl;
-        @include mixins.flex(column-reverse, space-between, center);
+        @include mixins.flex(
+            column-reverse,
+            space-between,
+            center,
+            variables.$space-lg
+        );
 
         &--arrows {
             display: none;
             position: absolute;
             @include mixins.responsive-screen(sm) {
                 display: inline-flex;
-                bottom: 0px;
-                left: -20px;
+                bottom: 0rem;
+                left: functions.rem(-68px);
             }
             @include mixins.responsive-screen(md) {
                 display: inline-flex;
-                bottom: -60px;
-                left: -5%;
+                bottom: functions.rem(-60px);
+                left: functions.rem(-90px);
             }
         }
-
+        @include mixins.responsive-screen(sm) {
+            gap: variables.$space-xl;
+        }
         @include mixins.responsive-screen(md) {
             flex-direction: row;
         }
@@ -71,6 +78,7 @@
 
     &__content {
         flex: 1;
+        width: 100%;
         @include mixins.flex(
             column,
             space-between,
@@ -83,6 +91,7 @@
     }
 
     &__top-section {
+        width: 100%;
         @include mixins.flex(
             column,
             space-between,
@@ -98,6 +107,7 @@
     }
 
     &__heading-section {
+        width: 100%;
         @include mixins.flex(
             column,
             space-between,
@@ -164,8 +174,6 @@
     }
 
     &__badge {
-        display: flex;
-        gap: variables.$space-xs;
         padding: variables.$space-xs variables.$space-lg;
         background-color: variables.$color-white;
         border-radius: variables.$radius-pill;
@@ -179,6 +187,19 @@
         font-weight: variables.$font-weight-bold;
         font-size: variables.$text-sm;
         line-height: variables.$primary-spacing;
+
+        @include mixins.flex(flex, space-between, center, variables.$space-xs);
+
+        &--primary {
+            font-size: variables.$text-xl;
+        }
+    }
+
+    &__description {
+        font-size: functions.rem(16px);
+        @include mixins.responsive-screen(sm) {
+            font-size: functions.rem(18px);
+        }
     }
 }
 
@@ -186,12 +207,5 @@
 .hero__title {
     @include mixins.responsive-screen(md) {
         text-align: left;
-    }
-}
-
-.hero__description {
-    font-size: functions.rem(16px);
-    @include mixins.responsive-screen(sm) {
-        font-size: functions.rem(18px);
     }
 }
