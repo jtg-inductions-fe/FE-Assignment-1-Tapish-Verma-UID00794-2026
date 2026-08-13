@@ -104,6 +104,7 @@
         }
         @include mixins.responsive-screen(md) {
             align-items: flex-start;
+            margin-bottom: functions.rem(32px);
         }
     }
 
@@ -124,7 +125,6 @@
     }
 
     &__image {
-        box-sizing: content-box;
         flex-shrink: 0;
         @include mixins.responsive-screen(sm) {
             padding: 0 variables.$space-md;
@@ -176,12 +176,13 @@
         }
         @include mixins.responsive-screen(md) {
             justify-content: flex-start;
+            padding-bottom: 8px;
         }
     }
 
     &__badge {
         padding: variables.$space-xs variables.$space-lg;
-        background-color: variables.$color-white;
+        background-color: transparent;
         border-radius: variables.$radius-pill;
         box-shadow:
             0 0 0 0 #00000012,
