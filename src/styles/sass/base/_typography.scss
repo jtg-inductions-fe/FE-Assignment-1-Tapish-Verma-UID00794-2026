@@ -18,11 +18,11 @@ h1 {
     line-height: variables.$primary-spacing;
     color: variables.$color-black;
 
-    @include mixins.responsive-screen(md) {
+    @include mixins.responsive-screen(sm) {
         font-size: functions.rem(56px);
     }
 
-    @include mixins.responsive-screen(lg) {
+    @include mixins.responsive-screen(md) {
         font-size: functions.rem(69px);
     }
 }
@@ -33,11 +33,11 @@ h2 {
     line-height: variables.$primary-spacing;
     color: variables.$color-grey-dark;
 
-    @include mixins.responsive-screen(md) {
+    @include mixins.responsive-screen(sm) {
         font-size: functions.rem(40px);
     }
 
-    @include mixins.responsive-screen(lg) {
+    @include mixins.responsive-screen(md) {
         font-size: functions.rem(44px);
     }
 }
@@ -48,7 +48,7 @@ h3 {
     line-height: variables.$primary-spacing;
     color: variables.$color-pink;
 
-    @include mixins.responsive-screen(md) {
+    @include mixins.responsive-screen(sm) {
         font-size: functions.rem(23px);
     }
 }

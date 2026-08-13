@@ -1,13 +1,24 @@
 @use '../abstracts/mixins' as mixins;
 @use '../abstracts/variables' as variables;
+@use '../abstracts/functions' as functions;
 
 .partners {
     width: 100%;
     box-sizing: content-box;
-    padding-block: variables.$space-xl;
     @include mixins.flex(row, center, center, 32px);
     flex-wrap: wrap;
+    @include mixins.responsive-screen(sm) {
+        margin-top: functions.rem(64px);
+    }
     @include mixins.responsive-screen(md) {
         justify-content: space-between;
+    }
+
+    img {
+        height: functions.rem(20px);
+
+        @include mixins.responsive-screen(sm) {
+            height: functions.rem(32px);
+        }
     }
 }

@@ -59,12 +59,12 @@
             position: absolute;
             @include mixins.responsive-screen(sm) {
                 display: inline-flex;
-                bottom: 0rem;
-                left: functions.rem(-68px);
+                bottom: functions.rem(10px);
+                left: functions.rem(-24px);
             }
             @include mixins.responsive-screen(md) {
                 display: inline-flex;
-                bottom: functions.rem(-60px);
+                bottom: functions.rem(-44px);
                 left: functions.rem(-90px);
             }
         }
@@ -73,6 +73,7 @@
         }
         @include mixins.responsive-screen(md) {
             flex-direction: row;
+            gap: 0;
         }
     }
 
@@ -147,8 +148,9 @@
 
         button {
             width: 100%;
-
+            padding: variables.$space-md variables.$space-lg;
             @include mixins.responsive-screen(sm) {
+                padding-block: variables.$space-sm;
                 width: auto;
             }
         }
@@ -161,6 +163,10 @@
                 0px 45px 27px 0px #0000000d,
                 0px 81px 32px 0px #00000003,
                 0px 126px 35px 0px #00000000;
+        }
+
+        &--icon {
+            font-size: functions.rem(20px);
         }
 
         @include mixins.responsive-screen(sm) {
@@ -196,16 +202,26 @@
     }
 
     &__description {
-        font-size: functions.rem(16px);
+        width: 100%;
+        text-align: center;
         @include mixins.responsive-screen(sm) {
-            font-size: functions.rem(18px);
+            padding-inline: functions.rem(200px);
+        }
+        @include mixins.responsive-screen(md) {
+            padding-inline: 0px;
+            text-align: left;
         }
     }
-}
 
-.hero__description,
-.hero__title {
-    @include mixins.responsive-screen(md) {
-        text-align: left;
+    &__title {
+        padding-inline: functions.rem(40px);
+        text-align: center;
+        @include mixins.responsive-screen(sm) {
+            padding-inline: functions.rem(140px);
+        }
+        @include mixins.responsive-screen(md) {
+            padding-inline: 0px;
+            text-align: left;
+        }
     }
 }
