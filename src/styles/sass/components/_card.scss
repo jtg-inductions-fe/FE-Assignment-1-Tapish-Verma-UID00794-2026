@@ -3,14 +3,19 @@
 @use '../abstracts/functions' as functions;
 
 .card {
-    @include mixins.flex;
+    width: 100%;
+    @include mixins.flex(column, center, center, variables.$space-xs);
 
     &--outline {
         padding-block: variables.$space-lg;
         border: 1px solid variables.$color-grey-extra-light;
         border-radius: variables.$radius-lg;
         gap: variables.$space-xs;
-        flex-direction: column;
         background-color: transparent;
+    }
+    &--title {
+        font-family: variables.$font-family-secondary;
+        color: variables.$color-grey-dark;
+        font-size: functions.rem(18px);
     }
 }

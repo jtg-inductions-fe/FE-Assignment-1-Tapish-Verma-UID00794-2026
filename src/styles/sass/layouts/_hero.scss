@@ -125,7 +125,9 @@
     }
 
     &__image {
+        display: flex;
         flex-shrink: 0;
+        padding-inline: functions.rem(0.86px);
         @include mixins.responsive-screen(sm) {
             padding: 0 variables.$space-md;
         }

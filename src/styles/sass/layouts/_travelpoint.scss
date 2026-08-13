@@ -1,0 +1,121 @@
+@use '../abstracts/variables' as variables;
+@use '../abstracts/mixins' as mixins;
+@use '../abstracts/functions' as functions;
+
+.travelpoint {
+    width: 100%;
+    height: auto;
+    @include mixins.responsive-screen(md) {
+        padding-right: functions.rem(118.42px);
+    }
+
+    &__wrapper {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding-block: variables.$space-xl;
+        @include mixins.flex(
+            column,
+            space-between,
+            center,
+            variables.$space-lg
+        );
+
+        @include mixins.responsive-screen(sm) {
+            gap: variables.$space-xl;
+        }
+        @include mixins.responsive-screen(md) {
+            flex-direction: row;
+            gap: 0px;
+        }
+    }
+
+    &__star {
+        display: none;
+        @include mixins.responsive-screen(md) {
+            display: inline-flex;
+            position: absolute;
+            bottom: functions.rem(100px);
+            right: functions.rem(-114px);
+        }
+    }
+
+    &__content {
+        padding-inline: functions.rem(40px);
+        @include mixins.flex(
+            column,
+            space-between,
+            center,
+            variables.$space-lg
+        );
+
+        @include mixins.responsive-screen(sm) {
+            gap: variables.$space-xl;
+            padding-inline: functions.rem(65px);
+            padding-top: functions.rem(5px);
+        }
+        @include mixins.responsive-screen(md) {
+            padding-inline: 0;
+            padding-top: 0;
+        }
+    }
+
+    &__statistics {
+        width: 100%;
+        @include mixins.flex(
+            column,
+            space-between,
+            center,
+            variables.$space-xs
+        );
+        @include mixins.responsive-screen(sm) {
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+    }
+
+    &__title {
+        margin-bottom: functions.rem(16px);
+        letter-spacing: 20%;
+        @include mixins.responsive-screen(md) {
+            text-align: left;
+        }
+    }
+    &__sub-title {
+        margin-bottom: functions.rem(32px);
+        text-align: center;
+        @include mixins.responsive-screen(md) {
+            text-align: left;
+        }
+    }
+
+    &__description {
+        font-family: variables.$font-family-secondary;
+        @include mixins.responsive-screen(md) {
+            text-align: left;
+        }
+    }
+
+    &__card {
+        width: 100%;
+
+        @include mixins.responsive-screen(sm) {
+            width: calc(50% - 32px);
+        }
+    }
+
+    &__card-title {
+        &--dark {
+            font-family: variables.$font-family-secondary;
+            color: variables.$color-grey-dark;
+            font-size: functions.rem(18px);
+        }
+    }
+
+    &__image {
+        @include mixins.responsive-screen(md) {
+            display: flex;
+            flex-shrink: 0;
+        }
+    }
+}
