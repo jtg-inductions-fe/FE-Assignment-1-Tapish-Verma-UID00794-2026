@@ -1,0 +1,171 @@
+@use '../abstracts/mixins' as mixins;
+@use '../abstracts/functions' as functions;
+@use '../abstracts/variables' as variables;
+
+.testimonials {
+    position: relative;
+
+    &__bg {
+        display: none;
+        @include mixins.responsive-screen(sm) {
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: variables.$z-index-behind;
+            inset: 0;
+            opacity: 0.1;
+        }
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    &__wrapper {
+        width: 100%;
+        padding-block: variables.$space-xl;
+    }
+
+    &__title {
+        padding-inline: functions.rem(17px);
+        margin-bottom: variables.$space-xs;
+        letter-spacing: 20%;
+    }
+
+    &__sub-title {
+        padding-inline: functions.rem(17px);
+        margin-bottom: variables.$space-xl;
+        @include mixins.responsive-screen(sm) {
+            margin-bottom: functions.rem(56px);
+        }
+    }
+
+    &__carousel {
+        position: relative;
+        width: 100%;
+        padding-inline: functions.rem(17px);
+        @include mixins.flex;
+        @include mixins.responsive-screen(sm) {
+            gap: functions.rem(56px);
+            padding-inline: functions.rem(156px);
+        }
+    }
+
+    &__button-section {
+        position: absolute;
+        top: functions.rem(32px);
+        width: 100%;
+        height: auto;
+        z-index: variables.$z-index-icon;
+        @include mixins.flex(row, space-between, center);
+        @include mixins.responsive-screen(sm) {
+            top: 30%;
+        }
+    }
+
+    &__button {
+        height: functions.rem(64px);
+        width: functions.rem(64px);
+        padding: functions.rem(24.32px);
+        border-radius: variables.$radius-round;
+        background-color: variables.$color-white;
+        border-color: variables.$color-grey-extra-light;
+
+        > span {
+            color: variables.$color-grey-dark;
+        }
+
+        &:hover {
+            background-color: variables.$color-purple;
+            > span {
+                color: variables.$color-white;
+            }
+        }
+
+        @include mixins.responsive-screen(sm) {
+            padding: functions.rem(38px);
+            height: functions.rem(100px);
+            width: functions.rem(100px);
+        }
+    }
+
+    &__icon {
+        font-size: functions.rem(7.62px);
+        color: variables.$color-grey-dark;
+        @include mixins.responsive-screen(sm) {
+            font-size: functions.rem(11.9px);
+        }
+
+        &--right {
+            transform: rotate(180deg);
+        }
+    }
+}
+
+.testimonial-card {
+    width: 100%;
+    height: auto;
+    @include mixins.flex(column, space-between, center, variables.$space-xl);
+    @include mixins.responsive-screen(sm) {
+        gap: functions.rem(56px);
+    }
+    &__stars {
+        @include mixins.flex(row, space-between, center, variables.$space-xs);
+        &--primary {
+            font-size: functions.rem(25.33px);
+            width: functions.rem(32px);
+            text-align: center;
+        }
+    }
+
+    &__content {
+        @include mixins.flex(
+            column,
+            space-between,
+            center,
+            variables.$space-lg
+        );
+    }
+
+    &__description {
+        color: variables.$color-grey-medium;
+        font-weight: variables.$font-weight-semi-bold;
+        text-align: center;
+    }
+}
+
+.swiper {
+    width: 100%;
+    height: auto;
+    z-index: variables.$z-index-base;
+}
+
+.swiper-pagination {
+    position: relative !important;
+    margin-top: variables.$space-xl;
+    @include mixins.flex(row, center, center, variables.$space-md);
+    @include mixins.responsive-screen(sm) {
+        margin-top: functions.rem(56px);
+    }
+
+    .swiper-pagination-bullet {
+        width: functions.rem(24px);
+        height: functions.rem(24px);
+        border-radius: variables.$radius-round;
+        margin: 0 !important;
+        opacity: 1;
+        background: variables.$color-grey-thin;
+    }
+
+    .swiper-pagination-bullet-active {
+        width: 24px;
+        background: variables.$color-pink;
+    }
+}
+
+.swiper-button-disabled {
+    cursor: default;
+    pointer-events: none;
+    opacity: 0.5;
+}
