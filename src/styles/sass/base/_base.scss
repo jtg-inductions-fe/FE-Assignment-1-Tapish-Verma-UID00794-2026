@@ -24,13 +24,22 @@ a {
 //The .container class provides a consistent horizontal layout for sections across the website. It automatically adjusts its horizontal padding at different responsive breakpoints to maintain appropriate spacing across screen sizes.
 // This container class is used to have a container which adjusts padding for sections across the website.
 .container {
-    padding: 0 variables.$space-xs;
+    padding-inline: variables.$space-xs;
     @include mixins.flex;
+
     @include mixins.responsive-screen(sm) {
-        padding: 0 variables.$space-xl;
+        padding-inline: clamp(
+            variables.$space-xs,
+            8.0944cqi - functions.rem(18.887px),
+            variables.$space-xl
+        );
     }
 
     @include mixins.responsive-screen(md) {
-        padding: 0 functions.rem(123.5px);
+        padding-inline: clamp(
+            variables.$space-xl,
+            14.3373cqi - functions.rem(82.957px),
+            functions.rem(123.5px)
+        );
     }
 }

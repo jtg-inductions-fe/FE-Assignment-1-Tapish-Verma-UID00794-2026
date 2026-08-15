@@ -4,6 +4,7 @@
 
 .hero {
     width: 100%;
+    position: relative;
     @include mixins.flex;
 
     &__bg {
@@ -60,13 +61,13 @@
             position: absolute;
             @include mixins.responsive-screen(sm) {
                 display: inline-flex;
-                bottom: functions.rem(10px);
-                left: functions.rem(-24px);
+                bottom: functions.rem(20px);
+                left: functions.rem(-26px);
             }
             @include mixins.responsive-screen(md) {
                 display: inline-flex;
-                bottom: functions.rem(-44px);
-                left: functions.rem(-90px);
+                bottom: functions.rem(-47px);
+                left: functions.rem(-86px);
             }
         }
         @include mixins.responsive-screen(sm) {
