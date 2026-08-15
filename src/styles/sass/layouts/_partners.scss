@@ -21,16 +21,16 @@
             functions.rem(100px)
         );
     }
-    @include mixins.responsive-screen(lg) {
+    @include mixins.responsive-screen(lg, $gte: true) {
         padding-inline: 0;
     }
 }
 
 .partners {
-    @include mixins.flex(row, center, center, 27px);
     row-gap: functions.rem(32px);
     flex-wrap: wrap;
-    @include mixins.responsive-screen(md) {
+    @include mixins.flex(row, center, center, 27px);
+    @include mixins.responsive-screen(lg, $gte: true) {
         justify-content: space-between;
     }
     @include mixins.responsive-screen(lg) {
