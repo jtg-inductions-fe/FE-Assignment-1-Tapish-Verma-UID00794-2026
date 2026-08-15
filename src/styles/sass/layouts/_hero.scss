@@ -131,7 +131,11 @@
         margin-bottom: functions.rem(2px);
         width: 100%;
         @include mixins.responsive-screen(sm) {
-            padding-inline: functions.rem(62px);
+            padding-inline: clamp(
+                functions.rem(1px),
+                10.29cqi - functions.rem(43.34px),
+                functions.rem(62px)
+            );
         }
         @include mixins.responsive-screen(md) {
             padding: 0;
