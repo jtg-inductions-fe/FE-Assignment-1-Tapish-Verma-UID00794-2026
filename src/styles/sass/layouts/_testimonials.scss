@@ -7,6 +7,9 @@
 
     &__bg {
         display: none;
+        img {
+            width: 100%;
+        }
         @include mixins.responsive-screen(sm) {
             display: block;
             position: absolute;

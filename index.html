@@ -48,14 +48,8 @@
                         </ul>
                     </nav>
                     <div class="header__actions">
-                        <button
-                            class="button button__text header__actions--primary"
-                        >
-                            Log In
-                        </button>
-                        <button
-                            class="button button__text button--primary header__actions--secondary"
-                        >
+                        <button class="button button__text">Log In</button>
+                        <button class="button button__text button--primary">
                             Sign Up
                         </button>
                     </div>
@@ -83,18 +77,22 @@
                                             ></span
                                         >
                                     </span>
-                                    <h1 class="hero__title">
-                                        Travel
-                                        <span class="text-pink"
-                                            >top destination</span
-                                        >
-                                        of the world
-                                    </h1>
+                                    <div class="hero__title-wrapper">
+                                        <h1 class="hero__title">
+                                            Travel
+                                            <span class="text-pink"
+                                                >top destination</span
+                                            >
+                                            of the world
+                                        </h1>
+                                    </div>
                                 </div>
-                                <p class="hero__description">
-                                    We always make our customer happy by
-                                    providing as many choices as possible
-                                </p>
+                                <div class="hero__description-wrapper">
+                                    <p class="hero__description">
+                                        We always make our customer happy by
+                                        providing as many choices as possible
+                                    </p>
+                                </div>
                             </div>
 
                             <div class="hero__actions">
@@ -113,20 +111,22 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="hero__image">
-                            <picture>
-                                <!-- Desktop/Tablet -->
-                                <source
-                                    media="(min-width: 431px)"
-                                    srcset="/assets/images/hero-large.png"
-                                />
-                                <!-- Mobile -->
-                                <img
-                                    srcset="/assets/images/hero-small.png"
-                                    alt="Travlog hero image"
-                                    aria-hidden="true"
-                                />
-                            </picture>
+                        <div class="hero__image-wrapper">
+                            <div class="hero__image">
+                                <picture>
+                                    <!-- Desktop/Tablet -->
+                                    <source
+                                        media="(min-width: 431px)"
+                                        srcset="/assets/images/hero-large.png"
+                                    />
+                                    <!-- Mobile -->
+                                    <img
+                                        srcset="/assets/images/hero-small.png"
+                                        alt="Travlog hero image"
+                                        aria-hidden="true"
+                                    />
+                                </picture>
+                            </div>
                         </div>
                         <div class="hero__container--arrows">
                             <img
@@ -195,27 +195,33 @@
                         class="travelpoint__star"
                         src="/assets/images/star.png"
                     />
-                    <div class="travelpoint__image">
-                        <picture>
-                            <!-- Desktop -->
-                            <source
-                                media="(min-width: 1025px)"
-                                srcset="/assets/images/featured-image-large.png"
-                            />
-                            <!-- Tablet -->
-                            <source
-                                media="(min-width: 431px)"
-                                srcset="
-                                    /assets/images/featured-image-medium.png
-                                "
-                            />
-                            <!-- Mobile -->
-                            <img
-                                class="travelpoint__image"
-                                srcset="/assets/images/featured-image-small.png"
-                                alt="A hapy girl with backpack sitting on suitcase and holding passport."
-                            />
-                        </picture>
+                    <div class="travelpoint__image-wrapper">
+                        <div class="travelpoint__image">
+                            <picture>
+                                <!-- Desktop -->
+                                <source
+                                    media="(min-width: 1025px)"
+                                    srcset="
+                                        /assets/images/featured-image-large.png
+                                    "
+                                />
+                                <!-- Tablet -->
+                                <source
+                                    media="(min-width: 431px)"
+                                    srcset="
+                                        /assets/images/featured-image-medium.png
+                                    "
+                                />
+                                <!-- Mobile -->
+                                <img
+                                    class="travelpoint__image"
+                                    srcset="
+                                        /assets/images/featured-image-small.png
+                                    "
+                                    alt="A hapy girl with backpack sitting on suitcase and holding passport."
+                                />
+                            </picture>
+                        </div>
                     </div>
                     <div class="travelpoint__content">
                         <div class="travelpoint__top">

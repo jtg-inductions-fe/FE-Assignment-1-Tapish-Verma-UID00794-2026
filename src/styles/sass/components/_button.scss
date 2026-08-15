@@ -25,6 +25,7 @@
     &__text {
         white-space: nowrap;
         font-weight: variables.$font-weight-bold;
+        line-height: variables.$primary-spacing;
     }
 
     &--primary {
