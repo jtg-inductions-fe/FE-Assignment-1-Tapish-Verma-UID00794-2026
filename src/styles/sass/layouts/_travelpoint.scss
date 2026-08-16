@@ -26,7 +26,7 @@
         }
         @include mixins.responsive-screen(md) {
             flex-direction: row;
-            gap: 0px;
+            gap: 0;
         }
     }
 
@@ -100,7 +100,7 @@
         width: 100%;
 
         @include mixins.responsive-screen(sm) {
-            width: calc(50% - 32px);
+            width: calc(50% - functions.rem(32px));
         }
     }
 
