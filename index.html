@@ -290,17 +290,22 @@
                             </div>
                             <div class="testimonials__button-section">
                                 <button
+                                    aria-label="Previous Testimonial"
                                     class="button button--outline testimonials__button prev"
                                 >
-                                    <span class="icon testimonials__icon"
+                                    <span
+                                        class="icon testimonials__icon"
+                                        aria-hidden="true"
                                         ></span
                                     >
                                 </button>
                                 <button
+                                    aria-label="Next Testimonial"
                                     class="button button--outline testimonials__button next"
                                 >
                                     <span
                                         class="icon testimonials__icon testimonials__icon--right"
+                                        aria-hidden="true"
                                         ></span
                                     >
                                 </button>
@@ -309,7 +314,12 @@
                     </div>
                 </div>
                 <div class="testimonials__bg">
-                    <img src="/assets/images/testimonials-background.png" />
+                    <img
+                        role="presentation"
+                        src="/assets/images/testimonials-background.png"
+                        alt=""
+                        aria-hidden="true"
+                    />
                 </div>
             </section>
         </main>

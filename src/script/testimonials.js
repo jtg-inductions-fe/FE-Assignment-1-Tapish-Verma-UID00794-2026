@@ -51,7 +51,7 @@ swipperWrapper.innerHTML = testimonialData
                             ${Array.from(
                                 { length: rating },
                                 () =>
-                                    `<span class="icon testimonial-card__stars--primary"></span>`,
+                                    `<span class="icon testimonial-card__stars--primary" aria-hidden="true"></span>`,
                             ).join('')}
                         </div>
                     </div>
