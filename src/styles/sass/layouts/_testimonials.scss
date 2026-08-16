@@ -148,6 +148,10 @@
         color: variables.$color-grey-medium;
         font-weight: variables.$font-weight-semi-bold;
         text-align: center;
+        font-size: functions.rem(18px);
+        @include mixins.responsive-screen(sm) {
+            font-size: functions.rem(23px);
+        }
     }
 }
 
