@@ -16,7 +16,7 @@
         opacity: 0.5;
         filter: blur(150px);
         border-radius: variables.$radius-round;
-        z-index: -1;
+        z-index: variables.$z-index-behind;
         @include mixins.responsive-screen(sm) {
             height: functions.rem(500px);
             width: functions.rem(500px);
@@ -31,17 +31,10 @@
             top: functions.rem(-138.09px);
             left: functions.rem(-40px);
         }
-
-        &--arrows {
-            display: none;
-            @include mixins.responsive-screen(sm) {
-                display: inline-flex;
-            }
-        }
     }
     .container {
         flex-direction: column;
-        gap: 0px;
+        gap: 0;
     }
 
     &__container {
@@ -54,26 +47,26 @@
             variables.$space-lg
         );
 
-        &--arrows {
-            display: none;
-            position: absolute;
-            @include mixins.responsive-screen(sm) {
-                display: inline-flex;
-                bottom: functions.rem(10px);
-                left: functions.rem(-24px);
-            }
-            @include mixins.responsive-screen(md) {
-                display: inline-flex;
-                bottom: functions.rem(-44px);
-                left: functions.rem(-90px);
-            }
-        }
         @include mixins.responsive-screen(sm) {
             gap: variables.$space-xl;
         }
         @include mixins.responsive-screen(md) {
             flex-direction: row;
             gap: 0;
+        }
+    }
+
+    &__arrows {
+        display: none;
+        position: absolute;
+        @include mixins.responsive-screen(sm) {
+            display: inline-flex;
+            bottom: functions.rem(10px);
+            left: functions.rem(-24px);
+        }
+        @include mixins.responsive-screen(md) {
+            bottom: functions.rem(-44px);
+            left: functions.rem(-90px);
         }
     }
 
@@ -87,7 +80,7 @@
             variables.$space-lg
         );
         @include mixins.responsive-screen(sm) {
-            gap: 43px;
+            gap: functions.rem(43px);
         }
     }
 
@@ -100,7 +93,7 @@
             variables.$space-md
         );
         @include mixins.responsive-screen(sm) {
-            gap: 43px;
+            gap: functions.rem(43px);
         }
         @include mixins.responsive-screen(md) {
             align-items: flex-start;
@@ -117,7 +110,7 @@
             variables.$space-xs
         );
         @include mixins.responsive-screen(sm) {
-            gap: 43px;
+            gap: functions.rem(43px);
         }
         @include mixins.responsive-screen(md) {
             align-items: flex-start;
@@ -132,8 +125,8 @@
         @include mixins.responsive-screen(md) {
             padding: 0;
             width: 65%;
-            max-width: 800px;
-            min-width: 600px;
+            max-width: functions.rem(800px);
+            min-width: functions.rem(600px);
         }
     }
     &__actions {
@@ -156,13 +149,7 @@
         }
 
         &--primary {
-            box-shadow:
-                0px 0px 0px 0px #0000001a,
-                0px 5px 11px 0px #0000001a,
-                0px 20px 20px 0px #00000017,
-                0px 45px 27px 0px #0000000d,
-                0px 81px 32px 0px #00000003,
-                0px 126px 35px 0px #00000000;
+            box-shadow: variables.$box-shadow-lg;
         }
 
         &--icon {
@@ -176,7 +163,7 @@
         }
         @include mixins.responsive-screen(md) {
             justify-content: flex-start;
-            padding-bottom: 8px;
+            padding-bottom: functions.rem(8px);
         }
     }
 
@@ -184,13 +171,7 @@
         padding: variables.$space-xs variables.$space-lg;
         background-color: transparent;
         border-radius: variables.$radius-pill;
-        box-shadow:
-            0 0 0 0 #00000012,
-            0 34px 75px 0 #00000012,
-            0 137px 137px 0 #0000000f,
-            0 308px 185px 0 #0000000a,
-            0 548px 219px 0 #00000003,
-            0 856px 240px 0 #00000000;
+        box-shadow: variables.$box-shadow-sm;
         font-weight: variables.$font-weight-bold;
         font-size: variables.$text-sm;
         line-height: variables.$primary-spacing;
@@ -204,25 +185,44 @@
 
     &__description {
         width: 100%;
-        text-align: center;
         @include mixins.responsive-screen(sm) {
             padding-inline: functions.rem(200px);
         }
         @include mixins.responsive-screen(md) {
-            padding-inline: 0px;
+            padding-inline: 0;
             text-align: left;
         }
     }
 
     &__title {
         padding-inline: functions.rem(40px);
-        text-align: center;
         @include mixins.responsive-screen(sm) {
             padding-inline: functions.rem(140px);
         }
         @include mixins.responsive-screen(md) {
-            padding-inline: 0px;
+            padding-inline: 0;
             text-align: left;
+        }
+    }
+
+    &__partners {
+        width: 100%;
+        box-sizing: content-box;
+        @include mixins.flex(row, center, center, functions.rem(32px));
+        flex-wrap: wrap;
+        @include mixins.responsive-screen(sm) {
+            margin-top: functions.rem(64px);
+        }
+        @include mixins.responsive-screen(md) {
+            justify-content: space-between;
+        }
+
+        img {
+            height: functions.rem(20px);
+
+            @include mixins.responsive-screen(sm) {
+                height: functions.rem(32px);
+            }
         }
     }
 }

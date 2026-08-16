@@ -10,6 +10,7 @@ let lastFocused = null;
 function openDrawer(event) {
     if (!drawer.classList.contains('nav-drawer--active')) {
         lastFocused = event.currentTarget;
+        event.currentTarget.setAttribute('aria-expanded', 'true');
         drawer.classList.add('nav-drawer--active');
         mask.classList.add('mask--active');
         drawer.inert = false;
@@ -25,6 +26,9 @@ function closeDrawer() {
         drawer.inert = true;
         mask.hidden = true;
         (lastFocused || hamburgerButtons[0]).focus();
+        if (lastFocused) {
+            lastFocused.setAttribute('aria-expanded', 'false');
+        }
     }
 }
 

@@ -12,219 +12,246 @@
         />
     </head>
     <body>
-        <header class="header">
-            <div class="container">
-                <div class="header__wrapper">
-                    <button
-                        class="button header__hamburger header__hamburger--shadow"
-                        aria-label="Open navigation menu"
-                        aria-expanded="false"
-                    >
-                        <span class="icon header__hamburger--icon"></span>
-                    </button>
-                    <div class="header__logo">
-                        <a href="/" aria-label="Travelog Home">
-                            <img
-                                class="header__logo-image"
-                                src="/assets/images/company-logo.png"
-                                alt="Travelog"
-                            />
-                        </a>
+        <div class="app-container">
+            <header class="header">
+                <div class="container">
+                    <div class="header__wrapper">
+                        <button
+                            class="button header__hamburger header__hamburger--shadow"
+                            aria-label="Open navigation menu"
+                            aria-expanded="false"
+                        >
+                            <span
+                                class="icon header__hamburger--icon"
+                                aria-hidden="true"
+                                ></span
+                            >
+                        </button>
+                        <div class="header__logo">
+                            <a href="/" aria-label="Travelog Home">
+                                <img
+                                    class="header__logo-image"
+                                    src="/assets/images/company-logo.png"
+                                    alt=""
+                                />
+                            </a>
+                        </div>
+                        <nav class="header__nav" aria-label="Primary">
+                            <ul class="header__menu" role="list">
+                                <li class="header__item">
+                                    <a href="#hero">Home</a>
+                                </li>
+                                <li class="header__item">
+                                    <a href="#discover">Discover</a>
+                                </li>
+                                <li class="header__item">
+                                    <a href="#special-deals">Special Deals</a>
+                                </li>
+                                <li class="header__item">
+                                    <a href="#contact">Contact</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="header__actions">
+                            <button class="button header__actions--primary">
+                                Log In
+                            </button>
+                            <button
+                                class="button button--primary header__actions--secondary"
+                            >
+                                Sign Up
+                            </button>
+                        </div>
+                        <button
+                            class="button header__hamburger header__hamburger--menu"
+                            aria-label="Open navigation menu"
+                            aria-expanded="false"
+                        >
+                            <span
+                                class="icon header__hamburger--icon"
+                                aria-hidden="true"
+                                ></span
+                            >
+                        </button>
                     </div>
-                    <nav class="header__nav" aria-label="Primary">
-                        <ul class="header__menu" role="list">
-                            <li class="header__item">
-                                <a href="#hero">Home</a>
+                </div>
+            </header>
+            <main>
+                <section class="hero" id="hero">
+                    <div
+                        class="hero__bg"
+                        role="presentation"
+                        aria-hidden="true"
+                    ></div>
+                    <div class="container">
+                        <div class="hero__container">
+                            <div class="hero__content">
+                                <div class="hero__top-section">
+                                    <div class="hero__heading-section">
+                                        <span class="hero__badge text-pink">
+                                            Explore the world!
+                                            <span
+                                                class="icon hero__badge--primary"
+                                                aria-hidden="true"
+                                                ></span
+                                            >
+                                        </span>
+                                        <h1 class="hero__title">
+                                            Travel
+                                            <span class="text-pink"
+                                                >top destination</span
+                                            >
+                                            of the world
+                                        </h1>
+                                    </div>
+                                    <p class="hero__description">
+                                        We always make our customer happy by
+                                        providing as many choices as possible
+                                    </p>
+                                </div>
+
+                                <div class="hero__actions">
+                                    <button
+                                        class="button button--primary hero__actions--primary"
+                                    >
+                                        Get Started
+                                    </button>
+                                    <button
+                                        class="button button__icon button--outline"
+                                    >
+                                        <span
+                                            class="icon hero__actions--icon"
+                                            aria-hidden="true"
+                                            ></span
+                                        >
+                                        Watch Demo
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="hero__image">
+                                <picture>
+                                    <!-- Desktop/Tablet -->
+                                    <source
+                                        media="(min-width: 430px)"
+                                        srcset="/assets/images/hero-large.png"
+                                    />
+                                    <!-- Mobile -->
+                                    <img
+                                        srcset="/assets/images/hero-small.png"
+                                        alt="Collage of travel photos: a hiker in snow-capped mountains, a traveler exploring a city, and coastal steps overlooking the sea, with a world map and flight path illustration"
+                                    />
+                                </picture>
+                            </div>
+                            <div class="hero__arrows">
+                                <img
+                                    role="presentation"
+                                    src="/assets/images/orange-arrows.png"
+                                    alt=""
+                                />
+                            </div>
+                        </div>
+                        <div class="hero__partners">
+                            <a
+                                href="https://www.tripadvisor.in/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Visit Tripadvisor.in"
+                            >
+                                <img
+                                    src="/assets/images/trip-adviser.png"
+                                    alt="Tripadvisor"
+                                />
+                            </a>
+                            <a
+                                href="https://www.expedia.co.in/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Visit Expedia.co.in"
+                            >
+                                <img
+                                    src="/assets/images/expedia.png"
+                                    alt="Expedia"
+                                />
+                            </a>
+                            <a
+                                href="https://www.booking.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Visit Booking.com"
+                            >
+                                <img
+                                    src="/assets/images/booking.com.png"
+                                    alt="Booking.com"
+                                />
+                            </a>
+                            <a
+                                href="https://www.airbnb.co.in/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Visit Airbnb.co.in"
+                            >
+                                <img
+                                    src="/assets/images/airbnb.png"
+                                    alt="Airbnb"
+                                />
+                            </a>
+                            <a
+                                href="https://www.orbitz.com/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Visit Orbitz.com"
+                            >
+                                <img
+                                    src="/assets/images/orbitz.png"
+                                    alt="Orbitz"
+                                />
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <div class="mask" hidden aria-hidden="true"></div>
+            <aside class="drawer nav-drawer" inert>
+                <div class="drawer__header">
+                    <button
+                        class="button drawer__cross"
+                        aria-label="Close Drawer Menu"
+                    >
+                        <span class="icon drawer__icon" aria-hidden="true"
+                            ></span
+                        >
+                    </button>
+                </div>
+                <div class="drawer__body">
+                    <nav class="drawer__nav" aria-label="Drawer">
+                        <ul class="drawer__list">
+                            <li class="drawer__item">
+                                <a class="drawer__link" href="#hero">Home</a>
                             </li>
-                            <li class="header__item">
-                                <a href="#discover">Discover</a>
+                            <li class="drawer__item">
+                                <a class="drawer__link" href="#discover"
+                                    >Discover</a
+                                >
                             </li>
-                            <li class="header__item">
-                                <a href="#special-deals">Special Deals</a>
+                            <li class="drawer__item">
+                                <a class="drawer__link" href="#special-deals"
+                                    >Special Deals</a
+                                >
                             </li>
-                            <li class="header__item">
-                                <a href="#contact">Contact</a>
+                            <li class="drawer__item">
+                                <a class="drawer__link" href="#contact"
+                                    >Contact</a
+                                >
                             </li>
                         </ul>
                     </nav>
-                    <div class="header__actions">
-                        <button
-                            class="button button__text header__actions--primary"
-                        >
-                            Log In
-                        </button>
-                        <button
-                            class="button button__text button--primary header__actions--secondary"
-                        >
-                            Sign Up
-                        </button>
-                    </div>
-                    <button
-                        class="button header__hamburger header__hamburger--menu"
-                        aria-label="Open navigation menu"
-                        aria-expanded="false"
-                    >
-                        <span class="icon header__hamburger--icon"></span>
-                    </button>
-                </div>
-            </div>
-        </header>
-        <main>
-            <section class="hero" id="hero">
-                <div class="hero__bg"></div>
-                <div class="container">
-                    <div class="hero__container">
-                        <div class="hero__content">
-                            <div class="hero__top-section">
-                                <div class="hero__heading-section">
-                                    <span class="hero__badge text-pink">
-                                        Explore the world!
-                                        <span class="icon hero__badge--primary"
-                                            ></span
-                                        >
-                                    </span>
-                                    <h1 class="hero__title">
-                                        Travel
-                                        <span class="text-pink"
-                                            >top destination</span
-                                        >
-                                        of the world
-                                    </h1>
-                                </div>
-                                <p class="hero__description">
-                                    We always make our customer happy by
-                                    providing as many choices as possible
-                                </p>
-                            </div>
-
-                            <div class="hero__actions">
-                                <button
-                                    class="button button__text button--primary hero__actions--primary"
-                                >
-                                    Get Started
-                                </button>
-                                <button
-                                    class="button button__icon button__text button--outline"
-                                >
-                                    <span class="icon hero__actions--icon"
-                                        ></span
-                                    >
-                                    Watch Demo
-                                </button>
-                            </div>
-                        </div>
-                        <div class="hero__image">
-                            <picture>
-                                <!-- Desktop/Tablet -->
-                                <source
-                                    media="(min-width: 430px)"
-                                    srcset="/assets/images/hero-large.png"
-                                />
-                                <!-- Mobile -->
-                                <img
-                                    srcset="/assets/images/hero-small.png"
-                                    alt="Travlog hero image"
-                                    aria-hidden="true"
-                                />
-                            </picture>
-                        </div>
-                        <div class="hero__container--arrows">
-                            <img
-                                src="/assets/images/orange-arrows.png"
-                                alt="Orange Arrows"
-                                aria-hiden="true"
-                            />
-                        </div>
-                    </div>
-                    <div class="partners">
-                        <a
-                            href="https://www.tripadvisor.in/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="Visit Tripadvisor.in"
-                        >
-                            <img
-                                src="/assets/images/trip-adviser.png"
-                                alt="Tripadvisor"
-                            />
-                        </a>
-                        <a
-                            href="https://www.expedia.co.in/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="Visit Expedia.co.in"
-                        >
-                            <img
-                                src="/assets/images/expedia.png"
-                                alt="Expedia"
-                            />
-                        </a>
-                        <a
-                            href="https://www.booking.com/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="Visit Booking.com"
-                        >
-                            <img
-                                src="/assets/images/booking.com.png"
-                                alt="Booking.com"
-                            />
-                        </a>
-                        <a
-                            href="https://www.airbnb.co.in/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="Visit Airbnb.co.in"
-                        >
-                            <img src="/assets/images/airbnb.png" alt="Airbnb" />
-                        </a>
-                        <a
-                            href="https://www.orbitz.com/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="Visit Orbitz.com"
-                        >
-                            <img src="/assets/images/orbitz.png" alt="Orbitz" />
-                        </a>
+                    <div class="drawer__actions">
+                        <button class="button button--outline">Log In</button>
+                        <button class="button button--primary">Sign Up</button>
                     </div>
                 </div>
-            </section>
-        </main>
-        <div class="mask" hidden></div>
-        <aside class="drawer nav-drawer" inert>
-            <div class="drawer__header">
-                <button class="button drawer__cross">
-                    <span class="icon drawer__icon"></span>
-                </button>
-            </div>
-            <nav class="drawer__nav" aria-label="Primary">
-                <ul class="drawer__list">
-                    <li class="drawer__item">
-                        <a class="drawer__link" href="#hero">Home</a>
-                    </li>
-                    <li class="drawer__item">
-                        <a class="drawer__link" href="#discover">Discover</a>
-                    </li>
-                    <li class="drawer__item">
-                        <a class="drawer__link" href="#special-deals"
-                            >Special Deals</a
-                        >
-                    </li>
-                    <li class="drawer__item">
-                        <a class="drawer__link" href="#contact">Contact</a>
-                    </li>
-                </ul>
-
-                <div class="drawer__actions">
-                    <button class="button button__text button--outline">
-                        Log In
-                    </button>
-                    <button class="button button__text button--primary">
-                        Sign Up
-                    </button>
-                </div>
-            </nav>
-        </aside>
+            </aside>
+        </div>
         <script type="module" src="./src/script/index.js"></script>
     </body>
 </html>

@@ -1,7 +1,5 @@
 // base/_base.scss
 @use '../abstracts/variables' as variables;
-@use '../abstracts/mixins' as mixins;
-@use '../abstracts/functions' as functions;
 
 body {
     font-family: variables.$font-family-primary;
@@ -11,25 +9,9 @@ body {
     background-color: variables.$color-white;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    max-width: 2000px;
-    min-width: 375px;
 }
 
 a {
     color: inherit;
     text-decoration: none;
-}
-
-//The .container class provides a consistent horizontal layout for sections across the website. It automatically adjusts its horizontal padding at different responsive breakpoints to maintain appropriate spacing across screen sizes.
-// This container class is used to have a container which adjusts padding for sections across the website.
-.container {
-    padding: 0 variables.$space-xs;
-    @include mixins.flex;
-    @include mixins.responsive-screen(sm) {
-        padding: 0 variables.$space-xl;
-    }
-
-    @include mixins.responsive-screen(md) {
-        padding: 0 functions.rem(123.5px);
-    }
 }
