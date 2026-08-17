@@ -115,3 +115,12 @@ data {
     line-height: variables.$primary-spacing;
     color: variables.$color-grey-medium;
 }
+
+.text-body-md {
+    font-family: variables.$font-family-secondary;
+    font-size: functions.rem(18px);
+    font-weight: variables.$font-weight-light;
+    line-height: variables.$secondary-spacing;
+    color: variables.$color-grey-medium;
+    letter-spacing: 0%;
+}
