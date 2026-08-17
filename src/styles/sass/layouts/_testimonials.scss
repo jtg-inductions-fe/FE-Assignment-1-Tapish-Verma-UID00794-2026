@@ -31,9 +31,9 @@
     }
 
     &__title {
+        text-align: center;
         padding-inline: functions.rem(17px);
         margin-bottom: variables.$space-xs;
-        letter-spacing: 20%;
     }
 
     &__sub-title {
@@ -152,6 +152,9 @@
         @include mixins.responsive-screen(sm) {
             font-size: functions.rem(23px);
         }
+    }
+    &__slash {
+        font-size: functions.rem(23px);
     }
 }
 

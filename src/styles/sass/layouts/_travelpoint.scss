@@ -76,12 +76,15 @@
         }
     }
 
+    &__top {
+        @include mixins.flex(column, center, center, 0);
+        @include mixins.responsive-screen(md) {
+            align-items: flex-start;
+        }
+    }
+
     &__title {
         margin-bottom: functions.rem(16px);
-        letter-spacing: 20%;
-        @include mixins.responsive-screen(md) {
-            text-align: left;
-        }
     }
     &__sub-title {
         margin-bottom: functions.rem(32px);
