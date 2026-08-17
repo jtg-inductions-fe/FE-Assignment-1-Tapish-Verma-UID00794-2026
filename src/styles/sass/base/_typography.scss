@@ -2,17 +2,27 @@
 @use '../abstracts/mixins' as mixins;
 @use '../abstracts/functions' as functions;
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h5,
+p {
+    text-align: center;
+}
+
 h1 {
     font-size: functions.rem(40px);
     font-weight: variables.$font-weight-bold;
     line-height: variables.$primary-spacing;
     color: variables.$color-black;
 
-    @include mixins.responsive-screen(md) {
+    @include mixins.responsive-screen(sm) {
         font-size: functions.rem(56px);
     }
 
-    @include mixins.responsive-screen(lg) {
+    @include mixins.responsive-screen(md) {
         font-size: functions.rem(69px);
     }
 }
@@ -23,11 +33,11 @@ h2 {
     line-height: variables.$primary-spacing;
     color: variables.$color-grey-dark;
 
-    @include mixins.responsive-screen(md) {
+    @include mixins.responsive-screen(sm) {
         font-size: functions.rem(40px);
     }
 
-    @include mixins.responsive-screen(lg) {
+    @include mixins.responsive-screen(md) {
         font-size: functions.rem(44px);
     }
 }
@@ -38,7 +48,7 @@ h3 {
     line-height: variables.$primary-spacing;
     color: variables.$color-pink;
 
-    @include mixins.responsive-screen(md) {
+    @include mixins.responsive-screen(sm) {
         font-size: functions.rem(23px);
     }
 }

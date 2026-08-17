@@ -1,0 +1,228 @@
+@use '../abstracts/variables' as variables;
+@use '../abstracts/mixins' as mixins;
+@use '../abstracts/functions' as functions;
+
+.hero {
+    width: 100%;
+    @include mixins.flex;
+
+    &__bg {
+        position: absolute;
+        height: functions.rem(348px);
+        width: functions.rem(272px);
+        top: functions.rem(-150px);
+        left: functions.rem(-33px);
+        background-color: variables.$color-orange;
+        opacity: 0.5;
+        filter: blur(150px);
+        border-radius: variables.$radius-round;
+        z-index: variables.$z-index-behind;
+        @include mixins.responsive-screen(sm) {
+            height: functions.rem(500px);
+            width: functions.rem(500px);
+            top: functions.rem(-288px);
+            left: functions.rem(-163px);
+            filter: blur(200px);
+        }
+
+        @include mixins.responsive-screen(md) {
+            height: functions.rem(495px);
+            width: functions.rem(504px);
+            top: functions.rem(-138.09px);
+            left: functions.rem(-40px);
+        }
+    }
+    .container {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    &__container {
+        position: relative;
+        padding-block: variables.$space-xl;
+        @include mixins.flex(
+            column-reverse,
+            space-between,
+            center,
+            variables.$space-lg
+        );
+
+        @include mixins.responsive-screen(sm) {
+            gap: variables.$space-xl;
+        }
+        @include mixins.responsive-screen(md) {
+            flex-direction: row;
+            gap: 0;
+        }
+    }
+
+    &__arrows {
+        display: none;
+        position: absolute;
+        @include mixins.responsive-screen(sm) {
+            display: inline-flex;
+            bottom: functions.rem(10px);
+            left: functions.rem(-24px);
+        }
+        @include mixins.responsive-screen(md) {
+            bottom: functions.rem(-44px);
+            left: functions.rem(-90px);
+        }
+    }
+
+    &__content {
+        flex: 1;
+        width: 100%;
+        @include mixins.flex(
+            column,
+            space-between,
+            center,
+            variables.$space-lg
+        );
+        @include mixins.responsive-screen(sm) {
+            gap: functions.rem(43px);
+        }
+    }
+
+    &__top-section {
+        width: 100%;
+        @include mixins.flex(
+            column,
+            space-between,
+            center,
+            variables.$space-md
+        );
+        @include mixins.responsive-screen(sm) {
+            gap: functions.rem(43px);
+        }
+        @include mixins.responsive-screen(md) {
+            align-items: flex-start;
+            margin-bottom: functions.rem(32px);
+        }
+    }
+
+    &__heading-section {
+        width: 100%;
+        @include mixins.flex(
+            column,
+            space-between,
+            center,
+            variables.$space-xs
+        );
+        @include mixins.responsive-screen(sm) {
+            gap: functions.rem(43px);
+        }
+        @include mixins.responsive-screen(md) {
+            align-items: flex-start;
+        }
+    }
+
+    &__image {
+        flex-shrink: 0;
+        @include mixins.responsive-screen(sm) {
+            padding: 0 variables.$space-md;
+        }
+        @include mixins.responsive-screen(md) {
+            padding: 0;
+            width: 65%;
+            max-width: functions.rem(800px);
+            min-width: functions.rem(600px);
+        }
+    }
+    &__actions {
+        width: 100%;
+
+        @include mixins.flex(
+            column,
+            space-between,
+            center,
+            variables.$space-md
+        );
+
+        button {
+            width: 100%;
+            padding: variables.$space-md variables.$space-lg;
+            @include mixins.responsive-screen(sm) {
+                padding-block: variables.$space-sm;
+                width: auto;
+            }
+        }
+
+        &--primary {
+            box-shadow: variables.$box-shadow-lg;
+        }
+
+        &--icon {
+            font-size: functions.rem(20px);
+        }
+
+        @include mixins.responsive-screen(sm) {
+            flex-direction: row;
+            justify-content: safe center;
+            gap: variables.$space-xs;
+        }
+        @include mixins.responsive-screen(md) {
+            justify-content: flex-start;
+            padding-bottom: functions.rem(8px);
+        }
+    }
+
+    &__badge {
+        padding: variables.$space-xs variables.$space-lg;
+        background-color: transparent;
+        border-radius: variables.$radius-pill;
+        box-shadow: variables.$box-shadow-sm;
+        font-weight: variables.$font-weight-bold;
+        font-size: variables.$text-sm;
+        line-height: variables.$primary-spacing;
+
+        @include mixins.flex(flex, space-between, center, variables.$space-xs);
+
+        &--primary {
+            font-size: variables.$text-xl;
+        }
+    }
+
+    &__description {
+        width: 100%;
+        @include mixins.responsive-screen(sm) {
+            padding-inline: functions.rem(200px);
+        }
+        @include mixins.responsive-screen(md) {
+            padding-inline: 0;
+            text-align: left;
+        }
+    }
+
+    &__title {
+        padding-inline: functions.rem(40px);
+        @include mixins.responsive-screen(sm) {
+            padding-inline: functions.rem(140px);
+        }
+        @include mixins.responsive-screen(md) {
+            padding-inline: 0;
+            text-align: left;
+        }
+    }
+
+    &__partners {
+        width: 100%;
+        box-sizing: content-box;
+        @include mixins.flex(row, center, center, functions.rem(32px));
+        flex-wrap: wrap;
+        @include mixins.responsive-screen(sm) {
+            margin-top: functions.rem(64px);
+        }
+        @include mixins.responsive-screen(md) {
+            justify-content: space-between;
+        }
+
+        img {
+            height: functions.rem(20px);
+
+            @include mixins.responsive-screen(sm) {
+                height: functions.rem(32px);
+            }
+        }
+    }
+}

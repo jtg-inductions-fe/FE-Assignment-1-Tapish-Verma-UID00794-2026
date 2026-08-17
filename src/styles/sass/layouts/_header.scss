@@ -3,17 +3,17 @@
 @use '../abstracts/functions' as functions;
 
 .header {
+    width: 100%;
     &__wrapper {
         position: relative;
         width: 100%;
-        padding-block: functions.rem(35px);
+        padding-top: functions.rem(35px);
         @include mixins.flex(row, space-between, center);
 
         @include mixins.responsive-screen(sm) {
-            padding-block: functions.rem(32.5px);
+            padding-block: functions.rem(32px);
         }
         @include mixins.responsive-screen(md) {
-            padding-block: variables.$space-lg;
             margin-top: functions.rem(34px);
         }
     }
@@ -56,9 +56,6 @@
 
     &__actions {
         display: none;
-        @include mixins.responsive-screen(sm) {
-            @include mixins.flex(row, space-between, center, 0);
-        }
 
         &--primary {
             height: functions.rem(49px);
@@ -68,6 +65,9 @@
         &--secondary {
             height: functions.rem(49px);
             width: functions.rem(115px);
+        }
+        @include mixins.responsive-screen(sm) {
+            @include mixins.flex(row, space-between, center, 0);
         }
     }
 
@@ -81,6 +81,7 @@
         padding: functions.rem(4px);
         display: none;
         z-index: auto;
+        background-color: transparent;
 
         &--menu {
             display: inline-flex;

@@ -8,14 +8,10 @@ $drawer-width-md: 35%;
 $drawer-header-min-height: functions.rem(32px);
 
 .drawer {
-    @include mixins.flex(column, space-between, center);
     width: $drawer-width-sm;
     padding: variables.$space-xs;
     background: variables.$color-white;
-
-    @include mixins.responsive-screen(sm) {
-        width: $drawer-width-md;
-    }
+    @include mixins.flex(column, space-between, center);
 
     &__header {
         width: 100%;
@@ -32,12 +28,16 @@ $drawer-header-min-height: functions.rem(32px);
         color: variables.$color-grey-medium;
     }
 
-    &__nav {
+    &__body {
         flex: 11;
         width: 100%;
         @include mixins.flex(column, space-between, center, 0);
     }
-
+    &__nav {
+        flex: 1;
+        width: 100%;
+        @include mixins.flex(column, safe center, center, 0);
+    }
     &__list {
         flex: 1;
         list-style: none;
@@ -50,13 +50,6 @@ $drawer-header-min-height: functions.rem(32px);
             justify-content: flex-start;
         }
     }
-
-    &__item {
-        padding: variables.$space-xs 0;
-        width: 100%;
-        text-align: center;
-    }
-
     &__actions {
         flex: 1;
         width: 100%;
@@ -69,7 +62,17 @@ $drawer-header-min-height: functions.rem(32px);
         }
     }
 
+    &__item {
+        padding: variables.$space-xs 0;
+        width: 100%;
+        text-align: center;
+    }
+
     &__cross.button {
         padding: 0;
+    }
+
+    @include mixins.responsive-screen(sm) {
+        width: $drawer-width-md;
     }
 }
