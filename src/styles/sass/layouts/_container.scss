@@ -3,8 +3,8 @@
 @use '../abstracts/functions' as functions;
 
 .app-container {
-    max-width: 2000px;
-    min-width: 375px;
+    max-width: variables.$container-max-width;
+    min-width: variables.$container-mix-width;
     width: auto;
     margin: auto;
     @include mixins.flex(column, center, center, 0);
