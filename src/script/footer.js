@@ -16,8 +16,9 @@ function openAccordian(event) {
         `.footer__content[data-section="${targetKey}"]`,
     );
     if (!content) return;
-
+    const dataLabel = btn.dataset.label;
     btn.setAttribute('aria-expanded', 'true');
+    btn.setAttribute('aria-label', `Close ${dataLabel}`);
     btn.classList.add('footer__button--rotate');
     content.classList.add('footer__content--active');
     content.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -29,8 +30,10 @@ function closeAccordian(btn) {
         `.footer__content[data-section="${targetKey}"]`,
     );
     if (!content) return;
+    const dataLabel = btn.dataset.label;
 
     btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', `Open ${dataLabel}`);
     btn.classList.remove('footer__button--rotate');
     content.classList.remove('footer__content--active');
 }
