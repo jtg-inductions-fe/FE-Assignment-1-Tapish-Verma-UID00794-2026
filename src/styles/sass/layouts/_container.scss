@@ -4,7 +4,7 @@
 
 .app-container {
     max-width: variables.$container-max-width;
-    min-width: variables.$container-mix-width;
+    min-width: variables.$container-min-width;
     width: auto;
     margin: auto;
     @include mixins.flex(column, center, center, 0);
