@@ -12,9 +12,7 @@
     font-family: 'Untitled';
     base-palette: 0;
 }
-.icon,
-[class^='icon-'],
-[class*=' icon-'] {
+.icon {
     /* Use !important to prevent extensions from overriding this font. */
     font-family: 'Untitled' !important;
     font-style: normal;
@@ -30,46 +28,4 @@
 .palette0 {
     font-palette: --palette0;
     color: currentColor;
-}
-.icon-Copy:before {
-    content: '\f009';
-}
-.icon-arrow-circle-down:before {
-    content: '\f00d';
-}
-.icon-X:before {
-    content: '\f000';
-}
-.icon-twitter:before {
-    content: '\f001';
-}
-.icon-triangle:before {
-    content: '\f002';
-}
-.icon-star:before {
-    content: '\f003';
-}
-.icon-play:before {
-    content: '\f004';
-}
-.icon-instagram:before {
-    content: '\f005';
-}
-.icon-hamburger:before {
-    content: '\f006';
-}
-.icon-Gift:before {
-    content: '\f007';
-}
-.icon-facebook:before {
-    content: '\f008';
-}
-.icon-bag:before {
-    content: '\f00a';
-}
-.icon-arrow-right:before {
-    content: '\f00b';
-}
-.icon-arrow-left:before {
-    content: '\f00c';
 }
