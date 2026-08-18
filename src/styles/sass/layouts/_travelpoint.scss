@@ -6,7 +6,7 @@
     width: 100%;
     height: auto;
     @include mixins.responsive-screen(md) {
-        padding-right: functions.rem(118.42px);
+        padding-right: functions.rem(118.5px);
     }
 
     &__wrapper {
@@ -26,7 +26,7 @@
         }
         @include mixins.responsive-screen(md) {
             flex-direction: row;
-            gap: 0px;
+            gap: 0;
         }
     }
 
@@ -95,7 +95,6 @@
     }
 
     &__description {
-        font-family: variables.$font-family-secondary;
         @include mixins.responsive-screen(md) {
             text-align: left;
         }
@@ -106,14 +105,6 @@
 
         @include mixins.responsive-screen(sm) {
             width: calc(50% - functions.rem(16px));
-        }
-    }
-
-    &__card-title {
-        &--dark {
-            font-family: variables.$font-family-secondary;
-            color: variables.$color-grey-dark;
-            font-size: functions.rem(18px);
         }
     }
 
