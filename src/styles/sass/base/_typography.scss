@@ -8,6 +8,7 @@ h3,
 h4,
 h5,
 h5,
+data,
 p {
     text-align: center;
 }
@@ -90,4 +91,20 @@ li {
     font-weight: variables.$font-weight-bold;
     line-height: variables.$primary-spacing;
     color: variables.$color-grey-light;
+}
+
+data {
+    font-size: functions.rem(35px);
+    font-weight: variables.$font-weight-bold;
+    line-height: variables.$primary-spacing;
+    color: variables.$color-orange;
+}
+
+.font-inter {
+    font-family: variables.$font-family-secondary;
+}
+
+.text-dark-sm {
+    color: variables.$color-grey-dark;
+    font-size: functions.rem(18px);
 }
