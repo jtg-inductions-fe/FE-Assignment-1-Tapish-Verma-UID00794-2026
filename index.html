@@ -12,574 +12,610 @@
         />
     </head>
     <body>
-        <header class="header">
-            <div class="container">
-                <div class="header__wrapper">
-                    <button
-                        class="button header__hamburger header__hamburger--shadow"
-                        aria-label="Open navigation menu"
-                        aria-expanded="false"
-                    >
-                        <span
-                            class="icon-hamburger header__hamburger--icon"
-                        ></span>
-                    </button>
-                    <div class="header__logo">
-                        <a href="/" aria-label="Travelog Home">
-                            <img
-                                class="header__logo-image"
-                                src="/assets/images/company-logo.png"
-                                alt="Travelog"
-                            />
-                        </a>
-                    </div>
-                    <nav class="header__nav" aria-label="Primary">
-                        <ul class="header__menu" role="list">
-                            <li class="header__item">
-                                <a href="#hero">Home</a>
-                            </li>
-                            <li class="header__item">
-                                <a href="#discover">Discover</a>
-                            </li>
-                            <li class="header__item">
-                                <a href="#special-deals">Special Deals</a>
-                            </li>
-                            <li class="header__item">
-                                <a href="#contact">Contact</a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <div class="header__actions">
-                        <button class="button button__text">Log In</button>
-                        <button class="button button__text button--primary">
-                            Sign Up
+        <div class="app-container">
+            <header class="header">
+                <div class="container">
+                    <div class="header__wrapper">
+                        <button
+                            class="button header__hamburger header__hamburger--shadow"
+                            aria-label="Open navigation menu"
+                            aria-expanded="false"
+                        >
+                            <span
+                                class="icon-hamburger header__hamburger--icon"
+                                aria-hidden="true"
+                            ></span>
+                        </button>
+                        <div class="header__logo">
+                            <a href="/" aria-label="Travelog Home">
+                                <img
+                                    class="header__logo-image"
+                                    src="/assets/images/company-logo.png"
+                                    alt=""
+                                />
+                            </a>
+                        </div>
+                        <nav class="header__nav" aria-label="Primary">
+                            <ul class="header__menu" role="list">
+                                <li class="header__item">
+                                    <a href="#hero">Home</a>
+                                </li>
+                                <li class="header__item">
+                                    <a href="#discover">Discover</a>
+                                </li>
+                                <li class="header__item">
+                                    <a href="#special-deals">Special Deals</a>
+                                </li>
+                                <li class="header__item">
+                                    <a href="#contact">Contact</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="header__actions">
+                            <button class="button header__actions--primary">
+                                Log In
+                            </button>
+                            <button
+                                class="button button--primary header__actions--secondary"
+                            >
+                                Sign Up
+                            </button>
+                        </div>
+                        <button
+                            class="button header__hamburger header__hamburger--menu"
+                            aria-label="Open navigation menu"
+                            aria-expanded="false"
+                        >
+                            <span
+                                class="icon-hamburger header__hamburger--icon"
+                                aria-hidden="true"
+                            ></span>
                         </button>
                     </div>
-                    <button
-                        class="button header__hamburger header__hamburger--menu"
-                        aria-label="Open navigation menu"
-                        aria-expanded="false"
-                    >
-                        <span
-                            class="icon-hamburger header__hamburger--icon"
-                        ></span>
-                    </button>
                 </div>
-            </div>
-        </header>
-        <main>
-            <section class="hero" id="hero">
-                <div class="hero__bg"></div>
-                <div class="container">
-                    <div class="hero__container">
-                        <div class="hero__content">
-                            <div class="hero__top-section">
-                                <div class="hero__heading-section">
-                                    <span class="hero__badge text-pink">
-                                        Explore the world!
-                                        <span
-                                            class="icon-bag hero__badge--primary"
-                                        ></span>
-                                    </span>
-                                    <div class="hero__title-wrapper">
-                                        <h1 class="hero__title">
-                                            Travel
-                                            <span class="text-pink"
-                                                >top destination</span
-                                            >
-                                            of the world
-                                        </h1>
+            </header>
+            <main>
+                <section class="hero" id="hero">
+                    <div
+                        class="hero__bg"
+                        role="presentation"
+                        aria-hidden="true"
+                    ></div>
+                    <div class="container">
+                        <div class="hero__container">
+                            <div class="hero__content">
+                                <div class="hero__top-section">
+                                    <div class="hero__heading-section">
+                                        <span class="hero__badge text-pink">
+                                            Explore the world!
+                                            <span
+                                                class="icon-bag hero__badge--primary"
+                                                aria-hidden="true"
+                                            ></span>
+                                        </span>
+                                        <div class="hero__title-wrapper">
+                                            <h1 class="hero__title">
+                                                Travel
+                                                <span class="text-pink"
+                                                    >top destination</span
+                                                >
+                                                of the world
+                                            </h1>
+                                        </div>
+                                    </div>
+                                    <div class="hero__description-wrapper">
+                                        <p class="hero__description">
+                                            We always make our customer happy by
+                                            providing as many choices as
+                                            possible
+                                        </p>
                                     </div>
                                 </div>
-                                <div class="hero__description-wrapper">
-                                    <p class="hero__description">
-                                        We always make our customer happy by
-                                        providing as many choices as possible
-                                    </p>
+                                <div class="hero__actions">
+                                    <button
+                                        class="button button--primary hero__actions--primary"
+                                    >
+                                        Get Started
+                                    </button>
+                                    <button
+                                        class="button button__icon button--outline"
+                                    >
+                                        <span
+                                            class="icon-play hero__actions--icon"
+                                            aria-hidden="true"
+                                        ></span>
+                                        Watch Demo
+                                    </button>
                                 </div>
                             </div>
-
-                            <div class="hero__actions">
-                                <button
-                                    class="button button__text button--primary hero__actions--primary"
-                                >
-                                    Get Started
-                                </button>
-                                <button
-                                    class="button button__icon button__text button--outline"
-                                >
-                                    <span
-                                        class="icon-play hero__actions--icon"
-                                    ></span>
-                                    Watch Demo
-                                </button>
+                            <div class="hero__image-wrapper">
+                                <div class="hero__image">
+                                    <picture>
+                                        <!-- Desktop/Tablet -->
+                                        <source
+                                            media="(min-width: 431px)"
+                                            srcset="
+                                                /assets/images/hero-large.png
+                                            "
+                                        />
+                                        <!-- Mobile -->
+                                        <img
+                                            srcset="
+                                                /assets/images/hero-small.png
+                                            "
+                                            alt="Collage of travel photos: a hiker in snow-capped mountains, a traveler exploring a city, and coastal steps overlooking the sea, with a world map and flight path illustration"
+                                        />
+                                    </picture>
+                                </div>
+                            </div>
+                            <div class="hero__arrows">
+                                <img
+                                    role="presentation"
+                                    src="/assets/images/orange-arrows.png"
+                                    alt=""
+                                />
                             </div>
                         </div>
-                        <div class="hero__image-wrapper">
-                            <div class="hero__image">
+                        <div class="partners-wrapper">
+                            <div class="hero__partners">
+                                <a
+                                    href="https://www.tripadvisor.in/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Visit Tripadvisor.in"
+                                >
+                                    <img
+                                        src="/assets/images/trip-adviser.png"
+                                        alt="Tripadvisor"
+                                    />
+                                </a>
+                                <a
+                                    href="https://www.expedia.co.in/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Visit Expedia.co.in"
+                                >
+                                    <img
+                                        src="/assets/images/expedia.png"
+                                        alt="Expedia"
+                                    />
+                                </a>
+                                <a
+                                    href="https://www.booking.com/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Visit Booking.com"
+                                >
+                                    <img
+                                        src="/assets/images/booking.com.png"
+                                        alt="Booking.com"
+                                    />
+                                </a>
+                                <a
+                                    href="https://www.airbnb.co.in/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Visit Airbnb.co.in"
+                                >
+                                    <img
+                                        src="/assets/images/airbnb.png"
+                                        alt="Airbnb"
+                                    />
+                                </a>
+                                <a
+                                    href="https://www.orbitz.com/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Visit Orbitz.com"
+                                >
+                                    <img
+                                        src="/assets/images/orbitz.png"
+                                        alt="Orbitz"
+                                    />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="travelpoint" id="discover">
+                    <div class="travelpoint__wrapper">
+                        <img
+                            class="travelpoint__star"
+                            src="/assets/images/star.png"
+                            role="presentation"
+                            aria-hidden="true"
+                            alt=""
+                        />
+                        <div class="travelpoint__image-wrapper">
+                            <div class="travelpoint__image">
                                 <picture>
-                                    <!-- Desktop/Tablet -->
+                                    <!-- Desktop -->
+                                    <source
+                                        media="(min-width: 1025px)"
+                                        srcset="
+                                            /assets/images/featured-image-large.png
+                                        "
+                                    />
+                                    <!-- Tablet -->
                                     <source
                                         media="(min-width: 431px)"
-                                        srcset="/assets/images/hero-large.png"
+                                        srcset="
+                                            /assets/images/featured-image-medium.png
+                                        "
                                     />
                                     <!-- Mobile -->
                                     <img
-                                        srcset="/assets/images/hero-small.png"
-                                        alt="Travlog hero image"
-                                        aria-hidden="true"
+                                        class="travelpoint__image"
+                                        srcset="
+                                            /assets/images/featured-image-small.png
+                                        "
+                                        alt="A hapy girl with backpack sitting on suitcase and holding passport."
                                     />
                                 </picture>
                             </div>
                         </div>
-                        <div class="hero__container--arrows">
-                            <img
-                                src="/assets/images/orange-arrows.png"
-                                alt="Orange Arrows"
-                                aria-hiden="true"
-                            />
+                        <div class="travelpoint__content">
+                            <div class="travelpoint__top">
+                                <h3 class="travelpoint__title uppercase-text">
+                                    Travel Point
+                                </h3>
+                                <h2 class="travelpoint__sub-title">
+                                    We helping you find your dream location
+                                </h2>
+                                <p class="travelpoint__description font-inter">
+                                    Contrary to popular belief, Lorem Ipsum is
+                                    not simply random text. It has roots in a
+                                    piece of classical Latin literature from 45
+                                    BC.
+                                </p>
+                            </div>
+                            <div class="travelpoint__statistics">
+                                <div
+                                    class="card card--outline travelpoint__card"
+                                >
+                                    <data value="500">500+</data>
+                                    <p class="text-dark-sm font-inter">
+                                        Holiday Package
+                                    </p>
+                                </div>
+                                <div
+                                    class="card card--outline travelpoint__card"
+                                >
+                                    <data value="100">100</data>
+                                    <p class="text-dark-sm font-inter">
+                                        Luxury Hotel
+                                    </p>
+                                </div>
+                                <div
+                                    class="card card--outline travelpoint__card"
+                                >
+                                    <data value="7">7</data>
+                                    <p class="text-dark-sm font-inter">
+                                        Premium Airlines
+                                    </p>
+                                </div>
+                                <div
+                                    class="card card--outline travelpoint__card"
+                                >
+                                    <data value="2k+">2k+</data>
+                                    <p class="text-dark-sm font-inter">
+                                        Happy Customer
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="partners-wrapper">
-                        <div class="partners">
-                            <a
-                                href="https://www.tripadvisor.in/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="Visit Tripadvisor.in"
-                            >
-                                <img
-                                    src="/assets/images/trip-adviser.png"
-                                    alt="Tripadvisor"
-                                />
-                            </a>
-                            <a
-                                href="https://www.expedia.co.in/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="Visit Expedia.co.in"
-                            >
-                                <img
-                                    src="/assets/images/expedia.png"
-                                    alt="Expedia"
-                                />
-                            </a>
-                            <a
-                                href="https://www.booking.com/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="Visit Booking.com"
-                            >
-                                <img
-                                    src="/assets/images/booking.com.png"
-                                    alt="Booking.com"
-                                />
-                            </a>
-                            <a
-                                href="https://www.airbnb.co.in/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="Visit Airbnb.co.in"
-                            >
-                                <img
-                                    src="/assets/images/airbnb.png"
-                                    alt="Airbnb"
-                                />
-                            </a>
-                            <a
-                                href="https://www.orbitz.com/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="Visit Orbitz.com"
-                            >
-                                <img
-                                    src="/assets/images/orbitz.png"
-                                    alt="Orbitz"
-                                />
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="travelpoint" id="discover">
-                <div class="travelpoint__wrapper">
-                    <img
-                        class="travelpoint__star"
-                        src="/assets/images/star.png"
-                    />
-                    <div class="travelpoint__image-wrapper">
-                        <div class="travelpoint__image">
-                            <picture>
-                                <!-- Desktop -->
-                                <source
-                                    media="(min-width: 1025px)"
-                                    srcset="
-                                        /assets/images/featured-image-large.png
-                                    "
-                                />
-                                <!-- Tablet -->
-                                <source
-                                    media="(min-width: 431px)"
-                                    srcset="
-                                        /assets/images/featured-image-medium.png
-                                    "
-                                />
-                                <!-- Mobile -->
-                                <img
-                                    class="travelpoint__image"
-                                    srcset="
-                                        /assets/images/featured-image-small.png
-                                    "
-                                    alt="A hapy girl with backpack sitting on suitcase and holding passport."
-                                />
-                            </picture>
-                        </div>
-                    </div>
-                    <div class="travelpoint__content">
-                        <div class="travelpoint__top">
-                            <span class="travelpoint__title eyebrow">
-                                Travel Point
-                            </span>
-                            <h2 class="travelpoint__sub-title">
-                                We helping you find your dream location
+                </section>
+                <section class="testimonials">
+                    <div class="container">
+                        <div class="testimonials__wrapper">
+                            <div class="testimonials__title">
+                                <span class="eyebrow"> Testimonials </span>
+                            </div>
+                            <h2 class="testimonials__sub-title">
+                                Trust our clients
                             </h2>
-                            <p class="travelpoint__description">
+                            <div class="testimonials__carousel">
+                                <div class="swiper">
+                                    <div class="swiper-wrapper"></div>
+                                    <div class="swiper-pagination"></div>
+                                </div>
+                                <div class="testimonials__button-section">
+                                    <button
+                                        aria-label="Previous Testimonial"
+                                        class="button button--outline testimonials__button prev"
+                                    >
+                                        <span
+                                            class="icon-arrow-left testimonials__icon"
+                                            aria-hidden="true"
+                                        ></span>
+                                    </button>
+                                    <button
+                                        aria-label="Next Testimonial"
+                                        class="button button--outline testimonials__button next"
+                                    >
+                                        <span
+                                            class="icon-arrow-left testimonials__icon testimonials__icon--right"
+                                            aria-hidden="true"
+                                        ></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonials__bg">
+                        <img
+                            role="presentation"
+                            src="/assets/images/testimonials-background.png"
+                            alt=""
+                            aria-hidden="true"
+                        />
+                    </div>
+                </section>
+            </main>
+            <footer>
+                <div class="container">
+                    <div class="footer-wrapper">
+                        <img
+                            class="footer__image footer__image--primary"
+                            src="/assets/images/footer-triangular-dots.png"
+                            alt=""
+                            role="presentation"
+                            aria-hidden="true"
+                        />
+                        <img
+                            class="footer__image footer__image--secondary"
+                            src="/assets/images/footer-spiral.png"
+                            alt=""
+                            role="presentation"
+                            aria-hidden="true"
+                        />
+                        <div class="footer__info">
+                            <div class="footer__top">
+                                <a
+                                    href="/"
+                                    class="footer__logo"
+                                    aria-label="Travlog home"
+                                >
+                                    <img
+                                        src="/assets/images/company-logo.png"
+                                        alt=""
+                                        aria-hidden="true"
+                                    />
+                                </a>
+                                <h5>Travlog</h5>
+                            </div>
+                            <p class="footer__description">
                                 Contrary to popular belief, Lorem Ipsum is not
                                 simply random text. It has roots in a piece of
                                 classical Latin literature from 45 BC.
                             </p>
-                        </div>
-                        <div class="travelpoint__statistics">
-                            <div class="card card--outline travelpoint__card">
-                                <data value="500+">500+</data>
-                                <p class="travelpoint__card-title--dark">
-                                    Holiday Package
-                                </p>
-                            </div>
-                            <div class="card card--outline travelpoint__card">
-                                <data value="100">100</data>
-                                <p class="travelpoint__card-title--dark">
-                                    Luxury Hotel
-                                </p>
-                            </div>
-                            <div class="card card--outline travelpoint__card">
-                                <data value="7">7</data>
-                                <p class="travelpoint__card-title--dark">
-                                    Premium Airlines
-                                </p>
-                            </div>
-                            <div class="card card--outline travelpoint__card">
-                                <data value="2k+">2k+</data>
-                                <p class="travelpoint__card-title--dark">
-                                    Happy Customer
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="testimonials">
-                <div class="container">
-                    <div class="testimonials__wrapper">
-                        <div class="testimonials__title">
-                            <span class="eyebrow"> Testimonials </span>
-                        </div>
-                        <h2 class="testimonials__sub-title">
-                            Trust our clients
-                        </h2>
-                        <div class="testimonials__carousel">
-                            <div class="swiper">
-                                <div class="swiper-wrapper"></div>
-                                <div class="swiper-pagination"></div>
-                            </div>
-                            <div class="testimonials__button-section">
-                                <button
-                                    aria-label="Previous Testimonial"
-                                    class="button button--outline testimonials__button prev"
+                            <div class="footer__icons">
+                                <a
+                                    href="www.facebook.com/Travlog"
+                                    aria-label="Travlog facebook link"
                                 >
                                     <span
-                                        class="icon-arrow-left testimonials__icon"
+                                        class="icon-facebook footer__icons--primary"
                                         aria-hidden="true"
                                     ></span>
-                                </button>
-                                <button
-                                    aria-label="Next Testimonial"
-                                    class="button button--outline testimonials__button next"
+                                </a>
+                                <a
+                                    href="www.x.com/Travlog"
+                                    aria-label="Travlog twitter link"
                                 >
                                     <span
-                                        class="icon-arrow-left testimonials__icon testimonials__icon--right"
+                                        class="icon-twitter footer__icons--primary"
                                         aria-hidden="true"
                                     ></span>
-                                </button>
+                                </a>
+                                <a
+                                    href="www.instagram.com/Travlog"
+                                    aria-label="Travlog instagram link"
+                                >
+                                    <span
+                                        class="icon-instagram footer__icons--primary"
+                                        aria-hidden="true"
+                                    ></span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="footer__menu">
+                            <div class="footer__menu-group-wrapper">
+                                <div class="footer__menu-group">
+                                    <div class="footer__row">
+                                        <h6 class="footer__menu-heading">
+                                            Company
+                                        </h6>
+                                        <button
+                                            class="button button--icon-only footer__button"
+                                            data-target="section-1"
+                                            aria-expanded="false"
+                                            aria-label="Open Company Menu"
+                                            data-label="Company Menu"
+                                        >
+                                            <span
+                                                class="icon-arrow-circle-down footer__menu-icon"
+                                                aria-hidden="true"
+                                            ></span>
+                                        </button>
+                                    </div>
+                                    <nav
+                                        class="footer__content"
+                                        data-section="section-1"
+                                    >
+                                        <ul class="footer__list" role="list">
+                                            <li
+                                                class="footer__list-item text-body-md"
+                                            >
+                                                <a href="#">About</a>
+                                            </li>
+                                            <li
+                                                class="footer__list-item text-body-md"
+                                            >
+                                                <a href="#">Career</a>
+                                            </li>
+                                            <li
+                                                class="footer__list-item text-body-md"
+                                            >
+                                                <a href="#">Mobile</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="footer__menu-group-wrapper">
+                                <div class="footer__menu-group">
+                                    <div class="footer__row">
+                                        <h6 class="footer__menu-heading">
+                                            Contact
+                                        </h6>
+                                        <button
+                                            class="button button--icon-only footer__button"
+                                            data-target="section-2"
+                                            aria-expanded="false"
+                                            aria-label="Open Contact Menu"
+                                            data-label="Contact Menu"
+                                        >
+                                            <span
+                                                class="icon-arrow-circle-down footer__menu-icon"
+                                                aria-hidden="true"
+                                            ></span>
+                                        </button>
+                                    </div>
+                                    <nav
+                                        class="footer__content"
+                                        data-section="section-2"
+                                    >
+                                        <ul class="footer__list" role="list">
+                                            <li
+                                                class="footer__list-item text-body-md"
+                                            >
+                                                <a href="#">Why Travlog?</a>
+                                            </li>
+                                            <li
+                                                class="footer__list-item text-body-md"
+                                            >
+                                                <a href="#">Partner with us</a>
+                                            </li>
+                                            <li
+                                                class="footer__list-item text-body-md"
+                                            >
+                                                <a href="#">FAQ's</a>
+                                            </li>
+                                            <li
+                                                class="footer__list-item text-body-md"
+                                            >
+                                                <a href="#">Blog</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="footer__menu-group-wrapper">
+                                <div class="footer__menu-group">
+                                    <div class="footer__row">
+                                        <h6 class="footer__menu-heading">
+                                            Meet Us
+                                        </h6>
+                                        <button
+                                            class="button button--icon-only footer__button"
+                                            data-target="section-3"
+                                            aria-expanded="false"
+                                            aria-label="Open Meet Us Menu"
+                                            data-label="Meet Us Menu"
+                                        >
+                                            <span
+                                                class="icon-arrow-circle-down footer__menu-icon"
+                                                aria-hidden="true"
+                                            ></span>
+                                        </button>
+                                    </div>
+                                    <nav
+                                        class="footer__content"
+                                        data-section="section-3"
+                                    >
+                                        <ul class="footer__list" role="list">
+                                            <li
+                                                class="footer__list-item text-body-md"
+                                            >
+                                                <a
+                                                    href="#"
+                                                    aria-label="tel +00 92 1234 56789"
+                                                    >+00 92 1234 56789</a
+                                                >
+                                            </li>
+                                            <li
+                                                class="footer__list-item text-body-md"
+                                            >
+                                                <a
+                                                    href="#"
+                                                    aria-label="email info@travlog.com"
+                                                    >info@travlog.com</a
+                                                >
+                                            </li>
+                                            <li
+                                                class="footer__list-item text-body-md"
+                                            >
+                                                <a
+                                                    href="#"
+                                                    style="gap: 8px"
+                                                    aria-label="address 205. R Street, New York BD23200"
+                                                    >205. R Street, New York
+                                                    BD23200</a
+                                                >
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="testimonials__bg">
-                    <img
-                        role="presentation"
-                        src="/assets/images/testimonials-background.png"
-                        alt=""
-                        aria-hidden="true"
-                    />
-                </div>
-            </section>
-        </main>
-        <footer>
-            <div class="container">
-                <div class="footer-wrapper">
-                    <img
-                        class="footer__image footer__image--primary"
-                        src="/assets/images/footer-triangular-dots.png"
-                        alt=""
-                        role="presentation"
-                        aria-hidden="true"
-                    />
-                    <img
-                        class="footer__image footer__image--secondary"
-                        src="/assets/images/footer-spiral.png"
-                        alt=""
-                        role="presentation"
-                        aria-hidden="true"
-                    />
-                    <div class="footer__info">
-                        <div class="footer__top">
-                            <a
-                                href="/"
-                                class="footer__logo"
-                                aria-label="Travlog home"
-                            >
-                                <img
-                                    src="/assets/images/company-logo.png"
-                                    alt=""
-                                    aria-hidden="true"
-                                />
-                            </a>
-                            <h5>Travlog</h5>
-                        </div>
-                        <p class="footer__description">
-                            Contrary to popular belief, Lorem Ipsum is not
-                            simply random text. It has roots in a piece of
-                            classical Latin literature from 45 BC.
-                        </p>
-                        <div class="footer__icons">
-                            <a
-                                href="www.facebook.com/Travlog"
-                                aria-label="Travlog facebook link"
-                            >
-                                <span
-                                    class="icon-facebook footer__icons--primary"
-                                    aria-hidden="true"
-                                ></span>
-                            </a>
-                            <a
-                                href="www.x.com/Travlog"
-                                aria-label="Travlog twitter link"
-                            >
-                                <span
-                                    class="icon-twitter footer__icons--primary"
-                                    aria-hidden="true"
-                                ></span>
-                            </a>
-                            <a
-                                href="www.instagram.com/Travlog"
-                                aria-label="Travlog instagram link"
-                            >
-                                <span
-                                    class="icon-instagram footer__icons--primary"
-                                    aria-hidden="true"
-                                ></span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="footer__menu">
-                        <div class="footer__menu-group-wrapper">
-                            <div class="footer__menu-group">
-                                <div class="footer__row">
-                                    <h6 class="footer__menu-heading">
-                                        Company
-                                    </h6>
-                                    <button
-                                        class="button button--icon-only footer__button"
-                                        data-target="section-1"
-                                        aria-expanded="false"
-                                        aria-label="Open Company Menu"
-                                        data-label="Company Menu"
-                                    >
-                                        <span
-                                            class="icon-arrow-circle-down footer__menu-icon"
-                                            aria-hidden="true"
-                                        ></span>
-                                    </button>
-                                </div>
-                                <nav
-                                    class="footer__content"
-                                    data-section="section-1"
-                                >
-                                    <ul class="footer__list" role="list">
-                                        <li
-                                            class="footer__list-item text-body-md"
-                                        >
-                                            <a href="#">About</a>
-                                        </li>
-                                        <li
-                                            class="footer__list-item text-body-md"
-                                        >
-                                            <a href="#">Career</a>
-                                        </li>
-                                        <li
-                                            class="footer__list-item text-body-md"
-                                        >
-                                            <a href="#">Mobile</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                        <div class="footer__menu-group-wrapper">
-                            <div class="footer__menu-group">
-                                <div class="footer__row">
-                                    <h6 class="footer__menu-heading">
-                                        Contact
-                                    </h6>
-                                    <button
-                                        class="button button--icon-only footer__button"
-                                        data-target="section-2"
-                                        aria-expanded="false"
-                                        aria-label="Open Contact Menu"
-                                        data-label="Contact Menu"
-                                    >
-                                        <span
-                                            class="icon-arrow-circle-down footer__menu-icon"
-                                            aria-hidden="true"
-                                        ></span>
-                                    </button>
-                                </div>
-                                <nav
-                                    class="footer__content"
-                                    data-section="section-2"
-                                >
-                                    <ul class="footer__list" role="list">
-                                        <li
-                                            class="footer__list-item text-body-md"
-                                        >
-                                            <a href="#">Why Travlog?</a>
-                                        </li>
-                                        <li
-                                            class="footer__list-item text-body-md"
-                                        >
-                                            <a href="#">Partner with us</a>
-                                        </li>
-                                        <li
-                                            class="footer__list-item text-body-md"
-                                        >
-                                            <a href="#">FAQ's</a>
-                                        </li>
-                                        <li
-                                            class="footer__list-item text-body-md"
-                                        >
-                                            <a href="#">Blog</a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                        <div class="footer__menu-group-wrapper">
-                            <div class="footer__menu-group">
-                                <div class="footer__row">
-                                    <h6 class="footer__menu-heading">
-                                        Meet Us
-                                    </h6>
-                                    <button
-                                        class="button button--icon-only footer__button"
-                                        data-target="section-3"
-                                        aria-expanded="false"
-                                        aria-label="Open Meet Us Menu"
-                                        data-label="Meet Us Menu"
-                                    >
-                                        <span
-                                            class="icon-arrow-circle-down footer__menu-icon"
-                                            aria-hidden="true"
-                                        ></span>
-                                    </button>
-                                </div>
-                                <nav
-                                    class="footer__content"
-                                    data-section="section-3"
-                                >
-                                    <ul class="footer__list" role="list">
-                                        <li
-                                            class="footer__list-item text-body-md"
-                                        >
-                                            <a
-                                                href="#"
-                                                aria-label="tel +00 92 1234 56789"
-                                                >+00 92 1234 56789</a
-                                            >
-                                        </li>
-                                        <li
-                                            class="footer__list-item text-body-md"
-                                        >
-                                            <a
-                                                href="#"
-                                                aria-label="email info@travlog.com"
-                                                >info@travlog.com</a
-                                            >
-                                        </li>
-                                        <li
-                                            class="footer__list-item text-body-md"
-                                        >
-                                            <a
-                                                href="#"
-                                                style="gap: 8px"
-                                                aria-label="address 205. R Street, New York BD23200"
-                                                >205. R Street, New York
-                                                BD23200</a
-                                            >
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <div class="mask" hidden></div>
-        <aside class="drawer nav-drawer" inert>
-            <div class="drawer__header">
-                <button class="button drawer__cross">
-                    <span class="icon-X drawer__icon"></span>
-                </button>
-            </div>
-            <nav class="drawer__nav" aria-label="Primary">
-                <ul class="drawer__list">
-                    <li class="drawer__item">
-                        <a class="drawer__link" href="#hero">Home</a>
-                    </li>
-                    <li class="drawer__item">
-                        <a class="drawer__link" href="#discover">Discover</a>
-                    </li>
-                    <li class="drawer__item">
-                        <a class="drawer__link" href="#special-deals"
-                            >Special Deals</a
-                        >
-                    </li>
-                    <li class="drawer__item">
-                        <a class="drawer__link" href="#contact">Contact</a>
-                    </li>
-                </ul>
-
-                <div class="drawer__actions">
-                    <button class="button button__text button--outline">
-                        Log In
-                    </button>
-                    <button class="button button__text button--primary">
-                        Sign Up
+            </footer>
+            <div class="mask" hidden aria-hidden="true"></div>
+            <aside class="drawer nav-drawer" inert>
+                <div class="drawer__header">
+                    <button
+                        class="button drawer__cross"
+                        aria-label="Close Drawer Menu"
+                    >
+                        <span
+                            class="icon-X drawer__icon"
+                            aria-hidden="true"
+                        ></span>
                     </button>
                 </div>
-            </nav>
-        </aside>
+                <div class="drawer__body">
+                    <nav class="drawer__nav" aria-label="Drawer">
+                        <ul class="drawer__list">
+                            <li class="drawer__item">
+                                <a class="drawer__link" href="#hero">Home</a>
+                            </li>
+                            <li class="drawer__item">
+                                <a class="drawer__link" href="#discover"
+                                    >Discover</a
+                                >
+                            </li>
+                            <li class="drawer__item">
+                                <a class="drawer__link" href="#special-deals"
+                                    >Special Deals</a
+                                >
+                            </li>
+                            <li class="drawer__item">
+                                <a class="drawer__link" href="#contact"
+                                    >Contact</a
+                                >
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="drawer__actions">
+                        <button class="button button--outline">Log In</button>
+                        <button class="button button--primary">Sign Up</button>
+                    </div>
+                </div>
+            </aside>
+        </div>
         <script type="module" src="./src/script/index.js"></script>
     </body>
 </html>

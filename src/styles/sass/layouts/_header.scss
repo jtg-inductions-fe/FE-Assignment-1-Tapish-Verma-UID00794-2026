@@ -3,6 +3,7 @@
 @use '../abstracts/functions' as functions;
 
 .header {
+    width: 100%;
     &__wrapper {
         position: relative;
         width: 100%;

@@ -12,4 +12,9 @@
         border: 1px solid variables.$color-grey-extra-light;
         border-radius: variables.$radius-lg;
     }
+    &--title {
+        font-family: variables.$font-family-secondary;
+        color: variables.$color-grey-dark;
+        font-size: functions.rem(18px);
+    }
 }

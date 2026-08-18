@@ -124,3 +124,12 @@ data {
     color: variables.$color-grey-medium;
     letter-spacing: 0%;
 }
+
+.font-inter {
+    font-family: variables.$font-family-secondary;
+}
+
+.text-dark-sm {
+    color: variables.$color-grey-dark;
+    font-size: functions.rem(18px);
+}
