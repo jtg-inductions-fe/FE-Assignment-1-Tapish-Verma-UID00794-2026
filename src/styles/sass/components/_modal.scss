@@ -1,0 +1,32 @@
+@use '../abstracts/variables' as variables;
+@use '../abstracts/mixins' as mixins;
+@use '../abstracts/functions' as functions;
+
+.modal {
+    width: functions.rem(360px);
+    height: auto;
+    min-height: 300px;
+    position: fixed;
+    z-index: variables.$z-index-behind;
+    opacity: variables.$opacity-transparent;
+    background-color: variables.$color-white;
+    padding: variables.$space-md;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: variables.$radius-md variables.$radius-md 0 0;
+
+    @include mixins.flex(column, space-between, center, functions.rem(20px));
+
+    &--active {
+        z-index: variables.$z-index-modal;
+        opacity: variables.$opacity-opaque;
+    }
+
+    @include mixins.responsive-screen(sm) {
+        bottom: none;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: variables.$radius-md;
+    }
+}

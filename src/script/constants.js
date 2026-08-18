@@ -5,3 +5,4 @@ export const breakpoints = {
 };
 
 export const RESIZE_DEBOUNCE_DELAY = 400;
+export const NO_SCROLL_CLASS = 'no-scroll';
