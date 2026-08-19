@@ -626,8 +626,10 @@
                             >Special Deals</span
                         >
                     </span>
-                    <h4 class="modal__header-heading">Spin & Win!</h4>
-                    <p>Tap the center of the wheel to spin</p>
+                    <h4 class="modal__header-sub-title">Spin & Win!</h4>
+                    <p class="modal__header-decription">
+                        Tap the center of the wheel to spin
+                    </p>
                 </header>
                 <div class="modal__body">
                     <div class="spinner">
@@ -638,7 +640,7 @@
                             <div
                                 class="spinner__inner-container spinner__inner-container--shadow"
                             >
-                                <div class="spinner__cell">
+                                <!-- <div class="spinner__cell">
                                     <span
                                         class="spinner__cell-text text-sm text-sm--white"
                                         >20% off Flights</span
@@ -661,18 +663,34 @@
                                         class="spinner__cell-text text-sm text-sm--dark"
                                         >VIP Lounge Access</span
                                     >
-                                </div>
-                                <button class="spinner__button">Spin</button>
+                                </div> -->
+                                <!-- <button class="spinner__button">Spin</button> -->
                             </div>
+                            <!-- <button class="spinner__button">Spin</button> -->
                         </div>
                     </div>
-                    <button
+                    <div class="spinner__result"></div>
+                    <!-- <div class="spinner__deal">
+                        <div class="spinner__deal-left-section">
+                            <span class="spinner__deal-label text-medium-bold-sm">20% Off Flights</span>
+                            <span class="spinner__deal-expiry text-light-sm text-light-sm--purple">Expires in 7d</span>
+                        </div>
+                        <div class="spinner__deal-right-section">
+                            <span class="spinner__deal-tag text-roboto">FLY20-ABCD</span>
+                            <button class="button button--icon-only spinner__deal-button">
+                                <span class="icon-Copy spinner__copy"></span>
+                            </button>
+                            
+                        </div>
+                    </div> -->
+                    <!-- <button
                         class="button button--outline modal__button font-figtree"
                     >
                         <span>View Unlocked Deals</span>
                         <span class="modal__count-badge">2</span>
-                    </button>
+                    </button> -->
                 </div>
+                <footer class="modal__footer"></footer>
             </div>
         </div>
         <script type="module" src="./src/script/index.js"></script>

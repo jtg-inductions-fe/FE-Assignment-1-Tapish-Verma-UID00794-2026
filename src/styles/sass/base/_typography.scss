@@ -122,6 +122,24 @@ data {
     }
 }
 
+.text-medium-bold-sm {
+    font-weight: variables.$font-weight-medium-bold;
+    font-size: functions.rem(14px);
+    line-height: 100%;
+    color: variables.$color-midnight;
+}
+
+.text-light-sm {
+    font-weight: variables.$font-weight-light;
+    font-size: functions.rem(12px);
+    line-height: 100%;
+    color: variables.$color-nobel;
+
+    &--purple {
+        color: variables.$color-purple-dark;
+    }
+}
+
 .text-dark-bold-lg {
     font-size: functions.rem(28px);
     font-weight: variables.$font-weight-bold;
@@ -143,6 +161,12 @@ data {
 }
 .font-roboto {
     font-family: variables.$font-family-roboto;
+}
+.text-bold-sm {
+    line-height: 100%;
+    font-size: functions.rem(12px);
+    font-weight: variables.$font-weight-bold;
+    color: variables.$color-black;
 }
 .font-figtree {
     font-family: variables.$font-family-figtree;

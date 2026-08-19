@@ -6,7 +6,7 @@ import {
     addMask,
     removeMask,
 } from './utilities';
-import { renderSpecialDeals } from './specialDeals';
+import { renderSpecialDealsModal } from './specialDeals';
 
 const hamburgerButtons = document.getElementsByClassName('header__hamburger');
 const mask = document.querySelector('.mask');
@@ -81,7 +81,7 @@ drawer.addEventListener('click', (event) => {
     if (shouldClose) {
         closeDrawer();
         if (isSpecialDeals) {
-            renderSpecialDeals();
+            renderSpecialDealsModal();
         }
     }
 });

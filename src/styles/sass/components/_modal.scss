@@ -25,6 +25,11 @@
         @include mixins.flex(column, space-between, center, functions.rem(8px));
     }
 
+    &__footer {
+        width: 100%;
+        height: auto;
+    }
+
     &__header-icon {
         font-size: functions.rem(16px);
     }
@@ -81,6 +86,10 @@
     position: relative;
     padding-top: functions.rem(9px);
 
+    &--inactive {
+        display: none;
+    }
+
     &__marker {
         position: absolute;
         top: 0;
@@ -94,13 +103,13 @@
     }
 
     &__outer-container {
+        position: relative;
         width: functions.rem(227px);
         height: functions.rem(227px);
         background-color: inherit;
     }
 
     &__inner-container {
-        position: relative;
         width: 100%;
         height: 100%;
         border-radius: variables.$radius-round;
@@ -166,15 +175,87 @@
 
     &__button {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        top: 40%;
+        left: 40%;
         background-color: variables.$color-white;
         color: variables.$color-red;
         border: 3px solid variables.$color-red;
         border-radius: variables.$radius-round;
         padding-block: variables.$space-xxs;
+        padding-inline: functions.rem(4px);
         box-shadow: 0px 2px 14px 0px #f4436c59;
         z-index: variables.$z-index-icon;
+    }
+
+    &__result {
+        width: 100%;
+        height: auto;
+        display: none;
+
+        &--active {
+            @include mixins.flex(
+                column,
+                space-between,
+                center,
+                functions.rem(8px)
+            );
+        }
+    }
+
+    &__deal {
+        width: 100%;
+        padding: variables.$space-xs;
+        border: 1px solid #f4436c33;
+        background: linear-gradient(
+            90deg,
+            rgba(244, 67, 108, 0.05) 0%,
+            rgba(124, 58, 237, 0.05) 100%
+        );
+        border-radius: variables.$radius-sm;
+
+        &--expired {
+            background: #eeeeee;
+            border: 1px solid #00000033;
+        }
+
+        @include mixins.flex(row, space-between, flex-start, 0);
+    }
+
+    &__deal-left-section {
+        @include mixins.flex(
+            column,
+            space-between,
+            flex-start,
+            functions.rem(8px)
+        );
+    }
+
+    &__deal-right-section {
+        @include mixins.flex(
+            row,
+            space-between,
+            flex-start,
+            functions.rem(8px)
+        );
+    }
+
+    &__deal-tag {
+        border: 1px solid #e5e7eb;
+        background: #ffffff;
+        padding: functions.rem(4px) functions.rem(10px);
+        border-radius: 8px;
+        letter-spacing: 5%;
+    }
+
+    &__deal-button {
+        padding: 0px;
+    }
+
+    &__copy {
+        color: variables.$color-grey-medium-light;
+        font-size: functions.rem(20px);
+        &--active {
+            color: variables.$color-red;
+        }
     }
 }
