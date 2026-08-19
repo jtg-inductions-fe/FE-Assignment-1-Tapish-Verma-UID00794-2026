@@ -618,7 +618,61 @@
                 </div>
             </aside>
             <div class="modal" inert>
-                <header></header>
+                <header class="modal__header">
+                    <span class="icon-X modal__cross"></span>
+                    <span>
+                        <span class="icon-Gift modal__header-icon"></span>
+                        <span class="eyebrow text-uppercase"
+                            >Special Deals</span
+                        >
+                    </span>
+                    <h4 class="modal__header-heading">Spin & Win!</h4>
+                    <p>Tap the center of the wheel to spin</p>
+                </header>
+                <div class="modal__body">
+                    <div class="spinner">
+                        <span
+                            class="icon-triangle spinner__marker spinner__marker--active"
+                        ></span>
+                        <div class="spinner__outer-container">
+                            <div
+                                class="spinner__inner-container spinner__inner-container--shadow"
+                            >
+                                <div class="spinner__cell">
+                                    <span
+                                        class="spinner__cell-text text-sm text-sm--white"
+                                        >20% off Flights</span
+                                    >
+                                </div>
+                                <div class="spinner__cell">
+                                    <span
+                                        class="spinner__cell-text text-sm text-sm--white"
+                                        >Free Hotel Nights</span
+                                    >
+                                </div>
+                                <div class="spinner__cell">
+                                    <span
+                                        class="spinner__cell-text text-sm text-sm--white"
+                                        >10% off Packages</span
+                                    >
+                                </div>
+                                <div class="spinner__cell">
+                                    <span
+                                        class="spinner__cell-text text-sm text-sm--dark"
+                                        >VIP Lounge Access</span
+                                    >
+                                </div>
+                                <button class="spinner__button">Spin</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button
+                        class="button button--outline modal__button font-figtree"
+                    >
+                        <span>View Unlocked Deals</span>
+                        <span class="modal__count-badge">2</span>
+                    </button>
+                </div>
             </div>
         </div>
         <script type="module" src="./src/script/index.js"></script>

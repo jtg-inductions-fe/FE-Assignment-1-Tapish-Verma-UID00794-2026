@@ -38,11 +38,11 @@ swipperWrapper.innerHTML = testimonialData
 
                     <div class="testimonial-card__content">
                         <div class="testimonial-card__author">
-                            <span class="text-dark-bold text-orange">
+                            <span class="text-dark-bold-lg text-orange">
                                 ${authorName}
                             </span>
-                            <span class="text-dark-bold testimonial-card__slash">/ </span>
-                            <span class="text-dark-bold">${authorDesignation}</span>
+                            <span class="text-dark-bold-lg testimonial-card__slash">/ </span>
+                            <span class="text-dark-bold-lg">${authorDesignation}</span>
                         </div>
 
                         <div

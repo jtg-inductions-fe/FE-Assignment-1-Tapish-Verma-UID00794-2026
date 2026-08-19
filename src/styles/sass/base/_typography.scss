@@ -51,10 +51,10 @@ h3 {
 }
 
 h4 {
-    font-size: functions.rem(28px);
+    font-size: functions.rem(20px);
     font-weight: variables.$font-weight-bold;
-    line-height: variables.$primary-spacing;
-    color: variables.$color-grey-light;
+    line-height: 100%;
+    color: variables.$color-gray-dark;
 }
 
 h5 {
@@ -108,8 +108,21 @@ data {
         font-size: functions.rem(23px);
     }
 }
+.text-sm {
+    font-size: functions.rem(12px);
+    line-height: 100%;
+    font-weight: variables.$font-weight-bold;
 
-.text-dark-bold {
+    &--white {
+        color: variables.$color-white;
+    }
+
+    &--dark {
+        color: variables.$color-black;
+    }
+}
+
+.text-dark-bold-lg {
     font-size: functions.rem(28px);
     font-weight: variables.$font-weight-bold;
     line-height: variables.$primary-spacing;
@@ -127,6 +140,12 @@ data {
 
 .font-inter {
     font-family: variables.$font-family-secondary;
+}
+.font-roboto {
+    font-family: variables.$font-family-roboto;
+}
+.font-figtree {
+    font-family: variables.$font-family-figtree;
 }
 
 .text-dark-sm {

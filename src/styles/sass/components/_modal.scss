@@ -3,11 +3,12 @@
 @use '../abstracts/functions' as functions;
 
 .modal {
+    display: none;
     width: functions.rem(360px);
     height: auto;
     min-height: 300px;
     position: fixed;
-    z-index: variables.$z-index-behind;
+    z-index: variables.$z-index-modal;
     opacity: variables.$opacity-transparent;
     background-color: variables.$color-white;
     padding: variables.$space-md;
@@ -15,18 +16,165 @@
     left: 50%;
     transform: translateX(-50%);
     border-radius: variables.$radius-md variables.$radius-md 0 0;
+    font-family: variables.$font-family-secondary;
 
-    @include mixins.flex(column, space-between, center, functions.rem(20px));
+    &__header {
+        width: 100%;
+        height: auto;
+        position: relative;
+        @include mixins.flex(column, space-between, center, functions.rem(8px));
+    }
+
+    &__header-icon {
+        font-size: functions.rem(16px);
+    }
+
+    &__cross {
+        position: absolute;
+        font-size: functions.rem(20px);
+        top: functions.rem(-8px);
+        right: 0;
+    }
+
+    &__body {
+        width: 100%;
+        flex: 1;
+        @include mixins.flex(
+            column,
+            space-between,
+            center,
+            functions.rem(20px)
+        );
+    }
+
+    &__count-badge {
+        background-color: variables.$color-purple;
+        color: variables.$color-white;
+        padding: functions.rem(2px) functions.rem(8px);
+        border-radius: variables.$radius-round;
+    }
 
     &--active {
-        z-index: variables.$z-index-modal;
+        // z-index: variables.$z-index-modal;
         opacity: variables.$opacity-opaque;
+        @include mixins.flex(
+            column,
+            space-between,
+            center,
+            functions.rem(20px)
+        );
+    }
+
+    &__button {
+        width: 100%;
+        gap: variables.$space-xxs;
     }
 
     @include mixins.responsive-screen(sm) {
-        bottom: none;
         top: 50%;
         transform: translate(-50%, -50%);
         border-radius: variables.$radius-md;
+    }
+}
+
+.spinner {
+    position: relative;
+    padding-top: functions.rem(9px);
+
+    &__marker {
+        position: absolute;
+        top: 0;
+        left: 46.5%;
+        font-size: functions.rem(13px);
+        color: variables.$color-grey-medium-light;
+        z-index: variables.$z-index-icon;
+        &--active {
+            color: variables.$color-red;
+        }
+    }
+
+    &__outer-container {
+        width: functions.rem(227px);
+        height: functions.rem(227px);
+        background-color: inherit;
+    }
+
+    &__inner-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        border-radius: variables.$radius-round;
+        @include mixins.flex(row, center, center, 0);
+        flex-wrap: wrap;
+
+        &--loading {
+            background-color: variables.$color-light;
+        }
+
+        &--shadow {
+            box-shadow: variables.$box-shadow-md;
+        }
+    }
+
+    &__cell {
+        width: 50%;
+        height: 50%;
+        border: 4px solid variables.$color-white;
+        @include mixins.flex;
+
+        &:nth-child(1) {
+            background-color: variables.$color-red;
+            border-top-left-radius: 100%;
+            border-right: 2px solid variables.$color-white;
+            border-bottom: 2px solid variables.$color-white;
+            span {
+                transform: rotate(-45deg);
+            }
+        }
+        &:nth-child(2) {
+            background-color: variables.$color-purple-dark;
+            border-top-right-radius: 100%;
+            border-left: 2px solid variables.$color-white;
+            border-bottom: 2px solid variables.$color-white;
+            span {
+                transform: rotate(45deg);
+            }
+        }
+        &:nth-child(3) {
+            background-color: variables.$color-aqua;
+            border-bottom-left-radius: 100%;
+            border-top: 2px solid variables.$color-white;
+            border-right: 2px solid variables.$color-white;
+            span {
+                transform: rotate(-135deg);
+            }
+        }
+        &:nth-child(4) {
+            background-color: variables.$color-mustard;
+            border-bottom-right-radius: 100%;
+            border-top: 2px solid variables.$color-white;
+            border-left: 2px solid variables.$color-white;
+            span {
+                transform: rotate(135deg);
+            }
+        }
+    }
+
+    &__cell-text {
+        display: inline-block;
+    }
+
+    &__button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: variables.$color-white;
+        color: variables.$color-red;
+        border: 3px solid variables.$color-red;
+        border-radius: variables.$radius-round;
+        padding-block: variables.$space-xxs;
+        box-shadow: 0px 2px 14px 0px #f4436c59;
+        z-index: variables.$z-index-icon;
     }
 }

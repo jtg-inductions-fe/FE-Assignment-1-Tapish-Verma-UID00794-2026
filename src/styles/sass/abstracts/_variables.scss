@@ -6,14 +6,22 @@ $color-light: #eeeeee;
 $color-dark: #222831;
 $color-grey-dark: #191825;
 $color-grey-medium: #191825bf;
+$color-grey-medium-light: #aaa;
 $color-grey-light: #19182580;
 $color-grey-extra-light: #1918251a;
 $color-grey-thin: #1918250d;
+$color-gray-dark: #111827;
 $color-pink: #f85e9f;
 $color-black: #000;
 $color-orange: #ff5722;
 $color-white: #fff;
 $color-purple: #5d50c6;
+
+// spin wheel colors
+$color-red: #f4436c;
+$color-purple-dark: #7c3aed;
+$color-mustard: #fbbf24;
+$color-aqua: #06b6d4;
 
 // Breakpoints
 /// @type number
@@ -36,6 +44,8 @@ $breakpoints: (
 /// @type string
 $font-family-primary: 'Circular Std', sans-serif;
 $font-family-secondary: 'Inter', sans-serif;
+$font-family-roboto: 'Roboto Mono', sans-serif;
+$font-family-figtree: 'Figtree', sans-serif;
 
 // font weights
 ///@type number
@@ -99,4 +109,5 @@ $transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
 
 //box-shadow
 $box-shadow-sm: 0 8px 20px 0 #00000014;
+$box-shadow-md: 0px 0px 50px 7px #00000040;
 $box-shadow-lg: 0px 12px 20px 0px #0000001a;

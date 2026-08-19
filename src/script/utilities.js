@@ -53,3 +53,15 @@ export const removeMask = (removeDesktopVersion = true) => {
     }
     mask.hidden = true;
 };
+
+export const getRandomElements = (arr, num = 2) => {
+    const result = [...arr];
+    const count = Math.min(num, result.length);
+
+    for (let i = 0; i < count; i++) {
+        const randomIndex = i + Math.floor(Math.random() * (result.length - i));
+        [result[i], result[randomIndex]] = [result[randomIndex], result[i]];
+    }
+
+    return result.slice(0, count);
+};
