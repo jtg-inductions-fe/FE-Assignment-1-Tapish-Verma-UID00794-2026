@@ -5,8 +5,7 @@
 .modal {
     display: none;
     width: functions.rem(360px);
-    height: auto;
-    min-height: 300px;
+    height: fit-content;
     position: fixed;
     z-index: variables.$z-index-modal;
     opacity: variables.$opacity-transparent;
@@ -42,6 +41,10 @@
         > span {
             font-size: functions.rem(20px);
         }
+    }
+
+    &__title {
+        font-size: functions.rem(12px);
     }
 
     &__body {

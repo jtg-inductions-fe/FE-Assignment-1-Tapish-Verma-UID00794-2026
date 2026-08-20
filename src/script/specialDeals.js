@@ -17,6 +17,7 @@ import {
     STOP_THRESHOLD,
     SEGMENTS,
     COMPLETE_ANGLE,
+    QUATER_ANGLE,
     BORDER_EPSILON,
 } from './constants';
 
@@ -292,7 +293,7 @@ const handleSpinWheel = async (selectedDeals) => {
             spinnerOuterContainer.style.transform = `rotate(${rotation}deg)`;
             requestAnimationFrame(tick);
         } else {
-            if (rotation % 90 === 0) {
+            if (rotation % QUATER_ANGLE === 0) {
                 rotation += BORDER_EPSILON;
                 spinnerOuterContainer.style.transform = `rotate(${rotation}deg)`;
             }

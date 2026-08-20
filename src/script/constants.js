@@ -13,6 +13,7 @@ export const MODAL_TYPE_SPIN_AND_WIN = 'SPIN_AND_WIN';
 export const WHELL_SIDE = 227;
 export const DECAY = 0.985;
 export const COMPLETE_ANGLE = 360;
+export const QUATER_ANGLE = 90;
 export const STOP_THRESHOLD = 0.05;
 
 export const SEGMENTS = [
