@@ -16,11 +16,12 @@ export const COMPLETE_ANGLE = 360;
 export const STOP_THRESHOLD = 0.05;
 
 export const SEGMENTS = [
-    { min: 0, max: 90 },
-    { min: 90, max: 180 },
-    { min: 180, max: 270 },
-    { min: 270, max: 360 },
+    { min: 270, max: 360 }, // idx 0 → cell 1, top-left (red)
+    { min: 0, max: 90 }, // idx 1 → cell 2, top-right (purple)
+    { min: 180, max: 270 }, // idx 2 → cell 3, bottom-left (aqua)
+    { min: 90, max: 180 }, // idx 3 → cell 4, bottom-right (mustard)
 ];
+export const BORDER_EPSILON = 0.5;
 
 export const API_ENDPOINT =
     'https://gist.githubusercontent.com/ameer-wajid-ali/1f29ebee4295cede36f8d74b45e576df/raw/122966c9a123861249f173911d8d93a76dc06d7a/';

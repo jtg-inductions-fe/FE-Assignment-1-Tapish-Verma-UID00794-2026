@@ -17,6 +17,7 @@ import {
     STOP_THRESHOLD,
     SEGMENTS,
     COMPLETE_ANGLE,
+    BORDER_EPSILON,
 } from './constants';
 
 const triggerPoint = document.getElementById('special-deals');
@@ -197,14 +198,25 @@ const renderUnlockedDeals = () => {
     unlockedDealsButton.addEventListener('click', modalHandler.prevModal);
 };
 
-const handleSpinWin = (winner) => {
-    const spinnerResultSectionLength = spinnerResultSection.innerHTML.length;
-    if (spinnerResultSectionLength === 0) {
+function updateResultSectionSpan(status = 'won') {
+    let firstChild = spinnerResultSection.firstElementChild;
+    spinnerResultSection.classList.add('spinner__result--active');
+    if (!(firstChild && firstChild.tagName === 'SPAN')) {
         spinnerResultSection.insertAdjacentHTML(
-            'beforeend',
-            `<span class="text-bold-sm" >You Won!</span>`,
+            'afterbegin',
+            `<span class="text-bold-sm result__status" ></span>`,
         );
+        firstChild = spinnerResultSection.querySelector('.result__status');
     }
+    if (status === 'won') {
+        firstChild.textContent = 'You Won!';
+    } else if (status === 're-spin') {
+        firstChild.textContent = 'Please Spin Again!';
+    }
+}
+
+const handleSpinWin = (winner) => {
+    updateResultSectionSpan('won');
 
     spinnerResultSection.insertAdjacentHTML(
         'beforeend',
@@ -250,7 +262,7 @@ const handleSpinWheel = async (selectedDeals) => {
         modalHandler.setSpinStatus(true);
     }
 
-    function finishSpin() {
+    async function finishSpin() {
         const normalized = rotation % COMPLETE_ANGLE;
         const pointerAngle = (COMPLETE_ANGLE - normalized) % COMPLETE_ANGLE;
 
@@ -263,6 +275,14 @@ const handleSpinWheel = async (selectedDeals) => {
             (s) => pointerAngle >= s.min && pointerAngle < s.max,
         );
         handleSpinWin(winner);
+
+        // Disable the spin button of spinner
+        const validDeals = await getValidLockedDeals();
+        if (validDeals.length < 4) {
+            const spinnerButton =
+                spinnerOuterContainer.querySelector('.spinner__button');
+            spinnerButton.disabled = true;
+        }
     }
 
     function tick() {
@@ -272,6 +292,10 @@ const handleSpinWheel = async (selectedDeals) => {
             spinnerOuterContainer.style.transform = `rotate(${rotation}deg)`;
             requestAnimationFrame(tick);
         } else {
+            if (rotation % 90 === 0) {
+                rotation += BORDER_EPSILON;
+                spinnerOuterContainer.style.transform = `rotate(${rotation}deg)`;
+            }
             finishSpin();
         }
     }
@@ -299,6 +323,28 @@ function addUnlockedDealsButton() {
     unlockedDealsButton.addEventListener('click', modalHandler.nextModal);
 }
 
+async function getValidLockedDeals() {
+    let specialDeals = getFromStorage(SPECIAL_DEALS_LABEL, []);
+    if (specialDeals.length === 0) {
+        spinnerInnerContainer.innerHTML = `<div>Loading</div>`;
+        specialDeals = await fetchSpecialDeals();
+        if (specialDeals.length === 0) {
+            spinnerInnerContainer.innerHTML = `<div>NO Special Deals</div>`;
+            return;
+        }
+    }
+
+    // Render Special Deals
+    const ValidDeals = specialDeals.filter((deal) => deal?.validFor !== null);
+    const userWonDeals = getFromStorage(USER_WON_DEALS, []);
+    const promoCodeList = userWonDeals.map((deal) => deal.promoCode);
+    const remainingDeals = ValidDeals.filter(
+        (deal) => !promoCodeList.includes(deal?.promoCode),
+    );
+
+    return remainingDeals;
+}
+
 async function getFilteredSpecialDeals(dealsFromState = []) {
     // rotate the outer container back to 0 degree
     spinnerOuterContainer.style.transform = 'rotate(0deg)';
@@ -320,23 +366,7 @@ async function getFilteredSpecialDeals(dealsFromState = []) {
         return dealsFromState;
     }
 
-    let specialDeals = getFromStorage(SPECIAL_DEALS_LABEL, []);
-    if (specialDeals.length === 0) {
-        spinnerInnerContainer.innerHTML = `<div>Loading</div>`;
-        specialDeals = await fetchSpecialDeals();
-        if (specialDeals.length === 0) {
-            spinnerInnerContainer.innerHTML = `<div>NO Special Deals</div>`;
-            return;
-        }
-    }
-
-    // Render Special Deals
-    const ValidDeals = specialDeals.filter((deal) => deal?.validFor !== null);
-    const userWonDeals = getFromStorage(USER_WON_DEALS, []);
-    const promoCodeList = userWonDeals.map((deal) => deal.promoCode);
-    const remainingDeals = ValidDeals.filter(
-        (deal) => !promoCodeList.includes(deal?.promoCode),
-    );
+    const remainingDeals = await getValidLockedDeals();
     const selectedDeals = getRandomElements(remainingDeals, 4);
 
     spinnerInnerContainer.innerHTML = selectedDeals
@@ -352,6 +382,14 @@ async function getFilteredSpecialDeals(dealsFromState = []) {
             `,
         )
         .join('');
+
+    if (remainingDeals.length >= 4) {
+        const spinnerButton =
+            spinnerOuterContainer.querySelector('.spinner__button');
+        if (spinnerButton) {
+            spinnerButton.disabled = false;
+        }
+    }
 
     return selectedDeals;
 }
