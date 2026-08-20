@@ -212,13 +212,12 @@
             rgba(124, 58, 237, 0.05) 100%
         );
         border-radius: variables.$radius-sm;
+        @include mixins.flex(row, space-between, flex-start, 0);
 
         &--expired {
             background: #eeeeee;
             border: 1px solid #00000033;
         }
-
-        @include mixins.flex(row, space-between, flex-start, 0);
     }
 
     &__deal-left-section {

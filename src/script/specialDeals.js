@@ -53,6 +53,7 @@ const _modalHandler = () => {
         currentActiveModalIdx: 0,
         selectedDeals: [],
         isFirstSpinDone: false,
+        spinnerButtonFunctionReference: null,
     };
 
     const renderRelevantModal = () => {
@@ -100,6 +101,14 @@ const _modalHandler = () => {
     const getSpinStatus = () => modalMetaData.isFirstSpinDone;
     const setSpinStatus = (val) => (modalMetaData.isFirstSpinDone = val);
 
+    const setSpinnerButtonFunctionReferrence = (fn) => {
+        modalMetaData.spinnerButtonFunctionReference = fn;
+    };
+
+    const getSpinnerButtonFunctionReferrence = () => {
+        return modalMetaData.spinnerButtonFunctionReference;
+    };
+
     return {
         nextModal,
         prevModal,
@@ -109,6 +118,8 @@ const _modalHandler = () => {
         setSelectedDeals,
         getSpinStatus,
         setSpinStatus,
+        setSpinnerButtonFunctionReferrence,
+        getSpinnerButtonFunctionReferrence,
     };
 };
 
@@ -132,6 +143,10 @@ const renderUnlockedDeals = () => {
     // clear eventlistener on unlocked button
     const unlockedDealsButton = document.querySelector('.modal__button');
     unlockedDealsButton.removeEventListener('click', modalHandler.nextModal);
+
+    //Clear and disables result section
+    spinnerResultSection.innerHTML = '';
+    spinnerResultSection.classList.remove('spinner__result--active');
 
     //Render Header
     renderModalHeader(MODAL_TYPE_UNLOCKED_DEALS);
@@ -270,23 +285,24 @@ function addUnlockedDealsButton() {
     if (userWonDeals.length === 0) {
         return;
     }
-    if (unlockedDealsButton) {
-        unlockedDealsButton.innerHTML = `<span>View Unlocked Deals</span> <span class="modal__count-badge">${userWonDeals.length}</span>`;
-        return;
+    if (!unlockedDealsButton) {
+        unlockedDealsButton = document.createElement('button');
+        unlockedDealsButton.classList.add(
+            'button',
+            'button--outline',
+            'modal__button',
+            'font-figtree',
+        );
+        modalFooter.appendChild(unlockedDealsButton);
     }
-    unlockedDealsButton = document.createElement('button');
-    unlockedDealsButton.classList.add(
-        'button',
-        'button--outline',
-        'modal__button',
-        'font-figtree',
-    );
     unlockedDealsButton.innerHTML = `<span>View Unlocked Deals</span> <span class="modal__count-badge">${userWonDeals.length}</span>`;
     unlockedDealsButton.addEventListener('click', modalHandler.nextModal);
-    modalFooter.appendChild(unlockedDealsButton);
 }
 
 async function getFilteredSpecialDeals(dealsFromState = []) {
+    // rotate the outer container back to 0 degree
+    spinnerOuterContainer.style.transform = 'rotate(0deg)';
+
     if (dealsFromState.length > 0) {
         spinnerInnerContainer.innerHTML = dealsFromState
             .map(
@@ -350,6 +366,11 @@ const renderSpecialDeals = async () => {
         );
     }
 
+    //clear modalBody previously rendered deals (won or unlocked deals)
+    document
+        .querySelectorAll('.modal__body .spinner__deal')
+        .forEach((el) => el.remove());
+
     //Render Header
     renderModalHeader(MODAL_TYPE_SPIN_AND_WIN);
 
@@ -358,14 +379,22 @@ const renderSpecialDeals = async () => {
     const dealsFromState = modalHandler.getSelectedDeals();
     const selectedDeals = await getFilteredSpecialDeals(dealsFromState);
 
-    spinnerOuterContainer.insertAdjacentHTML(
-        'beforeend',
-        `<button class="spinner__button">Spin</button>`,
-    );
-    const spinnerButton = document.querySelector('.spinner__button');
-    spinnerButton.addEventListener('click', () =>
-        handleSpinWheel(selectedDeals),
-    );
+    if (modalHandler.getSpinnerButtonFunctionReferrence() === null) {
+        let spinnerButton =
+            spinnerOuterContainer.querySelector('.spinner__button');
+        if (!spinnerButton) {
+            spinnerOuterContainer.insertAdjacentHTML(
+                'beforeend',
+                `<button class="spinner__button">Spin</button>`,
+            );
+            spinnerButton =
+                spinnerOuterContainer.querySelector('.spinner__button');
+        }
+        const handleSpinWheelWrapper = () => handleSpinWheel(selectedDeals);
+        spinnerButton.addEventListener('click', handleSpinWheelWrapper);
+        modalHandler.setSpinnerButtonFunctionReferrence(handleSpinWheelWrapper);
+    }
+
     addUnlockedDealsButton();
 };
 
@@ -384,9 +413,17 @@ const closeModal = () => {
         unlockScroll();
         specialDealsModal.classList.remove('modal--active');
         specialDealsModal.inert = true;
+        spinnerOuterContainer.style.transform = 'rotate(0deg)';
         modalHandler.setCurrentActiveModalIdx(0);
         modalHandler.setSelectedDeals([]);
         modalHandler.setSpinStatus(false);
+        const spinnerButton =
+            spinnerOuterContainer.querySelector('.spinner__button');
+        spinnerButton.removeEventListener(
+            'click',
+            modalHandler.getSpinnerButtonFunctionReferrence(),
+        );
+        modalHandler.setSpinnerButtonFunctionReferrence(null);
     }
 };
 
