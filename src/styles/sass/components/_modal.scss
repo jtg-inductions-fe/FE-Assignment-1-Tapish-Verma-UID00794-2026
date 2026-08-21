@@ -173,6 +173,10 @@
                 transform: rotate(135deg);
             }
         }
+
+        &--dummy {
+            opacity: 0.5;
+        }
     }
 
     &__cell-text {

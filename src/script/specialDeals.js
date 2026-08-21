@@ -56,8 +56,7 @@ const _modalHandler = () => {
         modalTypes: [MODAL_TYPE_SPIN_AND_WIN, MODAL_TYPE_UNLOCKED_DEALS],
         currentActiveModalIdx: 0,
         selectedDeals: [],
-        isFirstSpinDone: false,
-        spinnerButtonFunctionReference: null,
+        shouldInitializeWheel: true,
     };
 
     const renderRelevantModal = () => {
@@ -102,16 +101,8 @@ const _modalHandler = () => {
         modalMetaData.selectedDeals = [...deals];
     };
 
-    const getSpinStatus = () => modalMetaData.isFirstSpinDone;
-    const setSpinStatus = (val) => (modalMetaData.isFirstSpinDone = val);
-
-    const setSpinnerButtonFunctionReferrence = (fn) => {
-        modalMetaData.spinnerButtonFunctionReference = fn;
-    };
-
-    const getSpinnerButtonFunctionReferrence = () => {
-        return modalMetaData.spinnerButtonFunctionReference;
-    };
+    const getSpinStatus = () => modalMetaData.shouldInitializeWheel;
+    const setSpinStatus = (val) => (modalMetaData.shouldInitializeWheel = val);
 
     return {
         nextModal,
@@ -122,8 +113,6 @@ const _modalHandler = () => {
         setSelectedDeals,
         getSpinStatus,
         setSpinStatus,
-        setSpinnerButtonFunctionReferrence,
-        getSpinnerButtonFunctionReferrence,
     };
 };
 
@@ -213,6 +202,7 @@ function updateResultSectionSpan(status = 'won') {
     }
     if (status === 'won') {
         firstChild.textContent = 'You Won!';
+        modalHandler.setSpinStatus(true);
     } else if (status === 're-spin') {
         firstChild.textContent = 'Please Spin Again!';
     }
@@ -250,26 +240,27 @@ const handleSpinWin = (winner) => {
         },
     ]);
     addUnlockedDealsButton();
+    addFooterButtonListener(modalHandler.nextModal);
 };
 
-const handleSpinWheel = async (selectedDeals) => {
+const handleSpinWheel = async () => {
     let rotation = 0;
     let velocity = 0;
-    let _selectedDeals;
 
     if (modalHandler.getSpinStatus()) {
-        _selectedDeals = await getFilteredSpecialDeals();
-    } else {
-        _selectedDeals = selectedDeals;
-        modalHandler.setSelectedDeals([..._selectedDeals]);
-        modalHandler.setSpinStatus(true);
+        await renderSpinningWheel();
     }
+
+    // Disable the spinnerButton
+    const spinnerButton =
+        spinnerOuterContainer.querySelector('.spinner__button');
+    spinnerButton.disabled = true;
 
     async function finishSpin() {
         const normalized = rotation % COMPLETE_ANGLE;
         const pointerAngle = (COMPLETE_ANGLE - normalized) % COMPLETE_ANGLE;
-
-        const segments = _selectedDeals.map((deal, idx) => ({
+        const selectedDeals = modalHandler.getSelectedDeals();
+        const segments = selectedDeals.map((deal, idx) => ({
             ...deal,
             ...SEGMENTS[idx],
         }));
@@ -278,9 +269,9 @@ const handleSpinWheel = async (selectedDeals) => {
             (s) => pointerAngle >= s.min && pointerAngle < s.max,
         );
         handleSpinWin(winner);
-
+        spinnerButton.disabled = false;
         // Disable the spin button of spinner
-        const validDeals = await getValidLockedDeals();
+        const validDeals = getValidLockedDeals();
         if (validDeals.length < SEGMENTS_SIZE) {
             const spinnerButton =
                 spinnerOuterContainer.querySelector('.spinner__button');
@@ -306,6 +297,13 @@ const handleSpinWheel = async (selectedDeals) => {
     requestAnimationFrame(tick);
 };
 
+const addFooterButtonListener = (fn) => {
+    const footerButton = modalFooter.querySelector('.modal__button');
+    if (footerButton) {
+        footerButton.addEventListener('click', fn);
+    }
+};
+
 function addUnlockedDealsButton() {
     let unlockedDealsButton = document.querySelector('.modal__button');
     let userWonDeals = getFromStorage(USER_WON_DEALS, []);
@@ -323,100 +321,111 @@ function addUnlockedDealsButton() {
         modalFooter.appendChild(unlockedDealsButton);
     }
     unlockedDealsButton.innerHTML = `<span>View Unlocked Deals</span> <span class="modal__count-badge">${userWonDeals.length}</span>`;
-    unlockedDealsButton.addEventListener('click', modalHandler.nextModal);
 }
 
-async function getValidLockedDeals() {
+function getValidLockedDeals() {
     let specialDeals = getFromStorage(SPECIAL_DEALS_LABEL, []);
-    if (specialDeals.length === 0) {
-        spinnerInnerContainer.classList.remove(
-            'spinner__inner-container--shadow',
-        );
-        spinnerInnerContainer.classList.add(
-            'spinner__inner-container--loading',
-        );
-        spinerMarker.classList.remove('spinner__marker--active');
-        spinnerInnerContainer.innerHTML = `<div class="text-bold-sm">Loading...</div>`;
-
-        specialDeals = await fetchSpecialDeals();
-        if (specialDeals.length === 0) {
-            spinnerInnerContainer.innerHTML = `<div class="text-bold-sm" >No Special Deals</div>`;
-            return;
-        }
-    }
-
-    spinerMarker.classList.add('spinner__marker--active');
-    spinnerInnerContainer.classList.remove('spinner__inner-container--loading');
-    spinnerInnerContainer.classList.add('spinner__inner-container--shadow');
-
-    // Render Special Deals
-    const ValidDeals = specialDeals.filter((deal) => deal?.validFor !== null);
+    const validDeals = specialDeals.filter((deal) => deal?.validFor !== null);
     const userWonDeals = getFromStorage(USER_WON_DEALS, []);
     const promoCodeList = userWonDeals.map((deal) => deal.promoCode);
-    const remainingDeals = ValidDeals.filter(
+    const remainingDeals = validDeals.filter(
         (deal) => !promoCodeList.includes(deal?.promoCode),
     );
 
     return remainingDeals;
 }
 
-async function getFilteredSpecialDeals(dealsFromState = []) {
+async function renderSpinningWheel() {
     // rotate the outer container back to 0 degree
     spinnerOuterContainer.style.transform = 'rotate(0deg)';
+    let selectedDeals;
+    let remainingDeals;
+    if (modalHandler.getSpinStatus()) {
+        let specialDeals = getFromStorage(SPECIAL_DEALS_LABEL, []);
+        if (specialDeals.length === 0) {
+            spinnerInnerContainer.classList.remove(
+                'spinner__inner-container--shadow',
+            );
+            spinnerInnerContainer.classList.add(
+                'spinner__inner-container--loading',
+            );
+            spinerMarker.classList.remove('spinner__marker--active');
+            spinnerInnerContainer.innerHTML = `<div class="text-bold-sm">Loading...</div>`;
 
-    if (dealsFromState.length > 0) {
-        spinnerInnerContainer.innerHTML = dealsFromState
-            .map(
-                ({ label }) =>
-                    `
-                <div class="spinner__cell">
-                    <span
-                        class="spinner__cell-text text-sm text-sm--white"
-                        >${label}</span
-                    >
-                </div>
-            `,
-            )
-            .join('');
-        return dealsFromState;
+            specialDeals = await fetchSpecialDeals();
+            if (specialDeals.length === 0) {
+                spinnerInnerContainer.innerHTML = `<div class="text-bold-sm" >No Special Deals</div>`;
+                return;
+            }
+            spinnerInnerContainer.innerHTML = ``;
+        }
+
+        spinerMarker.classList.add('spinner__marker--active');
+        spinnerInnerContainer.classList.remove(
+            'spinner__inner-container--loading',
+        );
+        spinnerInnerContainer.classList.add('spinner__inner-container--shadow');
+
+        remainingDeals = getValidLockedDeals();
+        if (remainingDeals.length < SEGMENTS_SIZE) {
+            selectedDeals = [
+                ...remainingDeals,
+                ...Array.from(
+                    { length: SEGMENTS_SIZE - remainingDeals.length },
+                    () => ({
+                        type: 'dummy',
+                        className: 'spinner__cell--dummy',
+                    }),
+                ),
+            ];
+        } else {
+            selectedDeals = getRandomElements(remainingDeals, SEGMENTS_SIZE);
+        }
+        modalHandler.setSpinStatus(false);
+        modalHandler.setSelectedDeals([...selectedDeals]);
+    } else {
+        selectedDeals = modalHandler.getSelectedDeals();
     }
 
-    const remainingDeals = await getValidLockedDeals();
-    const selectedDeals = getRandomElements(remainingDeals, SEGMENTS_SIZE);
+    let spinnerButton = spinnerOuterContainer.querySelector('.spinner__button');
+    if (!spinnerButton) {
+        spinnerOuterContainer.insertAdjacentHTML(
+            'beforeend',
+            `<button class="button spinner__button">Spin</button>`,
+        );
+        spinnerButton = spinnerOuterContainer.querySelector('.spinner__button');
+        spinnerButton.addEventListener('click', handleSpinWheel);
+    }
+
+    if (
+        selectedDeals.length === 0 ||
+        selectedDeals[selectedDeals.length - 1].type === 'dummy'
+    ) {
+        spinnerButton.disabled = true;
+    } else {
+        spinnerButton.disabled = false;
+    }
 
     spinnerInnerContainer.innerHTML = selectedDeals
         .map(
-            ({ label }) =>
+            ({ label, className }) =>
                 `
-                <div class="spinner__cell">
-                    <span
-                        class="spinner__cell-text text-sm text-sm--white"
-                        >${label}</span
-                    >
-                </div>
-            `,
+            <div class="spinner__cell">
+                <span
+                    class="spinner__cell-text text-sm text-sm--white ${className ?? ''}"
+                    >${label ?? ''}</span
+                >
+            </div>
+        `,
         )
         .join('');
-
-    if (remainingDeals.length >= SEGMENTS_SIZE) {
-        const spinnerButton =
-            spinnerOuterContainer.querySelector('.spinner__button');
-        if (spinnerButton) {
-            spinnerButton.disabled = false;
-        }
-    }
-
-    return selectedDeals;
 }
 
 const renderSpecialDeals = async () => {
     // clear eventlistener on unlocked button
-    const unlockedDealsButton = document.querySelector('.modal__button');
-    if (unlockedDealsButton) {
-        unlockedDealsButton.removeEventListener(
-            'click',
-            modalHandler.prevModal,
-        );
+    const goBackButton = document.querySelector('.modal__button');
+    if (goBackButton) {
+        goBackButton.removeEventListener('click', modalHandler.prevModal);
     }
 
     //clear modalBody previously rendered deals (won or unlocked deals)
@@ -429,26 +438,9 @@ const renderSpecialDeals = async () => {
 
     //Render spinner
     spinner.classList.remove('spinner--inactive');
-    const dealsFromState = modalHandler.getSelectedDeals();
-    const selectedDeals = await getFilteredSpecialDeals(dealsFromState);
-
-    if (modalHandler.getSpinnerButtonFunctionReferrence() === null) {
-        let spinnerButton =
-            spinnerOuterContainer.querySelector('.spinner__button');
-        if (!spinnerButton) {
-            spinnerOuterContainer.insertAdjacentHTML(
-                'beforeend',
-                `<button class="button spinner__button">Spin</button>`,
-            );
-            spinnerButton =
-                spinnerOuterContainer.querySelector('.spinner__button');
-        }
-        const handleSpinWheelWrapper = () => handleSpinWheel(selectedDeals);
-        spinnerButton.addEventListener('click', handleSpinWheelWrapper);
-        modalHandler.setSpinnerButtonFunctionReferrence(handleSpinWheelWrapper);
-    }
-
+    await renderSpinningWheel();
     addUnlockedDealsButton();
+    addFooterButtonListener(modalHandler.nextModal);
 };
 
 const modalHandler = _modalHandler();
@@ -465,18 +457,17 @@ const closeModal = () => {
         removeMask();
         unlockScroll();
         specialDealsModal.classList.remove('modal--active');
+        spinnerResultSection.innerHTML = '';
         specialDealsModal.inert = true;
         spinnerOuterContainer.style.transform = 'rotate(0deg)';
         modalHandler.setCurrentActiveModalIdx(0);
         modalHandler.setSelectedDeals([]);
-        modalHandler.setSpinStatus(false);
-        const spinnerButton =
-            spinnerOuterContainer.querySelector('.spinner__button');
-        spinnerButton.removeEventListener(
-            'click',
-            modalHandler.getSpinnerButtonFunctionReferrence(),
-        );
-        modalHandler.setSpinnerButtonFunctionReferrence(null);
+        modalHandler.setSpinStatus(true);
+        const footerButton = modalFooter.querySelector('.modal__button');
+        if (footerButton) {
+            footerButton.removeEventListener('click', modalHandler.nextModal);
+            footerButton.removeEventListener('click', modalHandler.prevModal);
+        }
     }
 };
 
