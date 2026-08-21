@@ -22,6 +22,7 @@ export const SEGMENTS = [
     { min: 180, max: 270 }, // idx 2 → cell 3, bottom-left (aqua)
     { min: 90, max: 180 }, // idx 3 → cell 4, bottom-right (mustard)
 ];
+export const SEGMENTS_SIZE = 4;
 export const BORDER_EPSILON = 0.5;
 
 export const API_ENDPOINT =

@@ -19,6 +19,7 @@ import {
     COMPLETE_ANGLE,
     QUATER_ANGLE,
     BORDER_EPSILON,
+    SEGMENTS_SIZE,
 } from './constants';
 
 const triggerPoint = document.getElementById('special-deals');
@@ -26,6 +27,7 @@ const specialDealsModal = document.querySelector('.modal');
 const modalCross = document.querySelector('.modal__cross');
 const mask = document.querySelector('.mask');
 const spinner = document.querySelector('.spinner');
+const spinerMarker = document.querySelector('.spinner__marker');
 const spinnerInnerContainer = document.querySelector(
     '.spinner__inner-container',
 );
@@ -279,7 +281,7 @@ const handleSpinWheel = async (selectedDeals) => {
 
         // Disable the spin button of spinner
         const validDeals = await getValidLockedDeals();
-        if (validDeals.length < 4) {
+        if (validDeals.length < SEGMENTS_SIZE) {
             const spinnerButton =
                 spinnerOuterContainer.querySelector('.spinner__button');
             spinnerButton.disabled = true;
@@ -327,13 +329,25 @@ function addUnlockedDealsButton() {
 async function getValidLockedDeals() {
     let specialDeals = getFromStorage(SPECIAL_DEALS_LABEL, []);
     if (specialDeals.length === 0) {
-        spinnerInnerContainer.innerHTML = `<div>Loading</div>`;
+        spinnerInnerContainer.classList.remove(
+            'spinner__inner-container--shadow',
+        );
+        spinnerInnerContainer.classList.add(
+            'spinner__inner-container--loading',
+        );
+        spinerMarker.classList.remove('spinner__marker--active');
+        spinnerInnerContainer.innerHTML = `<div class="text-bold-sm">Loading...</div>`;
+
         specialDeals = await fetchSpecialDeals();
         if (specialDeals.length === 0) {
-            spinnerInnerContainer.innerHTML = `<div>NO Special Deals</div>`;
+            spinnerInnerContainer.innerHTML = `<div class="text-bold-sm" >No Special Deals</div>`;
             return;
         }
     }
+
+    spinerMarker.classList.add('spinner__marker--active');
+    spinnerInnerContainer.classList.remove('spinner__inner-container--loading');
+    spinnerInnerContainer.classList.add('spinner__inner-container--shadow');
 
     // Render Special Deals
     const ValidDeals = specialDeals.filter((deal) => deal?.validFor !== null);
@@ -368,7 +382,7 @@ async function getFilteredSpecialDeals(dealsFromState = []) {
     }
 
     const remainingDeals = await getValidLockedDeals();
-    const selectedDeals = getRandomElements(remainingDeals, 4);
+    const selectedDeals = getRandomElements(remainingDeals, SEGMENTS_SIZE);
 
     spinnerInnerContainer.innerHTML = selectedDeals
         .map(
@@ -384,7 +398,7 @@ async function getFilteredSpecialDeals(dealsFromState = []) {
         )
         .join('');
 
-    if (remainingDeals.length >= 4) {
+    if (remainingDeals.length >= SEGMENTS_SIZE) {
         const spinnerButton =
             spinnerOuterContainer.querySelector('.spinner__button');
         if (spinnerButton) {
@@ -424,7 +438,7 @@ const renderSpecialDeals = async () => {
         if (!spinnerButton) {
             spinnerOuterContainer.insertAdjacentHTML(
                 'beforeend',
-                `<button class="spinner__button">Spin</button>`,
+                `<button class="button spinner__button">Spin</button>`,
             );
             spinnerButton =
                 spinnerOuterContainer.querySelector('.spinner__button');
