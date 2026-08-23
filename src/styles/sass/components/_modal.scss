@@ -20,6 +20,8 @@
         opacity variables.$duration-fast ease-in-out,
         visibility variables.$duration-fast ease-in-out;
 
+    @include mixins.flex(column, space-between, center, 0);
+
     &__header {
         width: 100%;
         height: auto;
@@ -76,8 +78,6 @@
         width: 100%;
         gap: variables.$space-xxs;
     }
-
-    @include mixins.flex(column, space-between, center, 0);
 
     @include mixins.responsive-screen(sm) {
         top: 50%;
