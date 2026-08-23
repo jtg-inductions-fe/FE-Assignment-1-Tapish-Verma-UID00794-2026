@@ -141,6 +141,8 @@ const renderUnlockedDeals = () => {
     spinnerResultSection.innerHTML = '';
     spinnerResultSection.classList.remove('spinner__result--active');
 
+    modalBody.style.overflowY = 'auto';
+
     //Render Header
     renderModalHeader(MODAL_TYPE_UNLOCKED_DEALS);
 
@@ -211,7 +213,21 @@ function updateResultSectionSpan(status = 'won') {
 const handleSpinWin = (winner) => {
     updateResultSectionSpan('won');
 
-    spinnerResultSection.insertAdjacentHTML(
+    let resultDealsList = spinnerResultSection.querySelector(
+        '.spinner__result-list',
+    );
+
+    if (!resultDealsList) {
+        spinnerResultSection.insertAdjacentHTML(
+            'beforeend',
+            '<div class="spinner__result-list"></div>',
+        );
+        resultDealsList = spinnerResultSection.querySelector(
+            '.spinner__result-list',
+        );
+    }
+
+    resultDealsList.insertAdjacentHTML(
         'beforeend',
         `
             <div class="spinner__deal">
@@ -229,6 +245,10 @@ const handleSpinWin = (winner) => {
         `,
     );
     spinnerResultSection.classList.add('spinner__result--active');
+    resultDealsList.scrollTo({
+        top: resultDealsList.scrollHeight,
+        behavior: 'smooth',
+    });
 
     const previosWonDeals = getFromStorage(USER_WON_DEALS, []);
     saveToStorage(USER_WON_DEALS, [
@@ -432,6 +452,8 @@ const renderSpecialDeals = async () => {
     document
         .querySelectorAll('.modal__body .spinner__deal')
         .forEach((el) => el.remove());
+
+    modalBody.style.overflowY = 'hidden';
 
     //Render Header
     renderModalHeader(MODAL_TYPE_SPIN_AND_WIN);
