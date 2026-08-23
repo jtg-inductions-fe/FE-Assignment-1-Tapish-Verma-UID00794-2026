@@ -3,7 +3,7 @@
 @use '../abstracts/functions' as functions;
 
 .modal {
-    display: none;
+    visibility: hidden;
     width: functions.rem(360px);
     height: fit-content;
     max-height: min(functions.rem(650px), 90vh);
@@ -16,6 +16,9 @@
     left: 50%;
     transform: translateX(-50%);
     border-radius: variables.$radius-md variables.$radius-md 0 0;
+    transition:
+        opacity variables.$duration-fast ease-in-out,
+        visibility variables.$duration-fast ease-in-out;
 
     &__header {
         width: 100%;
@@ -65,15 +68,16 @@
     }
 
     &--active {
-        // z-index: variables.$z-index-modal;
+        visibility: visible;
         opacity: variables.$opacity-opaque;
-        @include mixins.flex(column, space-between, center, 0);
     }
 
     &__button {
         width: 100%;
         gap: variables.$space-xxs;
     }
+
+    @include mixins.flex(column, space-between, center, 0);
 
     @include mixins.responsive-screen(sm) {
         top: 50%;

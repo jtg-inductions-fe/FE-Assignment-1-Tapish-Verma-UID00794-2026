@@ -1,4 +1,8 @@
-import { breakpoints, RESIZE_DEBOUNCE_DELAY } from './constants';
+import {
+    breakpoints,
+    DRAWER_EXIT_TIME,
+    RESIZE_DEBOUNCE_DELAY,
+} from './constants';
 import {
     debounce,
     lockScroll,
@@ -81,9 +85,11 @@ drawer.addEventListener('click', (event) => {
     if (shouldClose) {
         closeDrawer();
         if (isSpecialDeals) {
-            renderSpecialDealsModal({
-                currentTarget: lastFocused,
-            });
+            setTimeout(() => {
+                renderSpecialDealsModal({
+                    currentTarget: lastFocused,
+                });
+            }, DRAWER_EXIT_TIME);
         }
     }
 });
