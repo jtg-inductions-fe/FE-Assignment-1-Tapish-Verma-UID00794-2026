@@ -44,7 +44,10 @@
                                     <a href="#discover">Discover</a>
                                 </li>
                                 <li class="header__item">
-                                    <a id="special-deals" href="#"
+                                    <a
+                                        aria-haspopup="dialog"
+                                        id="special-deals"
+                                        href="#"
                                         >Special Deals</a
                                     >
                                 </li>
@@ -600,7 +603,10 @@
                                 >
                             </li>
                             <li class="drawer__item">
-                                <a class="drawer__link special-deals" href="#"
+                                <a
+                                    aria-haspopup="dialog"
+                                    class="drawer__link special-deals"
+                                    href="#"
                                     >Special Deals</a
                                 >
                             </li>
@@ -619,11 +625,18 @@
             </aside>
             <div class="modal font-inter" inert>
                 <header class="modal__header">
-                    <button class="button button--icon-only modal__cross">
-                        <span class="icon-X"></span>
+                    <button
+                        class="button button--icon-only modal__cross"
+                        aria-label="Close Special Deals"
+                    >
+                        <span class="icon-X" aria-hidden="true"></span>
                     </button>
                     <span>
-                        <span class="icon-Gift modal__header-icon"></span>
+                        <span
+                            class="icon-Gift modal__header-icon"
+                            aria-hidden="true"
+                            role="presentation"
+                        ></span>
                         <span
                             class="eyebrow text-uppercase text-sm modal__title"
                             >Special Deals</span
@@ -638,7 +651,10 @@
                 </header>
                 <div class="modal__body">
                     <div class="spinner">
-                        <span class="icon-triangle spinner__marker"></span>
+                        <span
+                            class="icon-triangle spinner__marker"
+                            aria-hidden="true"
+                        ></span>
                         <div class="spinner__outer-container">
                             <div
                                 class="spinner__inner-container spinner__inner-container--shadow"

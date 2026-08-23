@@ -266,6 +266,7 @@
 
     &__deal-button {
         padding: 0px;
+        background: transparent;
     }
 
     &__copy {
@@ -274,5 +275,10 @@
         &--active {
             color: variables.$color-red;
         }
+    }
+
+    &__tick {
+        font-size: functions.rem(20px);
+        color: variables.$color-green;
     }
 }

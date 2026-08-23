@@ -81,7 +81,9 @@ drawer.addEventListener('click', (event) => {
     if (shouldClose) {
         closeDrawer();
         if (isSpecialDeals) {
-            renderSpecialDealsModal();
+            renderSpecialDealsModal({
+                currentTarget: lastFocused,
+            });
         }
     }
 });

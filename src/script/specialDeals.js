@@ -57,6 +57,7 @@ const _modalHandler = () => {
         currentActiveModalIdx: 0,
         selectedDeals: [],
         shouldInitializeWheel: true,
+        lastFocused: null,
     };
 
     const renderRelevantModal = () => {
@@ -103,6 +104,8 @@ const _modalHandler = () => {
 
     const getSpinStatus = () => modalMetaData.shouldInitializeWheel;
     const setSpinStatus = (val) => (modalMetaData.shouldInitializeWheel = val);
+    const getLastFocused = () => modalMetaData.lastFocused;
+    const setLastFocused = (val) => (modalMetaData.lastFocused = val);
 
     return {
         nextModal,
@@ -113,7 +116,30 @@ const _modalHandler = () => {
         setSelectedDeals,
         getSpinStatus,
         setSpinStatus,
+        getLastFocused,
+        setLastFocused,
     };
+};
+
+const handleCopyClick = (event) => {
+    const button = event.target.closest('.spinner__deal-button');
+
+    if (!button) {
+        return;
+    }
+
+    const promoCode = button.dataset.promoCode;
+    const icon = button.querySelector('.icon-Copy');
+    icon.classList.remove(
+        'icon-Copy',
+        'spinner__copy',
+        'spinner__copy--active',
+    );
+    icon.classList.add('icon-tick', 'spinner__tick');
+    button.setAttribute('aria-label', 'Promo code copied');
+    button.disabled = true;
+
+    navigator.clipboard.writeText(promoCode);
 };
 
 const renderModalHeader = (modalType) => {
@@ -132,6 +158,60 @@ const renderModalHeader = (modalType) => {
     modalDescription.innerHTML = modalHeaderDescription;
 };
 
+const renderResultSectionList = (deals, showEnd = false) => {
+    let resultDealsList = spinnerResultSection.querySelector(
+        '.spinner__result-list',
+    );
+
+    if (!resultDealsList) {
+        spinnerResultSection.insertAdjacentHTML(
+            'beforeend',
+            '<div class="spinner__result-list"></div>',
+        );
+        resultDealsList = spinnerResultSection.querySelector(
+            '.spinner__result-list',
+        );
+        spinnerResultSection.addEventListener('click', handleCopyClick);
+    }
+
+    resultDealsList.insertAdjacentHTML(
+        'beforeend',
+        deals
+            .map(
+                (deal) =>
+                    `
+                <div class="spinner__deal ${deal.validFor === null ? 'spinner__deal--expired' : ''}">
+                    <div class="spinner__deal-left-section">
+                        <span class="spinner__deal-label text-medium-bold-sm">${deal.label}</span>
+                        <span class="spinner__deal-expiry text-light-sm ${deal.validFor === null ? 'text-light-sm' : 'text-light-sm--purple'}">${deal.validFor === null ? 'Deal Expired' : `Expires in ${deal.validFor}d`}</span>
+                    </div>
+                    <div class="spinner__deal-right-section">
+                        <span class="spinner__deal-tag text-bold-sm font-roboto">${deal.promoCode}</span>
+                        <button class="button button--icon-only spinner__deal-button" ${deal.promoCode === null || typeof deal.validFor !== 'number' ? 'disabled' : ''} aria-label="Copy promo code" data-promo-code="${deal.promoCode}">
+                            <span class="icon-Copy spinner__copy ${deal.validFor === null ? 'spinner__copy' : 'spinner__copy--active'}"></span>
+                        </button>
+                    </div>
+                </div>
+            `,
+            )
+            .join(''),
+    );
+    if (showEnd) {
+        const lastDeal = deals[deals.length - 1];
+
+        const lastResult = resultDealsList.querySelector(
+            `[data-promo-code="${lastDeal.promoCode}"]`,
+        );
+
+        if (lastResult) {
+            lastResult.scrollIntoView({
+                behavior: 'smooth',
+                block: 'nearest',
+            });
+        }
+    }
+};
+
 const renderUnlockedDeals = () => {
     // clear eventlistener on unlocked button
     const unlockedDealsButton = document.querySelector('.modal__button');
@@ -139,9 +219,7 @@ const renderUnlockedDeals = () => {
 
     //Clear and disables result section
     spinnerResultSection.innerHTML = '';
-    spinnerResultSection.classList.remove('spinner__result--active');
-
-    modalBody.style.overflowY = 'auto';
+    spinnerResultSection.classList.add('spinner__result--active');
 
     //Render Header
     renderModalHeader(MODAL_TYPE_UNLOCKED_DEALS);
@@ -164,28 +242,7 @@ const renderUnlockedDeals = () => {
             return b.validFor - a.validFor;
         });
 
-        modalBody.insertAdjacentHTML(
-            'beforeend',
-            userWonDeals
-                .map(
-                    (deal) =>
-                        `
-                <div class="${deal.validFor === null ? 'spinner__deal--expired' : 'spinner__deal'}">
-                    <div class="spinner__deal-left-section">
-                        <span class="spinner__deal-label text-medium-bold-sm">${deal.label}</span>
-                        <span class="spinner__deal-expiry text-light-sm ${deal.validFor === null ? 'text-light-sm' : 'text-light-sm--purple'}">${deal.validFor === null ? 'Deal Expired' : `Expires in ${deal.validFor}d`}</span>
-                    </div>
-                    <div class="spinner__deal-right-section">
-                        <span class="spinner__deal-tag text-bold-sm font-roboto">${deal.promoCode}</span>
-                        <button class="button button--icon-only spinner__deal-button">
-                            <span class="icon-Copy spinner__copy ${deal.validFor === null ? 'spinner__copy' : 'spinner__copy--active'}"></span>
-                        </button>
-                    </div>
-                </div>
-            `,
-                )
-                .join(''),
-        );
+        renderResultSectionList(userWonDeals);
     }
 
     unlockedDealsButton.innerHTML = 'Go Back';
@@ -212,43 +269,8 @@ function updateResultSectionSpan(status = 'won') {
 
 const handleSpinWin = (winner) => {
     updateResultSectionSpan('won');
-
-    let resultDealsList = spinnerResultSection.querySelector(
-        '.spinner__result-list',
-    );
-
-    if (!resultDealsList) {
-        spinnerResultSection.insertAdjacentHTML(
-            'beforeend',
-            '<div class="spinner__result-list"></div>',
-        );
-        resultDealsList = spinnerResultSection.querySelector(
-            '.spinner__result-list',
-        );
-    }
-
-    resultDealsList.insertAdjacentHTML(
-        'beforeend',
-        `
-            <div class="spinner__deal">
-                <div class="spinner__deal-left-section">
-                    <span class="spinner__deal-label text-medium-bold-sm">${winner.label}</span>
-                    <span class="spinner__deal-expiry text-light-sm text-light-sm--purple">Expires in ${winner.validFor}d</span>
-                </div>
-                <div class="spinner__deal-right-section">
-                    <span class="spinner__deal-tag text-bold-sm font-roboto">${winner.promoCode}</span>
-                    <button class="button button--icon-only spinner__deal-button">
-                        <span class="icon-Copy spinner__copy spinner__copy--active"></span>
-                    </button>
-                </div>
-            </div>
-        `,
-    );
+    renderResultSectionList([winner], true);
     spinnerResultSection.classList.add('spinner__result--active');
-    resultDealsList.scrollTo({
-        top: resultDealsList.scrollHeight,
-        behavior: 'smooth',
-    });
 
     const previosWonDeals = getFromStorage(USER_WON_DEALS, []);
     saveToStorage(USER_WON_DEALS, [
@@ -448,12 +470,15 @@ const renderSpecialDeals = async () => {
         goBackButton.removeEventListener('click', modalHandler.prevModal);
     }
 
-    //clear modalBody previously rendered deals (won or unlocked deals)
-    document
-        .querySelectorAll('.modal__body .spinner__deal')
-        .forEach((el) => el.remove());
+    //clear resultSectionList previously rendered deals (won or unlocked deals)
+    const resultSectionList = spinnerResultSection.querySelector(
+        '.spinner__result-list',
+    );
+    if (resultSectionList) {
+        resultSectionList.innerHTML = '';
+    }
 
-    modalBody.style.overflowY = 'hidden';
+    spinnerResultSection.classList.remove('spinner__result--active');
 
     //Render Header
     renderModalHeader(MODAL_TYPE_SPIN_AND_WIN);
@@ -466,12 +491,14 @@ const renderSpecialDeals = async () => {
 };
 
 const modalHandler = _modalHandler();
-export const renderSpecialDealsModal = () => {
+export const renderSpecialDealsModal = (event) => {
     addMask(false);
     lockScroll();
     specialDealsModal.classList.add('modal--active');
     specialDealsModal.inert = false;
     modalHandler.renderRelevantModal();
+    modalHandler.setLastFocused(event.currentTarget);
+    modalCross.focus();
 };
 
 const closeModal = () => {
@@ -490,9 +517,18 @@ const closeModal = () => {
             footerButton.removeEventListener('click', modalHandler.nextModal);
             footerButton.removeEventListener('click', modalHandler.prevModal);
         }
+        if (modalHandler.getLastFocused()) {
+            modalHandler.getLastFocused().focus();
+            modalHandler.setLastFocused(null);
+        }
     }
 };
 
 triggerPoint.addEventListener('click', renderSpecialDealsModal);
 mask.addEventListener('click', closeModal);
 modalCross.addEventListener('click', closeModal);
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        closeModal();
+    }
+});
