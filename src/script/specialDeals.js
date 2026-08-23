@@ -43,8 +43,14 @@ const spinnerResultSection = document.querySelector('.spinner__result');
 const fetchSpecialDeals = async () => {
     try {
         const response = await fetch(API_ENDPOINT);
+
+        if (!response.ok) {
+            throw new Error(`Request failed: ${response.status}`);
+        }
+
         const data = await response.json();
         saveToStorage(SPECIAL_DEALS_LABEL, data);
+
         return data;
     } catch {
         return [];
