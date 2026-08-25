@@ -1,0 +1,159 @@
+@use '../abstracts/functions' as functions;
+@use '../abstracts/variables' as variables;
+@use '../abstracts/mixins' as mixins;
+
+.footer {
+    position: relative;
+    margin-top: functions.rem(-16px);
+    &__image {
+        position: absolute;
+        display: none;
+        &--primary {
+            width: functions.rem(185px);
+            @include mixins.responsive-screen(md) {
+                display: inline;
+                top: functions.rem(-87px);
+                left: functions.rem(-40px);
+            }
+        }
+        &--secondary {
+            width: functions.rem(118px);
+            @include mixins.responsive-screen(sm) {
+                display: inline;
+                bottom: functions.rem(90px);
+                right: functions.rem(0px);
+            }
+            @include mixins.responsive-screen(md) {
+                bottom: functions.rem(0px);
+            }
+        }
+    }
+
+    &__top {
+        @include mixins.flex(row, flex-start, center, variables.$space-xs);
+        margin-bottom: variables.$space-lg;
+    }
+
+    &__description {
+        margin-bottom: variables.$space-lg;
+        text-align: left;
+        @include mixins.responsive-screen(md) {
+            margin-bottom: variables.$space-xl;
+        }
+    }
+
+    &__info {
+        width: 100%;
+        @include mixins.responsive-screen(md) {
+            width: calc(50% - functions.rem(32px));
+        }
+    }
+
+    &__menu {
+        width: 100%;
+        @include mixins.flex(
+            column,
+            space-between,
+            center,
+            functions.rem(79px)
+        );
+        @include mixins.responsive-screen(sm) {
+            flex-direction: row;
+            gap: variables.$space-lg;
+            align-items: flex-start;
+        }
+        @include mixins.responsive-screen(md) {
+            width: calc(50% - functions.rem(32px));
+        }
+    }
+
+    &__menu-group-wrapper {
+        width: 100%;
+        @include mixins.responsive-screen(sm) {
+            flex: 1;
+        }
+    }
+
+    &__menu-group {
+        width: 100%;
+        @include mixins.flex(column, space-between, center, 0);
+    }
+
+    &__row {
+        width: 100%;
+        @include mixins.flex(row, space-between, center, 0);
+    }
+
+    &__content {
+        width: 100%;
+        display: none;
+
+        &--active {
+            display: block;
+        }
+
+        > ul {
+            width: 100%;
+            padding-top: variables.$space-lg;
+            @include mixins.flex(
+                column,
+                space-between,
+                flex-start,
+                variables.$space-md
+            );
+        }
+
+        @include mixins.responsive-screen(sm) {
+            display: block;
+        }
+    }
+
+    &__menu-icon {
+        font-size: functions.rem(24px);
+    }
+
+    &__icon-section {
+        @include mixins.flex(row, space-between, center, variables.$space-lg);
+        display: inline-flex;
+    }
+
+    &__icon {
+        &--primary {
+            font-size: functions.rem(32px);
+            color: variables.$color-white;
+            border-radius: variables.$radius-round;
+        }
+    }
+
+    &__button {
+        padding: 0;
+        transition: transform variables.$duration-normal ease-in-out;
+        &--rotate {
+            transform: rotate(180deg);
+        }
+
+        @include mixins.responsive-screen(sm) {
+            display: none;
+        }
+    }
+
+    @include mixins.responsive-screen(sm) {
+        margin-top: 0;
+    }
+}
+
+.footer-wrapper {
+    position: relative;
+    padding-block: variables.$space-xl;
+    padding-inline: variables.$space-xs;
+    width: 100%;
+    @include mixins.flex(column, space-between, center, functions.rem(79px));
+    @include mixins.responsive-screen(sm) {
+        padding-inline: 0;
+        gap: variables.$space-xl;
+    }
+    @include mixins.responsive-screen(md) {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}

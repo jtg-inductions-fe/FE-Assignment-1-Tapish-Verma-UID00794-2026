@@ -130,6 +130,16 @@ data {
         font-size: functions.rem(23px);
     }
 }
+
+.text-body-md {
+    font-family: variables.$font-family-secondary;
+    font-size: functions.rem(18px);
+    font-weight: variables.$font-weight-light;
+    line-height: variables.$secondary-spacing;
+    color: variables.$color-grey-medium;
+    letter-spacing: 0%;
+}
+
 .font-inter {
     font-family: variables.$font-family-secondary;
 }
