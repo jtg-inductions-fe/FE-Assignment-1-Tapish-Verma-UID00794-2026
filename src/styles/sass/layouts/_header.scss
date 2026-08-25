@@ -27,7 +27,7 @@
             position: absolute;
             left: 0;
             top: functions.rem(37px);
-            width: 50%;
+            width: 52.5%;
             z-index: variables.$z-index-base;
             @include mixins.flex(row, flex-end, center, 0);
         }
@@ -56,16 +56,6 @@
 
     &__actions {
         display: none;
-
-        &--primary {
-            height: functions.rem(49px);
-            width: functions.rem(105px);
-        }
-
-        &--secondary {
-            height: functions.rem(49px);
-            width: functions.rem(115px);
-        }
         @include mixins.responsive-screen(sm) {
             @include mixins.flex(row, space-between, center, 0);
         }

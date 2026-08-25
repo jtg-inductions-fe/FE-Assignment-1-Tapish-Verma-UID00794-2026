@@ -4,14 +4,13 @@
 
 .card {
     width: 100%;
+    background-color: transparent;
+    padding: variables.$space-lg;
     @include mixins.flex(column, center, center, variables.$space-xs);
 
     &--outline {
-        padding-block: variables.$space-lg;
         border: 1px solid variables.$color-grey-extra-light;
         border-radius: variables.$radius-lg;
-        gap: variables.$space-xs;
-        background-color: transparent;
     }
     &--title {
         font-family: variables.$font-family-secondary;

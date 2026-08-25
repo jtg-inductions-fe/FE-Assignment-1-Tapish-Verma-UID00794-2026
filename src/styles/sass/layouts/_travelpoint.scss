@@ -23,14 +23,16 @@
 
         @include mixins.responsive-screen(sm) {
             gap: variables.$space-xl;
+            padding-bottom: variables.$space-xs;
         }
         @include mixins.responsive-screen(md) {
+            padding-bottom: variables.$space-xl;
             flex-direction: row;
             gap: 0;
         }
     }
 
-    &__star {
+    &__star-wrapper {
         display: none;
         @include mixins.responsive-screen(md) {
             display: inline-flex;
@@ -57,6 +59,9 @@
         @include mixins.responsive-screen(md) {
             padding-inline: 0;
             padding-top: 0;
+            margin-top: functions.rem(11px);
+            flex: 1;
+            min-width: 35%;
         }
     }
 
@@ -71,15 +76,19 @@
         @include mixins.responsive-screen(sm) {
             flex-direction: row;
             flex-wrap: wrap;
+            gap: variables.$space-lg;
+        }
+    }
+
+    &__top {
+        @include mixins.flex(column, center, center, 0);
+        @include mixins.responsive-screen(md) {
+            align-items: flex-start;
         }
     }
 
     &__title {
         margin-bottom: functions.rem(16px);
-        letter-spacing: 20%;
-        @include mixins.responsive-screen(md) {
-            text-align: left;
-        }
     }
     &__sub-title {
         margin-bottom: functions.rem(32px);
@@ -99,14 +108,14 @@
         width: 100%;
 
         @include mixins.responsive-screen(sm) {
-            width: calc(50% - functions.rem(32px));
+            width: calc(50% - functions.rem(16px));
         }
     }
 
-    &__image {
+    &__image-wrapper {
+        width: 100%;
         @include mixins.responsive-screen(md) {
-            display: flex;
-            flex-shrink: 0;
+            max-width: functions.rem(866px);
         }
     }
 }

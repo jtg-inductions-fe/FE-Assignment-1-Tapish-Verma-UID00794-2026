@@ -8,6 +8,7 @@ $color-grey-dark: #191825;
 $color-grey-medium: #191825bf;
 $color-grey-light: #19182580;
 $color-grey-extra-light: #1918251a;
+$color-grey-thin: #1918250d;
 $color-pink: #f85e9f;
 $color-black: #000;
 $color-orange: #ff5722;
@@ -48,6 +49,7 @@ $font-weight-light: 400;
 /// @type number
 $primary-spacing: 1.2;
 $secondary-spacing: 1.6;
+$tertiary-spacing: 1.67;
 
 /// Variables for spacing
 /// @type number
@@ -71,7 +73,7 @@ $text-xl: functions.rem(24px);
 $radius-sm: 16px;
 $radius-md: 24px;
 $radius-lg: 32px;
-$radius-pill: 9999px;
+$radius-pill: 100px;
 $radius-round: 50%;
 
 // z-index

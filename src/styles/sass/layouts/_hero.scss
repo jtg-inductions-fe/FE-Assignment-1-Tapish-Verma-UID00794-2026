@@ -4,6 +4,7 @@
 
 .hero {
     width: 100%;
+    position: relative;
     @include mixins.flex;
 
     &__bg {
@@ -39,6 +40,7 @@
 
     &__container {
         position: relative;
+        width: 100%;
         padding-block: variables.$space-xl;
         @include mixins.flex(
             column-reverse,
@@ -97,7 +99,8 @@
         }
         @include mixins.responsive-screen(md) {
             align-items: flex-start;
-            margin-bottom: functions.rem(32px);
+            padding-bottom: functions.rem(24px);
+            padding-left: functions.rem(6px);
         }
     }
 
@@ -117,20 +120,24 @@
         }
     }
 
-    &__image {
-        display: flex;
-        flex-shrink: 0;
+    &__image-wrapper {
         padding-inline: functions.rem(0.86px);
+        margin-bottom: functions.rem(2px);
+        width: 100%;
         @include mixins.responsive-screen(sm) {
-            padding: 0 variables.$space-md;
+            padding-inline: clamp(
+                functions.rem(1px),
+                10.29cqi - functions.rem(43.34px),
+                functions.rem(62px)
+            );
         }
         @include mixins.responsive-screen(md) {
             padding: 0;
-            width: 65%;
-            max-width: functions.rem(800px);
-            min-width: functions.rem(600px);
+            max-height: functions.rem(713px);
+            max-width: functions.rem(772px);
         }
     }
+
     &__actions {
         width: 100%;
 
@@ -156,6 +163,7 @@
 
         &--icon {
             font-size: functions.rem(20px);
+            padding: functions.rem(1px) functions.rem(2px);
         }
 
         @include mixins.responsive-screen(sm) {
@@ -166,6 +174,7 @@
         @include mixins.responsive-screen(md) {
             justify-content: flex-start;
             padding-bottom: functions.rem(8px);
+            padding-left: functions.rem(6px);
         }
     }
 
@@ -178,45 +187,88 @@
         font-size: variables.$text-sm;
         line-height: variables.$primary-spacing;
 
-        @include mixins.flex(flex, space-between, center, variables.$space-xs);
+        @include mixins.flex(row, space-between, center, variables.$space-xs);
 
         &--primary {
-            font-size: variables.$text-xl;
+            padding: functions.rem(2px);
+            font-size: functions.rem(20px);
+        }
+    }
+
+    &__description-wrapper {
+        width: 100%;
+        @include mixins.responsive-screen(sm) {
+            padding-inline: clamp(
+                functions.rem(1px),
+                37.94cqi - functions.rem(162.53px),
+                functions.rem(226px)
+            );
+        }
+        @include mixins.responsive-screen(md) {
+            padding-inline: 0;
         }
     }
 
     &__description {
         width: 100%;
-        @include mixins.responsive-screen(sm) {
-            padding-inline: functions.rem(200px);
-        }
+        text-align: center;
         @include mixins.responsive-screen(md) {
             padding-inline: 0;
             text-align: left;
         }
     }
-
-    &__title {
-        padding-inline: functions.rem(40px);
+    &__title-wrapper {
         @include mixins.responsive-screen(sm) {
-            padding-inline: functions.rem(140px);
+            padding-inline: clamp(
+                functions.rem(1px),
+                22.04cqi - functions.rem(94px),
+                functions.rem(131.7px)
+            );
         }
         @include mixins.responsive-screen(md) {
-            padding-inline: 0;
+            padding-inline: 0px;
+        }
+    }
+    &__title {
+        text-align: center;
+        @include mixins.responsive-screen(md) {
             text-align: left;
+        }
+    }
+
+    &__partners-wrapper {
+        width: 100%;
+        padding-bottom: functions.rem(64px);
+        padding-right: functions.rem(22px);
+        @include mixins.responsive-screen(sm) {
+            padding-inline: clamp(
+                functions.rem(1px),
+                16.6948cqi - functions.rem(70.955px),
+                functions.rem(100px)
+            );
+            padding-block: functions.rem(64px);
+        }
+        @include mixins.responsive-screen(md) {
+            padding-inline: clamp(
+                0rem,
+                -24.0385cqi + functions.rem(346.15px),
+                functions.rem(100px)
+            );
+        }
+        @include mixins.responsive-screen(lg, $gte: true) {
+            padding-inline: 0;
         }
     }
 
     &__partners {
-        width: 100%;
-        box-sizing: content-box;
-        @include mixins.flex(row, center, center, functions.rem(32px));
+        row-gap: functions.rem(32px);
         flex-wrap: wrap;
-        @include mixins.responsive-screen(sm) {
-            margin-top: functions.rem(64px);
-        }
-        @include mixins.responsive-screen(md) {
+        @include mixins.flex(row, center, center, 27px);
+        @include mixins.responsive-screen(lg, $gte: true) {
             justify-content: space-between;
+        }
+        @include mixins.responsive-screen(lg) {
+            justify-content: space-around;
         }
 
         img {

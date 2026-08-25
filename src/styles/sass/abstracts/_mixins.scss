@@ -15,15 +15,21 @@
 
 /// Applies responsive styles based on a predefined breakpoint.
 /// @param {String} $breakpoint - Breakpoint key.
+/// @param {Boolean} $gte [false] - If true, uses a "greater than or equal to" comparison instead of the default "greater than".
 /// @content Styles to apply within the media query.
-@mixin responsive-screen($breakpoint: sm) {
+@mixin responsive-screen($breakpoint: sm, $gte: false) {
     $value: map.get(variables.$breakpoints, $breakpoint);
-
     @if not $value {
         @error "Unknown breakpoint: #{$breakpoint}";
     }
-    @media (width > $value) {
-        @content;
+    @if $gte {
+        @media (width >= $value) {
+            @content;
+        }
+    } @else {
+        @media (width > $value) {
+            @content;
+        }
     }
 }
 

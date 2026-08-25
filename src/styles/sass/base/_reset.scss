@@ -14,6 +14,8 @@ h1,
 h2,
 h3,
 h4,
+h5,
+h6,
 p,
 figure,
 blockquote,
@@ -55,6 +57,10 @@ svg {
     max-width: 100%;
     display: block;
     height: auto;
+}
+
+img {
+    width: 100%;
 }
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
