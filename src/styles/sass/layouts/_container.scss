@@ -7,7 +7,7 @@
     min-width: variables.$container-min-width;
     width: auto;
     margin: auto;
-    @include mixins.flex(column, center, center, 0);
+    @include mixins.flex(column, center, stretch, 0);
 }
 
 //The .container class provides a consistent horizontal layout for sections across the website. It automatically adjusts its horizontal padding at different responsive breakpoints to maintain appropriate spacing across screen sizes.

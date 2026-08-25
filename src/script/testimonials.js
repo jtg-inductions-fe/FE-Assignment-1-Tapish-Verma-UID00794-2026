@@ -6,12 +6,13 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import { testimonialData } from './data/testimonials';
+import { TESTIMONIALS_CAROUSEL_DELAY } from './constants';
 
 new Swiper('.swiper', {
     direction: 'horizontal',
     modules: [Navigation, Pagination, Autoplay],
     autoplay: {
-        delay: 2000,
+        delay: TESTIMONIALS_CAROUSEL_DELAY,
     },
     pagination: {
         el: '.swiper-pagination',
@@ -30,19 +31,19 @@ swipperWrapper.innerHTML = testimonialData
         ({ authorImgSrc, authorName, authorDesignation, rating, comment }) => `
             <div class="swiper-slide">
                 <article class="testimonial-card">
-                    <img
-                        class="testimonial-card__image"
-                        src="${authorImgSrc}"
-                        alt="${authorName}"
-                    />
+                    <div class="testimonial-card__image">
+                        <img
+                            src="${authorImgSrc}"
+                            alt="${authorName}'s profile picture"
+                        />
+                    </div>
 
                     <div class="testimonial-card__content">
                         <div class="testimonial-card__author">
                             <span class="text-dark-bold-lg text-orange">
                                 ${authorName}
                             </span>
-                            <span class="text-dark-bold-lg testimonial-card__slash">/ </span>
-                            <span class="text-dark-bold-lg">${authorDesignation}</span>
+                            <span class="text-dark-bold text-dark-bold--small">&#47; ${authorDesignation}</span>
                         </div>
 
                         <div
@@ -57,7 +58,7 @@ swipperWrapper.innerHTML = testimonialData
                         </div>
                     </div>
 
-                    <p class="testimonial-card__description">
+                    <p class="testimonial-card__description text-medium-bold-md font-circular-std">
                         ${comment}
                     </p>
                 </article>

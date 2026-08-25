@@ -7,28 +7,35 @@
 
     &__bg {
         display: none;
+
         img {
-            width: 100%;
+            max-height: 150%;
         }
+
         @include mixins.responsive-screen(sm) {
             display: block;
             position: absolute;
             width: 100%;
-            height: 100%;
             z-index: variables.$z-index-behind;
             inset: 0;
             opacity: 0.1;
+            top: functions.rem(-116px);
         }
     }
 
     .container {
         flex-direction: column;
-        max-width: 100vw;
     }
 
     &__wrapper {
         width: 100%;
         padding-block: variables.$space-xl;
+        @include mixins.responsive-screen(sm) {
+            padding-top: 0;
+        }
+        @include mixins.responsive-screen(md) {
+            padding-top: variables.$space-xl;
+        }
     }
 
     &__title {
@@ -127,6 +134,11 @@
     @include mixins.responsive-screen(sm) {
         gap: functions.rem(56px);
     }
+
+    &__image {
+        max-height: functions.rem(128px);
+    }
+
     &__stars {
         @include mixins.flex(row, space-between, center, variables.$space-xs);
         &--primary {
@@ -144,19 +156,6 @@
             variables.$space-lg
         );
     }
-
-    &__description {
-        color: variables.$color-grey-medium;
-        font-weight: variables.$font-weight-semi-bold;
-        text-align: center;
-        font-size: functions.rem(18px);
-        @include mixins.responsive-screen(sm) {
-            font-size: functions.rem(23px);
-        }
-    }
-    &__slash {
-        font-size: functions.rem(23px);
-    }
 }
 
 .swiper {
@@ -166,9 +165,14 @@
 }
 
 .swiper-pagination {
-    position: relative !important;
-    margin-top: variables.$space-xl;
+    margin-top: functions.rem(48px);
+    --swiper-pagination-bullet-horizontal-gap: 0px;
     @include mixins.flex(row, center, center, variables.$space-md);
+
+    &.swiper-pagination {
+        position: relative;
+    }
+
     @include mixins.responsive-screen(sm) {
         margin-top: functions.rem(56px);
     }
@@ -177,7 +181,6 @@
         width: functions.rem(24px);
         height: functions.rem(24px);
         border-radius: variables.$radius-round;
-        margin: 0 !important;
         opacity: 1;
         background: variables.$color-grey-thin;
     }

@@ -161,7 +161,7 @@
                                 />
                             </div>
                         </div>
-                        <div class="partners-wrapper">
+                        <div class="hero__partners-wrapper">
                             <div class="hero__partners">
                                 <a
                                     href="https://www.tripadvisor.in/"
@@ -224,13 +224,15 @@
                 </section>
                 <section class="travelpoint" id="discover">
                     <div class="travelpoint__wrapper">
-                        <img
-                            class="travelpoint__star"
-                            src="/assets/images/star.png"
-                            role="presentation"
-                            aria-hidden="true"
-                            alt=""
-                        />
+                        <div class="travelpoint__star-wrapper">
+                            <img
+                                class="travelpoint__star"
+                                src="/assets/images/star.png"
+                                role="presentation"
+                                aria-hidden="true"
+                                alt=""
+                            />
+                        </div>
                         <div class="travelpoint__image-wrapper">
                             <div class="travelpoint__image">
                                 <picture>
@@ -261,7 +263,9 @@
                         </div>
                         <div class="travelpoint__content">
                             <div class="travelpoint__top">
-                                <h3 class="eyebrow uppercase-text">
+                                <h3
+                                    class="travelpoint__title uppercase-text eyebrow"
+                                >
                                     Travel Point
                                 </h3>
                                 <h2 class="travelpoint__sub-title">
@@ -358,23 +362,17 @@
                     </div>
                 </section>
             </main>
-            <footer>
+            <footer class="footer">
                 <div class="container">
                     <div class="footer-wrapper">
-                        <img
-                            class="footer__image footer__image--primary"
-                            src="/assets/images/footer-triangular-dots.png"
-                            alt=""
-                            role="presentation"
-                            aria-hidden="true"
-                        />
-                        <img
-                            class="footer__image footer__image--secondary"
-                            src="/assets/images/footer-spiral.png"
-                            alt=""
-                            role="presentation"
-                            aria-hidden="true"
-                        />
+                        <div class="footer__image footer__image--primary">
+                            <img
+                                src="/assets/images/footer-triangular-dots.png"
+                                alt=""
+                                role="presentation"
+                                aria-hidden="true"
+                            />
+                        </div>
                         <div class="footer__info">
                             <div class="footer__top">
                                 <a
@@ -390,36 +388,38 @@
                                 </a>
                                 <h5>Travlog</h5>
                             </div>
-                            <p class="footer__description">
+                            <p
+                                class="text-medium-bold-md text-grey-light footer__description font-circular-std"
+                            >
                                 Contrary to popular belief, Lorem Ipsum is not
                                 simply random text. It has roots in a piece of
                                 classical Latin literature from 45 BC.
                             </p>
-                            <div class="footer__icons">
+                            <div class="footer__icon-section">
                                 <a
-                                    href="www.facebook.com/Travlog"
+                                    href="https://www.facebook.com/Travlog"
                                     aria-label="Travlog facebook link"
                                 >
                                     <span
-                                        class="icon-facebook footer__icons--primary"
+                                        class="icon-facebook footer__icon--primary"
                                         aria-hidden="true"
                                     ></span>
                                 </a>
                                 <a
-                                    href="www.x.com/Travlog"
+                                    href="https://www.x.com/Travlog"
                                     aria-label="Travlog twitter link"
                                 >
                                     <span
-                                        class="icon-twitter footer__icons--primary"
+                                        class="icon-twitter footer__icon--primary"
                                         aria-hidden="true"
                                     ></span>
                                 </a>
                                 <a
-                                    href="www.instagram.com/Travlog"
+                                    href="https://www.instagram.com/Travlog"
                                     aria-label="Travlog instagram link"
                                 >
                                     <span
-                                        class="icon-instagram footer__icons--primary"
+                                        class="icon-instagram footer__icon--primary"
                                         aria-hidden="true"
                                     ></span>
                                 </a>
@@ -429,7 +429,10 @@
                             <div class="footer__menu-group-wrapper">
                                 <div class="footer__menu-group">
                                     <div class="footer__row">
-                                        <h6 class="footer__menu-heading">
+                                        <h6
+                                            id="footer-company-heading"
+                                            class="footer__menu-heading"
+                                        >
                                             Company
                                         </h6>
                                         <button
@@ -437,6 +440,7 @@
                                             data-target="section-1"
                                             aria-expanded="false"
                                             aria-label="Open Company Menu"
+                                            aria-controls="footer-company-content"
                                             data-label="Company Menu"
                                         >
                                             <span
@@ -446,8 +450,10 @@
                                         </button>
                                     </div>
                                     <nav
+                                        id="footer-company-content"
                                         class="footer__content"
                                         data-section="section-1"
+                                        aria-labelledby="footer-company-heading"
                                     >
                                         <ul class="footer__list" role="list">
                                             <li
@@ -472,15 +478,19 @@
                             <div class="footer__menu-group-wrapper">
                                 <div class="footer__menu-group">
                                     <div class="footer__row">
-                                        <h6 class="footer__menu-heading">
-                                            Contact
+                                        <h6
+                                            id="footer-contact-us-heading"
+                                            class="footer__menu-heading"
+                                        >
+                                            Contact Us
                                         </h6>
                                         <button
                                             class="button button--icon-only footer__button"
                                             data-target="section-2"
                                             aria-expanded="false"
-                                            aria-label="Open Contact Menu"
-                                            data-label="Contact Menu"
+                                            aria-label="Open Contact Us Menu"
+                                            aria-controls="footer-contact-us-content"
+                                            data-label="Contact Us Menu"
                                         >
                                             <span
                                                 class="icon-arrow-circle-down footer__menu-icon"
@@ -489,8 +499,10 @@
                                         </button>
                                     </div>
                                     <nav
+                                        id="footer-contact-us-content"
                                         class="footer__content"
                                         data-section="section-2"
+                                        aria-labelledby="footer-contact-us-heading"
                                     >
                                         <ul class="footer__list" role="list">
                                             <li
@@ -520,7 +532,10 @@
                             <div class="footer__menu-group-wrapper">
                                 <div class="footer__menu-group">
                                     <div class="footer__row">
-                                        <h6 class="footer__menu-heading">
+                                        <h6
+                                            id="footer-meet-us-heading"
+                                            class="footer__menu-heading"
+                                        >
                                             Meet Us
                                         </h6>
                                         <button
@@ -528,6 +543,7 @@
                                             data-target="section-3"
                                             aria-expanded="false"
                                             aria-label="Open Meet Us Menu"
+                                            aria-controls="footer-meet-us-content"
                                             data-label="Meet Us Menu"
                                         >
                                             <span
@@ -537,15 +553,17 @@
                                         </button>
                                     </div>
                                     <nav
+                                        id="footer-meet-us-content"
                                         class="footer__content"
                                         data-section="section-3"
+                                        aria-labelledby="footer-meet-us-heading"
                                     >
                                         <ul class="footer__list" role="list">
                                             <li
                                                 class="footer__list-item text-body-md"
                                             >
                                                 <a
-                                                    href="#"
+                                                    href="tel:+0092123456789"
                                                     aria-label="tel +00 92 1234 56789"
                                                     >+00 92 1234 56789</a
                                                 >
@@ -554,7 +572,7 @@
                                                 class="footer__list-item text-body-md"
                                             >
                                                 <a
-                                                    href="#"
+                                                    href="mailto:info@travlog.com"
                                                     aria-label="email info@travlog.com"
                                                     >info@travlog.com</a
                                                 >
@@ -562,13 +580,16 @@
                                             <li
                                                 class="footer__list-item text-body-md"
                                             >
-                                                <a
-                                                    href="#"
-                                                    style="gap: 8px"
+                                                <address
+                                                    style="
+                                                        display: flex;
+                                                        gap: 8px;
+                                                    "
                                                     aria-label="address 205. R Street, New York BD23200"
-                                                    >205. R Street, New York
-                                                    BD23200</a
                                                 >
+                                                    205. R Street, New York
+                                                    BD23200
+                                                </address>
                                             </li>
                                         </ul>
                                     </nav>
@@ -576,6 +597,14 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="footer__image footer__image--secondary">
+                    <img
+                        src="/assets/images/footer-spiral.png"
+                        alt=""
+                        role="presentation"
+                        aria-hidden="true"
+                    />
                 </div>
             </footer>
             <div class="mask" hidden aria-hidden="true"></div>

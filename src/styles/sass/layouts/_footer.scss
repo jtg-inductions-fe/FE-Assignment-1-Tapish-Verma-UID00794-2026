@@ -3,10 +3,13 @@
 @use '../abstracts/mixins' as mixins;
 
 .footer {
+    position: relative;
+    margin-top: functions.rem(-16px);
     &__image {
         position: absolute;
         display: none;
         &--primary {
+            width: functions.rem(185px);
             @include mixins.responsive-screen(md) {
                 display: inline;
                 top: functions.rem(-87px);
@@ -14,13 +17,14 @@
             }
         }
         &--secondary {
+            width: functions.rem(118px);
             @include mixins.responsive-screen(sm) {
                 display: inline;
-                bottom: functions.rem(110px);
-                right: functions.rem(-60px);
+                bottom: functions.rem(90px);
+                right: functions.rem(0px);
             }
             @include mixins.responsive-screen(md) {
-                bottom: functions.rem(75px);
+                bottom: functions.rem(0px);
             }
         }
     }
@@ -33,11 +37,6 @@
     &__description {
         margin-bottom: variables.$space-lg;
         text-align: left;
-        font-weight: variables.$font-weight-semi-bold;
-        font-family: variables.$font-family-primary;
-        @include mixins.responsive-screen(sm) {
-            font-size: functions.rem(23px);
-        }
         @include mixins.responsive-screen(md) {
             margin-bottom: variables.$space-xl;
         }
@@ -113,9 +112,12 @@
         font-size: functions.rem(24px);
     }
 
-    &__icons {
+    &__icon-section {
         @include mixins.flex(row, space-between, center, variables.$space-lg);
         display: inline-flex;
+    }
+
+    &__icon {
         &--primary {
             font-size: functions.rem(32px);
             color: variables.$color-white;
@@ -134,14 +136,20 @@
             display: none;
         }
     }
+
+    @include mixins.responsive-screen(sm) {
+        margin-top: 0;
+    }
 }
 
 .footer-wrapper {
     position: relative;
     padding-block: variables.$space-xl;
+    padding-inline: variables.$space-xs;
     width: 100%;
     @include mixins.flex(column, space-between, center, functions.rem(79px));
     @include mixins.responsive-screen(sm) {
+        padding-inline: 0;
         gap: variables.$space-xl;
     }
     @include mixins.responsive-screen(md) {

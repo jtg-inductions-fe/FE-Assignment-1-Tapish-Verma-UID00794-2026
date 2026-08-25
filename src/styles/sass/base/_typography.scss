@@ -140,11 +140,26 @@ data {
     }
 }
 
-.text-dark-bold-lg {
+.text-medium-bold-md {
+    color: variables.$color-grey-medium;
+    font-weight: variables.$font-weight-semi-bold;
+    text-align: center;
+    font-size: functions.rem(18px);
+
+    @include mixins.responsive-screen(sm) {
+        font-size: functions.rem(23px);
+    }
+}
+
+.text-dark-bold {
     font-size: functions.rem(28px);
     font-weight: variables.$font-weight-bold;
     line-height: variables.$primary-spacing;
     color: variables.$color-grey-medium;
+
+    &--small {
+        font-size: functions.rem(23px);
+    }
 }
 
 .text-body-md {
@@ -170,6 +185,10 @@ data {
 }
 .font-figtree {
     font-family: variables.$font-family-figtree;
+}
+
+.font-circular-std {
+    font-family: variables.$font-family-primary;
 }
 
 .text-dark-sm {
