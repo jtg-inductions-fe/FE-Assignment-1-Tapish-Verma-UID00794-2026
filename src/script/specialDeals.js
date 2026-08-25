@@ -66,10 +66,10 @@ const _modalHandler = () => {
         lastFocused: null,
     };
 
-    const renderRelevantModal = () => {
+    const renderRelevantModal = async () => {
         switch (modalMetaData.modalTypes[modalMetaData.currentActiveModalIdx]) {
             case MODAL_TYPE_SPIN_AND_WIN:
-                renderSpecialDeals();
+                await renderSpecialDeals();
                 break;
             case MODAL_TYPE_UNLOCKED_DEALS:
                 renderUnlockedDeals();
@@ -497,18 +497,30 @@ const renderSpecialDeals = async () => {
 };
 
 const modalHandler = _modalHandler();
-export const renderSpecialDealsModal = (event) => {
+
+const nextFrame = () =>
+    new Promise((resolve) => requestAnimationFrame(resolve));
+export const renderSpecialDealsModal = async (event) => {
+    modalHandler.setLastFocused(event.currentTarget);
     addMask(false);
     lockScroll();
     specialDealsModal.classList.add('modal--active');
     specialDealsModal.inert = false;
-    modalHandler.renderRelevantModal();
-    modalHandler.setLastFocused(event.currentTarget);
+    await modalHandler.renderRelevantModal();
+    // subsequent descendants donot get synchronously non inert on same tick, therefore we need to wait for some frames so that he modalCross is non inert and focusable.
+    await nextFrame();
+    await nextFrame();
     modalCross.focus();
 };
 
 const closeModal = () => {
     if (specialDealsModal.classList.contains('modal--active')) {
+        const elementToRefocus = modalHandler.getLastFocused();
+        if (elementToRefocus) {
+            elementToRefocus.focus();
+            modalHandler.setLastFocused(null);
+        }
+
         removeMask();
         unlockScroll();
         specialDealsModal.classList.remove('modal--active');
@@ -518,14 +530,11 @@ const closeModal = () => {
         modalHandler.setCurrentActiveModalIdx(0);
         modalHandler.setSelectedDeals([]);
         modalHandler.setSpinStatus(true);
+
         const footerButton = modalFooter.querySelector('.modal__button');
         if (footerButton) {
             footerButton.removeEventListener('click', modalHandler.nextModal);
             footerButton.removeEventListener('click', modalHandler.prevModal);
-        }
-        if (modalHandler.getLastFocused()) {
-            modalHandler.getLastFocused().focus();
-            modalHandler.setLastFocused(null);
         }
     }
 };
