@@ -37,11 +37,6 @@
     &__description {
         margin-bottom: variables.$space-lg;
         text-align: left;
-        font-weight: variables.$font-weight-semi-bold;
-        font-family: variables.$font-family-primary;
-        @include mixins.responsive-screen(sm) {
-            font-size: functions.rem(23px);
-        }
         @include mixins.responsive-screen(md) {
             margin-bottom: variables.$space-xl;
         }
