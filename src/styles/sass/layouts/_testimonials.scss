@@ -7,11 +7,15 @@
 
     &__bg {
         display: none;
+
+        img {
+            max-height: 150%;
+        }
+
         @include mixins.responsive-screen(sm) {
             display: block;
             position: absolute;
             width: 100%;
-            height: 100%;
             z-index: variables.$z-index-behind;
             inset: 0;
             opacity: 0.1;
@@ -161,12 +165,14 @@
 }
 
 .swiper-pagination {
-    &.swiper-pagination {
-        position: relative;
-    }
     margin-top: functions.rem(48px);
     --swiper-pagination-bullet-horizontal-gap: 0px;
     @include mixins.flex(row, center, center, variables.$space-md);
+
+    &.swiper-pagination {
+        position: relative;
+    }
+
     @include mixins.responsive-screen(sm) {
         margin-top: functions.rem(56px);
     }
