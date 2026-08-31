@@ -122,8 +122,13 @@
         @include mixins.flex(row, space-between, center, variables.$space-lg);
         display: inline-flex;
 
-        button {
-            padding: 0;
+        a {
+            height: functions.rem(32px);
+            border-radius: variables.$radius-round;
+            &:hover {
+                scale: 1.05;
+                box-shadow: variables.$box-shadow-sm;
+            }
         }
     }
 
