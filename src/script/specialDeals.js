@@ -286,6 +286,17 @@ const handleSpinWin = (winner) => {
     addFooterButtonListener(modalHandler.nextModal);
 };
 
+const handleOutOfSpin = () => {
+    spinner.classList.add('spinner--inactive');
+    const spinnerHighlights = modalBody.querySelector('.spinner__highlights');
+    if (!spinnerHighlights) {
+        modalBody.insertAdjacentHTML(
+            'afterbegin',
+            `<p class="spinner__highlights text-light-sm ">Oops! You are out of spins.</p>`,
+        );
+    }
+};
+
 const handleSpinWheel = async () => {
     let rotation = 0;
     let velocity = 0;
@@ -313,15 +324,9 @@ const handleSpinWheel = async () => {
         );
         handleSpinWin(winner);
         spinnerButton.disabled = false;
-        // Disable the spin button of spinner
         const validDeals = getValidLockedDeals();
         if (validDeals.length < SEGMENTS_SIZE) {
-            //Hide Spinner div
-            spinner.classList.add('spinner--inactive');
-            modalBody.insertAdjacentHTML(
-                'afterbegin',
-                `<p class="spinner__highlights text-light-sm ">Oops! You are out of spins.</p>`,
-            );
+            handleOutOfSpin();
         }
     }
 
@@ -414,12 +419,7 @@ async function renderSpinningWheel() {
 
         remainingDeals = getValidLockedDeals();
         if (remainingDeals.length < SEGMENTS_SIZE) {
-            //Hide Spinner div
-            spinner.classList.add('spinner--inactive');
-            modalBody.insertAdjacentHTML(
-                'afterbegin',
-                `<p class="spinner__highlights text-light-sm ">Oops! You are out of spins.</p>`,
-            );
+            handleOutOfSpin();
             modalHandler.setSpinStatus(true);
             return;
         } else {
