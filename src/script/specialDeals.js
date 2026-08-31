@@ -296,8 +296,7 @@ const handleSpinWin = (winner) => {
             label: winner.label,
             promoCode: winner.promoCode,
             validFor: winner.validFor,
-            addedTimeStamp: Date.now(),
-            lastCheckedTimeStamp: Date.now(),
+            lastProcessedTimestamp: Date.now(),
         },
     ]);
     addUnlockedDealsButton();
@@ -396,21 +395,17 @@ function addUnlockedDealsButton() {
 const getValidUnlockedDeals = () => {
     const userWonDeals = getFromStorage(USER_WON_DEALS, []);
     const updatedUserWonDeals = userWonDeals.map((deal) => {
-        if (deal.validFor === null) {
-            return {
-                ...deal,
-                lastCheckedTimeStamp: Date.now(),
-            };
-        }
-        const diffInMs = Math.abs(
-            deal.lastCheckedTimeStamp - deal.addedTimeStamp,
-        );
+        const diffInMs = Math.abs(Date.now() - deal.lastProcessedTimestamp);
         const diffInDays = Math.floor(diffInMs / DAY_IN_MS);
+        if (deal.validFor === null || diffInDays === 0) {
+            return deal;
+        }
         const updatedValidFor = deal.validFor - diffInDays;
         return {
             ...deal,
             validFor: updatedValidFor <= 0 ? null : updatedValidFor,
-            lastCheckedTimeStamp: Date.now(),
+            lastProcessedTimestamp:
+                deal.lastProcessedTimestamp + diffInDays * DAY_IN_MS,
         };
     });
     saveToStorage(USER_WON_DEALS, updatedUserWonDeals);
