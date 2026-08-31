@@ -216,6 +216,12 @@ const renderUnlockedDeals = () => {
     spinnerResultSection.innerHTML = '';
     spinnerResultSection.classList.add('spinner__result--active');
 
+    // Remove spinner Highlights;
+    const spinnerHighlights = modalBody.querySelector('.spinner__highlights');
+    if (spinnerHighlights) {
+        spinnerHighlights.remove();
+    }
+
     //Render Header
     renderModalHeader(MODAL_TYPE_UNLOCKED_DEALS);
 
@@ -310,9 +316,12 @@ const handleSpinWheel = async () => {
         // Disable the spin button of spinner
         const validDeals = getValidLockedDeals();
         if (validDeals.length < SEGMENTS_SIZE) {
-            const spinnerButton =
-                spinnerOuterContainer.querySelector('.spinner__button');
-            spinnerButton.disabled = true;
+            //Hide Spinner div
+            spinner.classList.add('spinner--inactive');
+            modalBody.insertAdjacentHTML(
+                'afterbegin',
+                `<p class="spinner__highlights text-light-sm ">Oops! You are out of spins.</p>`,
+            );
         }
     }
 
@@ -405,16 +414,14 @@ async function renderSpinningWheel() {
 
         remainingDeals = getValidLockedDeals();
         if (remainingDeals.length < SEGMENTS_SIZE) {
-            selectedDeals = [
-                ...remainingDeals,
-                ...Array.from(
-                    { length: SEGMENTS_SIZE - remainingDeals.length },
-                    () => ({
-                        type: 'dummy',
-                        className: 'spinner__cell--dummy',
-                    }),
-                ),
-            ];
+            //Hide Spinner div
+            spinner.classList.add('spinner--inactive');
+            modalBody.insertAdjacentHTML(
+                'afterbegin',
+                `<p class="spinner__highlights text-light-sm ">Oops! You are out of spins.</p>`,
+            );
+            modalHandler.setSpinStatus(true);
+            return;
         } else {
             selectedDeals = getRandomElements(remainingDeals, SEGMENTS_SIZE);
         }
@@ -434,10 +441,7 @@ async function renderSpinningWheel() {
         spinnerButton.addEventListener('click', handleSpinWheel);
     }
 
-    if (
-        selectedDeals.length === 0 ||
-        selectedDeals[selectedDeals.length - 1].type === 'dummy'
-    ) {
+    if (selectedDeals.length === 0) {
         spinnerButton.disabled = true;
     } else {
         spinnerButton.disabled = false;
