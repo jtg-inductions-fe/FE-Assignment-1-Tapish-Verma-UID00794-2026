@@ -20,6 +20,7 @@ import {
     QUATER_ANGLE,
     BORDER_EPSILON,
     SEGMENTS_SIZE,
+    DAY_IN_MS,
 } from './constants';
 
 const triggerPoint = document.getElementById('special-deals');
@@ -244,21 +245,21 @@ const renderUnlockedDeals = () => {
     spinner.classList.add('spinner--inactive');
 
     //Render UserWonDeals
-    const userWonDeals = getFromStorage(USER_WON_DEALS, []);
-    if (userWonDeals.length === 0) {
+    const updatedUserWonDeals = getValidUnlockedDeals();
+    if (updatedUserWonDeals.length === 0) {
         modalBody.insertAdjacentHTML(
             'beforeend',
             '<div>No Unlocked Deals</div>',
         );
     } else {
-        userWonDeals.sort((a, b) => {
+        updatedUserWonDeals.sort((a, b) => {
             if (a.validFor === null) return 1;
             if (b.validFor === null) return -1;
 
             return b.validFor - a.validFor;
         });
 
-        renderResultSectionList(userWonDeals);
+        renderResultSectionList(updatedUserWonDeals);
     }
 
     unlockedDealsButton.innerHTML = 'Go Back';
@@ -295,6 +296,8 @@ const handleSpinWin = (winner) => {
             label: winner.label,
             promoCode: winner.promoCode,
             validFor: winner.validFor,
+            addedTimeStamp: Date.now(),
+            lastCheckedTimeStamp: Date.now(),
         },
     ]);
     addUnlockedDealsButton();
@@ -390,11 +393,35 @@ function addUnlockedDealsButton() {
     unlockedDealsButton.innerHTML = `<span>View Unlocked Deals</span> <span class="modal__count-badge">${userWonDeals.length}</span>`;
 }
 
+const getValidUnlockedDeals = () => {
+    const userWonDeals = getFromStorage(USER_WON_DEALS, []);
+    const updatedUserWonDeals = userWonDeals.map((deal) => {
+        if (deal.validFor === null) {
+            return {
+                ...deal,
+                lastCheckedTimeStamp: Date.now(),
+            };
+        }
+        const diffInMs = Math.abs(
+            deal.lastCheckedTimeStamp - deal.addedTimeStamp,
+        );
+        const diffInDays = Math.floor(diffInMs / DAY_IN_MS);
+        const updatedValidFor = deal.validFor - diffInDays;
+        return {
+            ...deal,
+            validFor: updatedValidFor <= 0 ? null : updatedValidFor,
+            lastCheckedTimeStamp: Date.now(),
+        };
+    });
+    saveToStorage(USER_WON_DEALS, updatedUserWonDeals);
+    return updatedUserWonDeals;
+};
+
 function getValidLockedDeals() {
     let specialDeals = getFromStorage(SPECIAL_DEALS_LABEL, []);
     const validDeals = specialDeals.filter((deal) => deal?.validFor !== null);
-    const userWonDeals = getFromStorage(USER_WON_DEALS, []);
-    const promoCodeList = userWonDeals.map((deal) => deal.promoCode);
+    const updatedUserWonDeals = getValidUnlockedDeals();
+    const promoCodeList = updatedUserWonDeals.map((deal) => deal.promoCode);
     const remainingDeals = validDeals.filter(
         (deal) => !promoCodeList.includes(deal?.promoCode),
     );

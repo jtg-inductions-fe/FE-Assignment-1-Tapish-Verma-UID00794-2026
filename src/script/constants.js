@@ -30,3 +30,4 @@ export const API_ENDPOINT =
 
 export const DRAWER_EXIT_TIME = 300;
 export const TESTIMONIALS_CAROUSEL_DELAY = 2000;
+export const DAY_IN_MS = 24 * 60 * 60 * 1000;
