@@ -148,6 +148,19 @@ const handleCopyClick = (event) => {
     navigator.clipboard.writeText(promoCode);
 };
 
+const handleModalHeaderDescriptionVisibility = (modalType) => {
+    if (modalType === MODAL_TYPE_SPIN_AND_WIN) {
+        const validDeals = getValidLockedDeals();
+        if (validDeals.length < SEGMENTS_SIZE) {
+            modalDescription.style.display = 'none';
+        } else {
+            modalDescription.style.display = 'block';
+        }
+    } else {
+        modalDescription.style.display = 'block';
+    }
+};
+
 const renderModalHeader = (modalType) => {
     let modalHeaderSubTitle = '';
     let modalHeaderDescription = '';
@@ -225,6 +238,8 @@ const renderUnlockedDeals = () => {
     //Render Header
     renderModalHeader(MODAL_TYPE_UNLOCKED_DEALS);
 
+    handleModalHeaderDescriptionVisibility(MODAL_TYPE_UNLOCKED_DEALS);
+
     //Hide Spinner div
     spinner.classList.add('spinner--inactive');
 
@@ -292,7 +307,7 @@ const handleOutOfSpin = () => {
     if (!spinnerHighlights) {
         modalBody.insertAdjacentHTML(
             'afterbegin',
-            `<p class="spinner__highlights text-light-sm ">Oops! You are out of spins.</p>`,
+            `<p class="spinner__highlights text-medium-bold-md text-grey-light">Oops! You are out of spins.</p>`,
         );
     }
 };
@@ -328,6 +343,7 @@ const handleSpinWheel = async () => {
         if (validDeals.length < SEGMENTS_SIZE) {
             handleOutOfSpin();
         }
+        handleModalHeaderDescriptionVisibility(MODAL_TYPE_SPIN_AND_WIN);
     }
 
     function tick() {
@@ -485,6 +501,7 @@ const renderSpecialDeals = async () => {
     //Render spinner
     spinner.classList.remove('spinner--inactive');
     await renderSpinningWheel();
+    handleModalHeaderDescriptionVisibility(MODAL_TYPE_SPIN_AND_WIN);
     addUnlockedDealsButton();
     addFooterButtonListener(modalHandler.nextModal);
 };
