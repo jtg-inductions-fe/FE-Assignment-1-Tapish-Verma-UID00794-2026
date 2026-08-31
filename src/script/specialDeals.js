@@ -164,7 +164,7 @@ const renderModalHeader = (modalType) => {
     modalDescription.innerHTML = modalHeaderDescription;
 };
 
-const renderResultSectionList = (deals, showEnd = false) => {
+const renderResultSectionList = (deals, replace = false) => {
     let resultDealsList = spinnerResultSection.querySelector(
         '.spinner__result-list',
     );
@@ -180,12 +180,10 @@ const renderResultSectionList = (deals, showEnd = false) => {
         spinnerResultSection.addEventListener('click', handleCopyClick);
     }
 
-    resultDealsList.insertAdjacentHTML(
-        'beforeend',
-        deals
-            .map(
-                (deal) =>
-                    `
+    const dealsHTML = deals
+        .map(
+            (deal) =>
+                `
                 <div class="spinner__deal ${deal.validFor === null ? 'spinner__deal--expired' : ''}">
                     <div class="spinner__deal-left-section">
                         <span class="spinner__deal-label text-medium-bold-sm">${deal.label}</span>
@@ -199,22 +197,13 @@ const renderResultSectionList = (deals, showEnd = false) => {
                     </div>
                 </div>
             `,
-            )
-            .join(''),
-    );
-    if (showEnd) {
-        const lastDeal = deals[deals.length - 1];
+        )
+        .join('');
 
-        const lastResult = resultDealsList.querySelector(
-            `[data-promo-code="${lastDeal.promoCode}"]`,
-        );
-
-        if (lastResult) {
-            lastResult.scrollIntoView({
-                behavior: 'smooth',
-                block: 'nearest',
-            });
-        }
+    if (replace) {
+        resultDealsList.innerHTML = dealsHTML;
+    } else {
+        resultDealsList.insertAdjacentHTML('beforeend', dealsHTML);
     }
 };
 

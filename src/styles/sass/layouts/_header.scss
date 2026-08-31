@@ -57,7 +57,12 @@
     &__actions {
         display: none;
         @include mixins.responsive-screen(sm) {
-            @include mixins.flex(row, space-between, center, 0);
+            @include mixins.flex(
+                row,
+                space-between,
+                center,
+                functions.rem(4px)
+            );
         }
     }
 
