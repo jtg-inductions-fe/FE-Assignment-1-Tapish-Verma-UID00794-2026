@@ -51,10 +51,10 @@ h3 {
 }
 
 h4 {
-    font-size: functions.rem(28px);
+    font-size: functions.rem(20px);
     font-weight: variables.$font-weight-bold;
-    line-height: variables.$primary-spacing;
-    color: variables.$color-grey-light;
+    line-height: 100%;
+    color: variables.$color-gray-dark;
 }
 
 h5 {
@@ -108,6 +108,37 @@ data {
         font-size: functions.rem(23px);
     }
 }
+.text-sm {
+    font-size: functions.rem(12px);
+    line-height: 100%;
+    font-weight: variables.$font-weight-bold;
+
+    &--white {
+        color: variables.$color-white;
+    }
+
+    &--dark {
+        color: variables.$color-black;
+    }
+}
+
+.text-medium-bold-sm {
+    font-weight: variables.$font-weight-medium-bold;
+    font-size: functions.rem(14px);
+    line-height: 100%;
+    color: variables.$color-midnight;
+}
+
+.text-light-sm {
+    font-weight: variables.$font-weight-light;
+    font-size: functions.rem(12px);
+    line-height: 100%;
+    color: variables.$color-nobel;
+
+    &--purple {
+        color: variables.$color-purple-dark;
+    }
+}
 
 .text-medium-bold-md {
     color: variables.$color-grey-medium;
@@ -142,6 +173,18 @@ data {
 
 .font-inter {
     font-family: variables.$font-family-secondary;
+}
+.font-roboto {
+    font-family: variables.$font-family-roboto;
+}
+.text-bold-sm {
+    line-height: 100%;
+    font-size: functions.rem(12px);
+    font-weight: variables.$font-weight-bold;
+    color: variables.$color-black;
+}
+.font-figtree {
+    font-family: variables.$font-family-figtree;
 }
 
 .font-circular-std {

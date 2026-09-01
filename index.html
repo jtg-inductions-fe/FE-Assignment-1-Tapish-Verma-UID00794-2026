@@ -44,7 +44,12 @@
                                     <a href="#discover">Discover</a>
                                 </li>
                                 <li class="header__item">
-                                    <a href="#special-deals">Special Deals</a>
+                                    <a
+                                        aria-haspopup="dialog"
+                                        id="special-deals"
+                                        href="#"
+                                        >Special Deals</a
+                                    >
                                 </li>
                                 <li class="header__item">
                                     <a href="#contact">Contact</a>
@@ -575,16 +580,21 @@
                                             <li
                                                 class="footer__list-item text-body-md"
                                             >
-                                                <address
-                                                    style="
-                                                        display: flex;
-                                                        gap: 8px;
-                                                    "
-                                                    aria-label="address 205. R Street, New York BD23200"
+                                                <a
+                                                    href="https://share.google/kUxBhalm2yfYj8jPX"
+                                                    aria-label="Open 205 R Street location in Google Maps"
                                                 >
-                                                    205. R Street, New York
-                                                    BD23200
-                                                </address>
+                                                    <address
+                                                        style="
+                                                            display: flex;
+                                                            gap: 8px;
+                                                        "
+                                                        aria-label="address 205. R Street, New York BD23200"
+                                                    >
+                                                        205. R Street, New York
+                                                        BD23200
+                                                    </address>
+                                                </a>
                                             </li>
                                         </ul>
                                     </nav>
@@ -627,7 +637,10 @@
                                 >
                             </li>
                             <li class="drawer__item">
-                                <a class="drawer__link" href="#special-deals"
+                                <a
+                                    aria-haspopup="dialog"
+                                    class="drawer__link special-deals"
+                                    href="#"
                                     >Special Deals</a
                                 >
                             </li>
@@ -644,6 +657,48 @@
                     </div>
                 </div>
             </aside>
+            <div class="modal font-inter" inert>
+                <header class="modal__header">
+                    <button
+                        class="button button--icon-only modal__cross"
+                        aria-label="Close Special Deals"
+                    >
+                        <span class="icon-X" aria-hidden="true"></span>
+                    </button>
+                    <span>
+                        <span
+                            class="icon-Gift modal__header-icon"
+                            aria-hidden="true"
+                            role="presentation"
+                        ></span>
+                        <span
+                            class="eyebrow text-uppercase text-sm modal__title"
+                            >Special Deals</span
+                        >
+                    </span>
+                    <h4 class="modal__header-sub-title">Spin & Win!</h4>
+                    <p
+                        class="modal__header-decription text-light-sm text-slate"
+                    >
+                        Tap the center of the wheel to spin
+                    </p>
+                </header>
+                <div class="modal__body">
+                    <div class="spinner">
+                        <span
+                            class="icon-triangle spinner__marker"
+                            aria-hidden="true"
+                        ></span>
+                        <div class="spinner__outer-container">
+                            <div
+                                class="spinner__inner-container spinner__inner-container--shadow"
+                            ></div>
+                        </div>
+                    </div>
+                    <div class="spinner__result"></div>
+                </div>
+                <footer class="modal__footer"></footer>
+            </div>
         </div>
         <script type="module" src="./src/script/index.js"></script>
     </body>

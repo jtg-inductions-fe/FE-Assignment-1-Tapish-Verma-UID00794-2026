@@ -1,5 +1,16 @@
-import { breakpoints, RESIZE_DEBOUNCE_DELAY } from './constants';
-import { debounce } from './utilities';
+import {
+    breakpoints,
+    DRAWER_EXIT_TIME,
+    RESIZE_DEBOUNCE_DELAY,
+} from './constants';
+import {
+    debounce,
+    lockScroll,
+    unlockScroll,
+    addMask,
+    removeMask,
+} from './utilities';
+import { renderSpecialDealsModal } from './specialDeals';
 
 const hamburgerButtons = document.getElementsByClassName('header__hamburger');
 const mask = document.querySelector('.mask');
@@ -12,19 +23,19 @@ function openDrawer(event) {
         lastFocused = event.currentTarget;
         event.currentTarget.setAttribute('aria-expanded', 'true');
         drawer.classList.add('nav-drawer--active');
-        mask.classList.add('mask--active');
         drawer.inert = false;
-        mask.hidden = false;
         drawerClose.focus();
+        addMask();
+        lockScroll();
     }
 }
 
 function closeDrawer() {
     if (drawer.classList.contains('nav-drawer--active')) {
         drawer.classList.remove('nav-drawer--active');
-        mask.classList.remove('mask--active');
         drawer.inert = true;
-        mask.hidden = true;
+        removeMask();
+        unlockScroll();
         (lastFocused || hamburgerButtons[0]).focus();
         if (lastFocused) {
             lastFocused.setAttribute('aria-expanded', 'false');
@@ -67,8 +78,19 @@ drawer.addEventListener('click', (event) => {
         '.drawer__cross, .drawer__item, .drawer__actions button',
     );
 
+    const isSpecialDeals = Array.from(event.target.classList).includes(
+        'special-deals',
+    );
+
     if (shouldClose) {
         closeDrawer();
+        if (isSpecialDeals) {
+            setTimeout(() => {
+                renderSpecialDealsModal({
+                    currentTarget: lastFocused,
+                });
+            }, DRAWER_EXIT_TIME);
+        }
     }
 });
 

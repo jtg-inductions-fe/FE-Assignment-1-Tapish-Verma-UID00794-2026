@@ -16,6 +16,10 @@
     color: variables.$color-grey-medium;
 }
 
+.text-slate {
+    color: variables.$color-slate;
+}
+
 .text-grey-light {
     color: variables.$color-grey-light;
 }
@@ -26,4 +30,8 @@
 
 .uppercase-text {
     text-transform: uppercase;
+}
+
+.no-scroll {
+    overflow: hidden;
 }

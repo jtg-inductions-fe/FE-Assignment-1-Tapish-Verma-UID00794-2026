@@ -17,6 +17,11 @@
     font-weight: variables.$font-weight-bold;
     cursor: pointer;
 
+    &:hover {
+        scale: 1.05;
+        box-shadow: variables.$box-shadow-sm;
+    }
+
     &__icon {
         display: flex;
         align-items: center;

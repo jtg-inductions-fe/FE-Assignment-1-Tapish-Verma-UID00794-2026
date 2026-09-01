@@ -108,6 +108,12 @@
         }
     }
 
+    &__list-item {
+        &:hover {
+            color: variables.$color-dark;
+        }
+    }
+
     &__menu-icon {
         font-size: functions.rem(24px);
     }
@@ -115,6 +121,16 @@
     &__icon-section {
         @include mixins.flex(row, space-between, center, variables.$space-lg);
         display: inline-flex;
+
+        a {
+            height: functions.rem(32px);
+            border-radius: variables.$radius-round;
+            &:hover {
+                scale: 1.05;
+                box-shadow: variables.$box-shadow-sm;
+                text-decoration: none;
+            }
+        }
     }
 
     &__icon {

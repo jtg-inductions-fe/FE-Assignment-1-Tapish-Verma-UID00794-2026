@@ -43,7 +43,7 @@
     }
 
     &__content {
-        padding-inline: functions.rem(40px);
+        padding-inline: functions.rem(24px);
         @include mixins.flex(
             column,
             space-between,
@@ -67,6 +67,7 @@
 
     &__statistics {
         width: 100%;
+        padding-inline: functions.rem(16px);
         @include mixins.flex(
             column,
             space-between,
@@ -77,6 +78,7 @@
             flex-direction: row;
             flex-wrap: wrap;
             gap: variables.$space-lg;
+            padding-inline: 0;
         }
     }
 

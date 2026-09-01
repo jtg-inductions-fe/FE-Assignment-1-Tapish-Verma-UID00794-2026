@@ -13,7 +13,9 @@
     &--active {
         opacity: variables.$opacity-opaque;
         pointer-events: auto;
+    }
 
+    &--active-desktop-hidden {
         @include mixins.responsive-screen(md) {
             opacity: variables.$opacity-transparent;
             pointer-events: none;
